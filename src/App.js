@@ -1,5 +1,6 @@
 import About from './component/About';
 import Education from './component/Education';
+import Experience from './component/Experience';
 import Header from './component/Header';
 import PortfolioHeader from './component/PortfolioHeader';
 
@@ -10,6 +11,7 @@ function App() {
       <PortfolioHeader/>
       <About/>
       <Education/>
+      <Experience/>
     </div>
   );
 }

@@ -9,13 +9,15 @@ const About = () => {
                 <img src='./images/photo2.jpg' alt="Brijesh Singh" className="rounded-lg shadow-lg" />
             </div>
             <div className='ml-56'>
-                <div ><span className='uppercase font-extrabold text-5xl font-serif '  style={{ borderBottom: '10px ridge rgb(96,165,250) ', paddingBottom: '25px' }}>my biography</span></div>
-                <div className='mt-20'><span>A passionate Full Stack Web Developer with a Bachelor's degree in Computer Science and hands-on experience in web development. Proficient in ReactJS, Java and cloud technologies such as AWS. Experienced in optimizing
-                    performance and integrating efficient data retrieval systems. Enthusiastic about ensuring software quality,
-                    implementing best practices, and working in Agile and DevOps environments
+                <div ><span className='uppercase font-extrabold text-5xl font-serif ' style={{ borderBottom: '10px ridge rgb(96,165,250) ', paddingBottom: '25px' }}>my biography</span></div>
+                <div className='mt-20'><span>I recently graduated with a degree in Computer Science and Engineering from KNS Institute of 
+                    Technology. My portfolio includes full-stack projects like a Hospital Management System and a SwiggyClone, showcasing 
+                    my proficiency in React, Node.js, Express, and MongoDB. I have a deep passion for web development and have honed my skills
+                     in building responsive, user-friendly applications. My commitment to excellence and enthusiasm for learning drive me to 
+                     continually improve and stay ahead in the rapidly evolving tech landscape.
                 </span></div>
-                <SkillsSection/>
-                
+                <SkillsSection />
+
             </div>
         </div>
     )

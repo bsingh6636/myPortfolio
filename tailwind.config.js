@@ -6,7 +6,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily : {
-        'faster-one' : ['Faster One' , 'system-ui']
+        'faster-one' : ['Faster One' , 'system-ui'],
+        'rubik-bubbles' : ['Rubik Bubbles' , 'system-ui'],
+        'foldit-dotted' : ["Foldit", 'sans-serif'],
+        'londrina-sketch-regular' : ["Londrina Sketch", 'sans-serif'],
+        'rubik-vinyl-regular' : ["Rubik Vinyl", 'system-ui']
       }
     },
   },
