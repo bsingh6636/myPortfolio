@@ -1,4 +1,34 @@
-.App {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scroller {
+  width: 300px;
+  height: 100px;
+  overflow-y: scroll;
+  scrollbar-color: #007 #bada55; /* Thumb color and track color */
+  scrollbar-width: thin; /* Adjusts the width of the scrollbar */
+}
+/* This will affect the entire webpage. To target a specific element, prepend .scroller to each selector. */
+
+::-webkit-scrollbar {
+  width: 3px; /* Width of the vertical scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #bada55; /* Color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007; /* Color of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #005; /* Color of the scroll thumb on hover */
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +65,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
