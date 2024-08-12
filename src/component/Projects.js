@@ -14,7 +14,7 @@ const Projects = () => {
             const filteredData = data.filter((d) => projects.includes(d.name))
             setFilteredGithubRepos(filteredData)
         })();
-    }, [])
+    }, [projects])
 
     return filteredGithubRepos === null ? null : (
         <div className='mt-20'>
