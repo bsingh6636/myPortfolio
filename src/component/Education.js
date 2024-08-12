@@ -4,7 +4,7 @@ const Education = () => {
     return (
         <div className="text-white mt-10 ">
             <div className="flex justify-center text-2xl font-bold text-gray-400 mb-4 text-faster-one">
-                <span className="text-8xl font-rubik-vinyl-regular  hover:animate-bounce">2018 - 2024</span>
+                <span className="text-8xl font-rubik-vinyl-regular animate-pulse">2018 - 2024</span>
             </div>
 
             <div className="flex flex-col md:flex-row md:space-x-12">
