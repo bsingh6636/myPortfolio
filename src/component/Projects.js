@@ -35,7 +35,7 @@ const Projects = () => {
                             <h1 className='p-2'>GitHub repository : <span className='text-indigo-600 cursor-pointer hover:underline '
                                 onClick={() => window.open(filteredGithubRepos.clone_url)}>{filteredGithubRepos.clone_url}</span> </h1>
                             <p className='p-2 text-xl'>{filteredGithubRepos.description}</p>
-                            <span>Technologies used : {filteredGithubRepos.topics.join(', ')}</span>
+                            <span className='p-2'>Technologies used : {filteredGithubRepos.topics.join(', ')}</span>
                         </div>)
                 }
             </div>
