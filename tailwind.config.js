@@ -11,7 +11,10 @@ module.exports = {
         'foldit-dotted' : ["Foldit", 'sans-serif'],
         'londrina-sketch-regular' : ["Londrina Sketch", 'sans-serif'],
         'rubik-vinyl-regular' : ["Rubik Vinyl", 'system-ui']
-      }
+      },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(to right, black, #2d2d2d, black)', // Gradient from the body
+      },
     },
   },
   plugins: [],

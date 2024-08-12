@@ -5,7 +5,7 @@ const PortfolioHeader = () => {
     <div className="min-h-screen text-white">
      
       {/* Content */}
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-8 md:px-16 py-20 md:py-20">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between  py-20 md:py-20">
         <div className="text-left max-w-lg">
           <h2 className="text-blue-400 text-xl sm:text-2xl">Hello !!!</h2>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mt-2 leading-tight">
@@ -27,7 +27,7 @@ const PortfolioHeader = () => {
         </div>
 
         <div className="max-w-xs sm:max-w-sm md:max-w-lg mb-6 md:mb-0">
-          <img src="https://res.cloudinary.com/bsingh6636/image/upload/v1717707253/qjbr46ud4rc7whbonmfr.jpg" alt="Brijesh SIngh" className="rounded-lg shadow-lg" />
+          <img src='./images/photo2.jpg' alt="Brijesh SIngh" className="rounded-lg shadow-lg" />
         </div>
       </div>
 
