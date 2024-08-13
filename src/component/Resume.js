@@ -2,8 +2,7 @@ import React from 'react';
 import { FaDownload, FaEye } from 'react-icons/fa';
 
 const Resume= () => {
-    const pdfLink = 'https://www.dropbox.com/scl/fi/4r56i1hr2vhnwwpqwcugm/Brijesh.pdf?rlkey=b7kg7pun09ys91xi3k92ztyrh&st=13yrc6nl&dl=0'; // Replace with your actual hosted PDF link
-
+    const pdfLink = 'https://www.dropbox.com/scl/fi/69bi7cyjk7cx21pu0fsts/Brijesh_2.pdf?rlkey=7eottvi52lped40wn2i3rlgy8&st=j9kiww5s&dl=0'
     const handleDownload = () => {
       const link = document.createElement('a');
       link.href = pdfLink;

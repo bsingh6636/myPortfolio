@@ -19,28 +19,43 @@ const Projects = () => {
             setFilteredGithubRepos(filteredData)
         })();
         // eslint-disable-next-line
-    },[])
+    }, [])
 
     return filteredGithubRepos === null ? null : (
         <div className='mt-20'>
-            <span className=' uppercase font-extrabold text-5xl font-serif' style={{ borderBottom: '10px ridge rgb(96,165,250)', paddingBottom: '25px' }} > Projects </span>
-            <div className='flex flex-wrap'>
+            <span className='uppercase font-extrabold text-3xl md:text-5xl font-serif border-b-4 md:border-b-8 border-blue-400 pb-2 md:pb-4'>
+                Projects
+            </span>
+            <div className='flex flex-wrap justify-center md:justify-start'>
                 {
-                    filteredGithubRepos.map((filteredGithubRepos) =>
-                        <div key={filteredGithubRepos.name} className='mt-20 p-2 w-1/3   max-sm:w-1/2 '>
-                            <img className='w-max p-2 rounded-3xl hover:scale-105 transform transition-transform duration-600 ease-out' src={projects[filteredGithubRepos.name]} alt={filteredGithubRepos.name} />
-                            <h1 className='text-2xl p-2 text-green-500 '>{filteredGithubRepos.name}</h1>
-                            <h1 className='p-2'>Live Link : <span className='text-indigo-600 cursor-pointer hover:underline '
-                                onClick={() => window.open(filteredGithubRepos.homepage)}>{filteredGithubRepos.homepage}</span> </h1>
-                            <h1 className='p-2'>GitHub repository : <span className='text-indigo-600 cursor-pointer hover:underline '
-                                onClick={() => window.open(filteredGithubRepos.clone_url)}>{filteredGithubRepos.clone_url}</span> </h1>
-                            <p className='p-2 text-xl'>{filteredGithubRepos.description}</p>
-                            <span className='p-2'>Technologies used : {filteredGithubRepos.topics.join(', ')}</span>
-                        </div>)
+                    filteredGithubRepos.map((repo) => (
+                        <div key={repo.name} className='mt-10 p-2 w-full sm:w-1/2 lg:w-1/3'>
+                            <div className='rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-500 ease-out'>
+                                <img className='w-full p-2' src={projects[repo.name]} alt={repo.name} />
+                            </div>
+                            <h1 className='text-2xl p-2 text-green-500 font-bold'>{repo.name}</h1>
+                            <h1 className='p-2 break-words text-center'>
+                                Live Link:
+                                <span className='text-indigo-400 cursor-pointer hover:underline' onClick={() => window.open(repo.homepage)}>
+                                    {repo.homepage}
+                                </span>
+                            </h1>
+                            <h1 className='p-2 w-full sm:w-fit break-words text-center'>
+                                GitHub repository:
+                                <span className='text-indigo-400 cursor-pointer hover:underline' onClick={() => window.open(repo.clone_url)}>
+                                    {repo.clone_url}
+                                </span>
+                            </h1>
+
+                            <p className='p-2 text-xl'>{repo.description}</p>
+                            <span className='p-2'>Technologies used: {repo.topics.join(', ')}</span>
+                        </div>
+                    ))
                 }
             </div>
         </div>
-        
+
+
     )
 }
 

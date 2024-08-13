@@ -19,12 +19,12 @@ const Contact = () => {
           <FaEnvelope className="text-4xl text-blue-400 mx-auto mb-2" />
           <h2 className="text-lg font-semibold">Email & Website</h2>
           <p>bsingh6636@outlook.com</p>
-          <p>reallygreatsite.com</p>
+          <p className='break-words'>https://brijeshkushwaha6636.netlify.app/</p>
         </div>
         <div className="text-center">
           <FaMapMarkerAlt className="text-4xl text-blue-400 mx-auto mb-2" />
           <h2 className="text-lg font-semibold">Address</h2>
-          <p>Bengaluru-64 , KA</p>
+          <p>Bengaluru-64 </p>
         </div>
         <div className="text-center">
           <FaInstagram className="text-4xl text-blue-400 mx-auto mb-2" />
