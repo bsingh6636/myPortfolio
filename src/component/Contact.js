@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaLinkedin } from "react-icons/fa";
+// import { SiLeetcode } from 'react-icons/si';
 const Contact = () => {
   return (
     <div>
@@ -35,6 +36,12 @@ const Contact = () => {
           <h2 className="text-lg font-semibold">Instagram</h2>
           <p>@bsingh6636</p>
         </div>
+        {/* <div className="text-center">
+          <SiLeetcode className="text-4xl text-blue-400 mx-auto mb-2" />
+          <h2 className="text-lg font-semibold">LeetCode</h2>
+          <p>https://leetcode.com/u/bsingh6636/</p>
+        </div> */}
+      
       </div>
      
       <div className="mt-20 text-center border-t-2 border-gray-600 pt-10">
