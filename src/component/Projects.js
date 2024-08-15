@@ -34,13 +34,13 @@ const Projects = () => {
                                 <img className='w-full p-2' src={projects[repo.name]} alt={repo.name} />
                             </div>
                             <h1 className='text-2xl p-2 text-green-500 font-bold'>{repo.name}</h1>
-                            <h1 className='p-2 break-words text-center'>
+                            <h1 className='p-2 break-words ml-2'>
                                 Live Link:
                                 <span className='text-indigo-400 cursor-pointer hover:underline' onClick={() => window.open(repo.homepage)}>
                                     {repo.homepage}
                                 </span>
                             </h1>
-                            <h1 className='p-2 w-full sm:w-fit break-words text-center'>
+                            <h1 className='p-2 w-full sm:w-fit break-words ml-2'>
                                 GitHub repository:
                                 <span className='text-indigo-400 cursor-pointer hover:underline' onClick={() => window.open(repo.clone_url)}>
                                     {repo.clone_url}
