@@ -3,14 +3,14 @@ import { Link } from 'react-scroll';
 
 const Header = () => {
   return (
-    <div className=" bg-gray-900 fixed left-1/2 transform -translate-x-1/2 w-full flex justify-center items-center h-12 sm:p-4 text-white rounded-2xl max-sm:py-14  z-50">
+    <div className=" bg-gray-900 fixed left-1/2 transform -translate-x-1/2 w-full flex justify-center items-center h-12 sm:p-4 text-white rounded-2xl max-sm:py-10  z-50">
       <nav className="flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-sm sm:text-base md:text-lg overflow-x-auto w-full px-4 max-sm:text-xs">
         {/* Navigation Links */}
         <Link 
           to="portfolio" 
           smooth={true} 
           duration={500} 
-          className="cursor-pointer hover:bg-gradient-to-r from-blue-500 to-purple-500 p-2 text-white rounded-lg font-serif text-base sm:text-lg"
+          className="cursor-pointer hover:bg-gradient-to-r from-blue-500 to-purple-500 p-2 text-white rounded-lg font-serif text-base max-sm:text-sm"
         >
           MY PORTFOLIO
         </Link>
