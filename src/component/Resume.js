@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaDownload, FaEye } from 'react-icons/fa';
+import { backEndPort } from '../import';
 
 const Resume= () => {
-    const pdfLink = 'https://www.dropbox.com/scl/fi/69bi7cyjk7cx21pu0fsts/Brijesh_2.pdf?rlkey=7eottvi52lped40wn2i3rlgy8&st=j9kiww5s&dl=0'
+    const resumeLink = 'https://www.dropbox.com/scl/fi/69bi7cyjk7cx21pu0fsts/Brijesh_2.pdf?rlkey=7eottvi52lped40wn2i3rlgy8&st=j9kiww5s&dl=0'
+    // https://www.dropbox.com/scl/fi/ygjj8sseed2m8att3n5sy/Brijesh.pdf?rlkey=tgelitjgra3900vdib1qxg4to&st=64f715n8&dl=0'
+
+  useEffect(()=>{
+    async function fetchResume(){
+      const response = await fetch(`${backEndPort}/api/resume`)
+      const data =await response.json()
+      setPdfLink(data.resumeLink)
+    } 
+    fetchResume()
+  },[])    
+    const [pdfLink , setPdfLink] = useState(resumeLink)
     const handleDownload = () => {
       const link = document.createElement('a');
       link.href = pdfLink;

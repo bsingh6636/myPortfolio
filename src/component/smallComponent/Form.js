@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { backEndPort } from '../../import';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +9,7 @@ const ContactForm = () => {
   });
 
   const [status, setStatus] = useState('');
-
+  console.log(backEndPort)
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -17,7 +18,7 @@ const ContactForm = () => {
     e.preventDefault();
     setStatus('Sending...');
     
-    const response = await fetch('https://portfoliobackend-production-4812.up.railway.app/api/contact', {
+    const response = await fetch(`${backEndPort}/api/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
