@@ -19,7 +19,7 @@ const PortfolioHeader = () => {
             </p>
           </div>
           <p className="mt-6 text-gray-300 text-base sm:text-lg leading-relaxed">
-            A passionate Full Stack Web Developer with a Bachelor's degree in Computer Science and hands-on experience in web development. Proficient in ReactJS, Java and cloud technologies such as AWS. Experienced in optimizing
+            A passionate Full Stack Web Developer with a Bachelor's degree in Computer Science and hands-on experience in web development. Proficient in React.Js,Node.Js,Express.Js,MongoDB ,python Java and cloud technologies such as AWS. Experienced in optimizing
             performance and integrating efficient data retrieval systems. Enthusiastic about ensuring software quality,
             implementing best practices, and working in Agile and DevOps environments
 
