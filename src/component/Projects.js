@@ -8,7 +8,8 @@ const Projects = () => {
         'NetflixGpt': 'https://res.cloudinary.com/bsingh6636/image/upload/v1723416500/projects/NetflixGpt.png',
         'YouTube_Project': 'https://res.cloudinary.com/bsingh6636/image/upload/v1723416542/projects/YouTube%20Clone.png',
         'swiggy.clone': 'https://res.cloudinary.com/bsingh6636/image/upload/v1723477113/projects/swiggy.clone.png',
-        'myPortfolio': 'https://res.cloudinary.com/bsingh6636/image/upload/v1723477057/projects/stock_market.png'
+        'myPortfolio': 'https://res.cloudinary.com/bsingh6636/image/upload/v1724309730/projects/portFolio.png',
+        'ShopifyOrder-FrontEnd': 'https://res.cloudinary.com/bsingh6636/image/upload/v1724309642/projects/shopifyProject.png'
     }
     const [filteredGithubRepos, setFilteredGithubRepos] = useState(null)
     useEffect(() => {
