@@ -4,7 +4,7 @@ import { Link } from 'react-scroll';
 const Header = () => {
   return (
     <div className=" bg-gray-900 fixed left-1/2 transform -translate-x-1/2 w-full flex justify-center items-center h-12 sm:p-4 text-white rounded-2xl max-sm:py-10  z-50">
-      <nav className="flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-sm sm:text-base md:text-lg overflow-x-auto w-full px-4 max-sm:text-xs">
+      <nav className="flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-sm sm:text-base md:text-lg overflow-x-auto w-auto px-4 max-sm:text-xs">
         {/* Navigation Links */}
         <Link 
           to="portfolio" 

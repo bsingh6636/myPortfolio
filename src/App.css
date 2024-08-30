@@ -10,26 +10,7 @@
   scrollbar-color: #007 #bada55; /* Thumb color and track color */
   scrollbar-width: thin; /* Adjusts the width of the scrollbar */
 }
-/* This will affect the entire webpage. To target a specific element, prepend .scroller to each selector. */
 
-/* .AppBody {
-  Background gradient
-  background: radial-gradient(
-      circle,
-      rgba(34, 34, 34, 1) 0%,
-      rgba(44, 44, 44, 1) 50%,
-      rgba(34, 34, 34, 1) 100%
-    ),
-    url('./noise.jpg');
-
-  Ensure the background image covers the entire container
-  background-size: cover; Or use "100% 100%"
-  background-blend-mode: multiply;
-  
-  Text and font settings
-  color: white;
-  font-family: Arial, sans-serif;
-} */
 
 
 ::-webkit-scrollbar {
