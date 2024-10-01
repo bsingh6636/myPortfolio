@@ -5,10 +5,7 @@
     <link rel="icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Portfolio of Brijesh Kumar Kushwaha"
-    />
+    <meta name="description" content="Portfolio of Brijesh Kumar Kushwaha" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -19,7 +16,6 @@
         background-color: #1e1e1e;
         background-size: cover;
         background-position: center;
-        font-family: "Arial", sans-serif;
       }
 
       /* Loader container */
@@ -28,51 +24,40 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background: linear-gradient(135deg, #0d0d0d, #333333);
+        background: linear-gradient(135deg, #1f1f1f, #383838);
         position: fixed;
         width: 100%;
         z-index: 9999;
         transition: opacity 0.5s ease, visibility 0.5s ease;
       }
 
-      /* Modern spinner design */
+      /* Rectangular loader border */
       .spinner-container {
         width: 120px;
         height: 120px;
-        background: linear-gradient(135deg, #ff6b6b, #1dd1a1, #54a0ff);
-        border-radius: 50%;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        border: 10px solid transparent;
+        border-radius: 10px;
+        border-top: 10px solid #ff6b6b;
+        border-bottom: 10px solid #1dd1a1;
+        border-left: 10px solid #54a0ff;
+        animation: spin 1s linear infinite;
         position: relative;
-        animation: spin 1.5s ease-in-out infinite;
+        animation: pulse 1.5s ease-in-out infinite;
       }
 
-      .spinner-glow {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 50%;
-        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent);
-        animation: pulse 1.5s infinite alternate;
-      }
-
-      /* Inner glowing spinner */
+      /* White spinner inside the border */
       .inner-spinner {
         width: 80px;
         height: 80px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
+        background-color: white;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        animation: spin-reverse 2s ease-in-out infinite;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        border-radius: 5px;
+        animation: spin-reverse 1s linear infinite;
       }
 
-      /* Keyframe animations */
       @keyframes spin {
         0% {
           transform: rotate(0deg);
@@ -95,20 +80,72 @@
         0% {
           transform: scale(1);
         }
+        50% {
+          transform: scale(1.1);
+        }
         100% {
-          transform: scale(1.2);
+          transform: scale(1);
         }
       }
 
-      /* Text animation */
+      @keyframes ellipsis {
+        0% {
+          content: "Loading..";
+        }
+        25% {
+          content: "Loading...";
+        }
+        50% {
+          content: "Loading....";
+        }
+        75% {
+          content: "Loading...";
+        }
+        100% {
+          content: "Loading..";
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 600px) {
+        .spinner-container {
+          width: 80px;
+          height: 80px;
+          border-width: 8px;
+        }
+        .inner-spinner {
+          width: 60px;
+          height: 60px;
+        }
+        .loading-text {
+          font-size: 1rem;
+        }
+      }
+
+      @media (min-width: 600px) and (max-width: 1024px) {
+        .spinner-container {
+          width: 100px;
+          height: 100px;
+          border-width: 9px;
+        }
+        .inner-spinner {
+          width: 70px;
+          height: 70px;
+        }
+        .loading-text {
+          font-size: 1.1rem;
+        }
+      }
+
+      /* Text below the spinner */
       .loading-text {
-        margin-top: 30px;
-        font-size: 1.5rem;
-        color: #ffffff;
+        margin-top: 20px;
+        font-size: 1.4rem;
+        color: white;
         font-weight: bold;
         text-align: center;
-        animation: fadeIn 2s ease-in-out infinite alternate;
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        animation: fadeIn 1s ease-in-out infinite alternate,
+          ellipsis 1s infinite;
       }
 
       @keyframes fadeIn {
@@ -120,36 +157,7 @@
         }
       }
 
-      /* Responsive design */
-      @media (max-width: 600px) {
-        .spinner-container {
-          width: 80px;
-          height: 80px;
-        }
-        .inner-spinner {
-          width: 50px;
-          height: 50px;
-        }
-        .loading-text {
-          font-size: 1.1rem;
-        }
-      }
-
-      @media (min-width: 600px) and (max-width: 1024px) {
-        .spinner-container {
-          width: 100px;
-          height: 100px;
-        }
-        .inner-spinner {
-          width: 60px;
-          height: 60px;
-        }
-        .loading-text {
-          font-size: 1.2rem;
-        }
-      }
-
-      /* Hide loader after page load */
+      /* Fade-out animation */
       .hide-loader {
         opacity: 0;
         visibility: hidden;
@@ -160,10 +168,9 @@
     <div class="loader-container">
       <div>
         <div class="spinner-container">
-          <div class="spinner-glow"></div>
           <div class="inner-spinner"></div>
         </div>
-        <div class="loading-text">Loading... Brijesh Portfolio</div>
+        <div class="loading-text">Loading.. Brijesh PortFolio</div>
       </div>
     </div>
     <div id="root"></div>
