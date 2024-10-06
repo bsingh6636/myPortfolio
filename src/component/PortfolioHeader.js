@@ -7,18 +7,18 @@ const PortfolioHeader = () => {
       {/* Content */}
       <div className="flex  flex-col-reverse md:flex-row items-center justify-between  py-20 md:py-20">
         <div className="text-left max-w-lg">
-          <h2 className="text-blue-400 text-xl sm:text-2xl">Hello !!!</h2>
-          <h1 className="myName text-4xl sm:text-5xl md:text-7xl font-bold mt-2 leading-tight">
+          <h2 className="text-blue-400 text-xl max-md:text-2xl max-sm:text-xl">Hello !!!</h2>
+          <h1 className="myName text-4xl max-md:text-2xl max-sm:text-xl font-bold mt-2 leading-tight">
             <span className="line1">I'm</span>
             <span className="line2">BRIJESH</span>
             <span className="line3">KUSHWAHA</span>
           </h1>
           <div className='bg-blue-400 w-max rounded-xl '>
-            <p className="fullstackp mt-4 p-2 w-max bg-blue-400  rounded-lg sm:text-3xl font-extrabold uppercase">
+            <p className="fullstackp mt-4 p-2 w-max bg-blue-400  rounded-lg max-md:text-xs font-extrabold uppercase">
               FULL STACK DEVELOPER
             </p>
           </div>
-          <p className="mt-6 text-gray-300 text-base sm:text-lg leading-relaxed">
+          <p className="mt-6 text-gray-300 text-base sm:text-lg max-md:text-xs leading-relaxed">
             A passionate Full Stack Web Developer with a Bachelor's degree in Computer Science and hands-on experience in web development. Proficient in React.Js,Node.Js,Express.Js,MongoDB ,python Java and cloud technologies such as AWS. Experienced in optimizing
             performance and integrating efficient data retrieval systems. Enthusiastic about ensuring software quality,
             implementing best practices, and working in Agile and DevOps environments
@@ -31,7 +31,7 @@ const PortfolioHeader = () => {
         </div>
 
         <div className="max-w-xs sm:max-w-sm md:max-w-lg mb-6 md:mb-0">
-          <img src='./images/photo2.jpg' alt="Brijesh SIngh" className="rounded-lg shadow-lg" />
+          <img src='./images/photo2.jpg' alt="Brijesh SIngh" className="rounded-lg shadow-lg max-md:h-44" />
         </div>
       </div>
 

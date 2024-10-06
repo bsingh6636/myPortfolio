@@ -9,7 +9,6 @@ const ContactForm = () => {
   });
 
   const [status, setStatus] = useState('');
-  console.log(backEndPort)
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

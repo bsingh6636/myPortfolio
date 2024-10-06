@@ -10,7 +10,7 @@ const Header = () => {
           to="portfolio" 
           smooth={true} 
           duration={500} 
-          className="cursor-pointer hover:bg-gradient-to-r from-blue-500 to-purple-500 p-2 text-white rounded-lg font-serif text-base max-sm:text-sm"
+          className="cursor-pointer hover:bg-gradient-to-r from-blue-500 to-purple-500 p-2 text-white "
         >
           MY PORTFOLIO
         </Link>
