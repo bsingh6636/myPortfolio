@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-scroll';
+import { HeaderLan } from '../Language/HeaderLan';
+import { MyContext } from '..';
 
 const Header = () => {
+  const { language } = useContext(MyContext)
+  const lan = HeaderLan[language]
   return (
     <div className=" bg-gray-900 fixed left-1/2 transform -translate-x-1/2 w-full flex justify-center items-center h-12 sm:p-4 text-white rounded-2xl max-sm:py-10  z-50">
       <nav className="flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-sm sm:text-base md:text-lg overflow-x-auto w-auto px-4 max-sm:text-xs">
@@ -12,7 +16,7 @@ const Header = () => {
           duration={500} 
           className="cursor-pointer hover:bg-gradient-to-r from-blue-500 to-purple-500 p-2 text-white "
         >
-          MY PORTFOLIO
+          {lan.portfolio}
         </Link>
         <Link 
           to="about" 
@@ -20,7 +24,7 @@ const Header = () => {
           duration={500} 
           className="cursor-pointer hover:bg-gradient-to-r from-green-500 to-teal-500 p-2 rounded-lg text-white"
         >
-          ABOUT ME
+         {lan.about}
         </Link>
         <Link 
           to="education" 
@@ -28,7 +32,7 @@ const Header = () => {
           duration={500} 
           className="cursor-pointer hover:bg-gradient-to-r from-yellow-500 to-orange-500 p-2 rounded-lg text-white"
         >
-          EDUCATION
+         {lan.education}
         </Link>
         <Link 
           to="experience" 
@@ -36,7 +40,7 @@ const Header = () => {
           duration={500} 
           className="cursor-pointer hover:bg-gradient-to-r from-red-500 to-pink-500 p-2 rounded-lg text-white"
         >
-          EXPERIENCE
+         {lan.experience}
         </Link>
         <Link 
           to="projects" 
@@ -44,7 +48,7 @@ const Header = () => {
           duration={500} 
           className="cursor-pointer hover:bg-gradient-to-r from-indigo-500 to-blue-500 p-2 rounded-lg text-white"
         >
-          PROJECTS
+          {lan.education}
         </Link>
         <Link 
           to="resume" 
@@ -52,7 +56,7 @@ const Header = () => {
           duration={500} 
           className="cursor-pointer hover:bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg text-white"
         >
-          RESUME
+          {lan.resume}
         </Link>
         <Link 
           to="contact" 
@@ -60,7 +64,7 @@ const Header = () => {
           duration={1200} 
           className="cursor-pointer hover:bg-gradient-to-r from-pink-500 to-red-500 p-2 rounded-lg text-white"
         >
-          CONTACT
+          {lan.contact}
         </Link>
       </nav>
     </div>

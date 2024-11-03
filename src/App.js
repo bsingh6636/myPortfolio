@@ -1,3 +1,4 @@
+
 import About from './component/About';
 import Contact from './component/Contact';
 import Education from './component/Education';
@@ -7,9 +8,11 @@ import PortfolioHeader from './component/PortfolioHeader';
 import Projects from './component/Projects';
 import Resume from './component/Resume';
 
+
 function App() {
+  
   return (
-    <div className="App AppBody bg-gradient-to-r from-black via-gray-800 to-black text-white font-mono px-8 sm:px-8 md:px-16 max-md:px-1">
+    <div className="App AppBody md:text-xl bg-gradient-to-r from-black via-gray-800 to-black text-white font-mono px-8 sm:px-8 md:px-16 max-md:px-1">
       <Header />
       <section id="portfolio">
         <PortfolioHeader />
