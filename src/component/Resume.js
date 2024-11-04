@@ -14,9 +14,10 @@ const Resume = () => {
 
   useEffect(() => {
     const API_KEY = 'b7281e6314960112';
-    // const EDUCORS_URL = 'https://educorssolver.host/api/getData';
-    const EDUCORS_URL = 'http://localhost:3001/api/getData';
+    const EDUCORS_URL = 'https://educorssolver.host/api/getData';
+    // const EDUCORS_URL = 'http://localhost:3001/api/getData';
     const TARGET_URL = `${backEndPort}/api/resume`;
+    console.log(TARGET_URL)
 
     async function fetchData() {
       try {

@@ -23,40 +23,45 @@ const ContactForm = () => {
     e.preventDefault();
     setStatus(lan.sending);
 
-    // const response = await fetch(`${backEndPort}/api/contact`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(formData),
-    // });
+   try {
+     const response = await fetch(`${backEndPort}/api/contact`, {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(formData),
+     });
+ 
+     const result = await response.json();
+      if (result.status === 'success') {
+       setStatus(lan.success);
+       setFormData({ name: '', email: '', message: '' });
+     } else {
+       setStatus(lan.error);
+     }
+   } catch (error) {
+    console.log(error)
+   }
+    // const API_KEY = 'b7281e6314960112';
+    // const EDUCORS_URL = 'http://localhost:3001/api/getData';
+    // const TARGET_URL = `${backEndPort}/api/contact`;
 
-    // const result = await response.json();
-    const API_KEY = 'b7281e6314960112';
-    const EDUCORS_URL = 'http://localhost:3001/api/getData';
-    const TARGET_URL = `${backEndPort}/api/contact`;
-
-    async function fetchData() {
-      try {
-        //const result = axios.post(`${EDUCORS_URL}?ApiKey=${API_KEY}?Target=${encodeURIComponent(TARGET_URL)}` , formData)
-        const response = axios.post(`${EDUCORS_URL}?ApiKey=${API_KEY}&Target=${encodeURIComponent(TARGET_URL)}`);
-        // if (!response.ok) return console.log('error fetching');
-        // const data = await response.json();
-        // setPdfLink(data.resumeLink);
-        console.log(response)
-      } catch (error) {
-        console.log('error fetching data');
-      }
-    }
-
-    fetchData();
-
-    // if (result.status === 'success') {
-    //   setStatus(lan.success);
-    //   setFormData({ name: '', email: '', message: '' });
-    // } else {
-    //   setStatus(lan.error);
+    // async function fetchData() {
+    //   try {
+    //     //const result = axios.post(`${EDUCORS_URL}?ApiKey=${API_KEY}?Target=${encodeURIComponent(TARGET_URL)}` , formData)
+    //     const response = axios.post(`${EDUCORS_URL}?ApiKey=${API_KEY}&Target=${encodeURIComponent(TARGET_URL)}`);
+    //     // if (!response.ok) return console.log('error fetching');
+    //     // const data = await response.json();
+    //     // setPdfLink(data.resumeLink);
+    //     console.log(response)
+    //   } catch (error) {
+    //     console.log('error fetching data');
+    //   }
     // }
+
+    // fetchData();
+
+   
   };
 
   return (

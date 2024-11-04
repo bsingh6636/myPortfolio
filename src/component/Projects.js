@@ -16,17 +16,21 @@ const Projects = () => {
         'EduCors-Helper': 'https://res.cloudinary.com/bsingh6636/image/upload/v1728199901/travelPlannerProject/x1nekxuithyrjrqqawgy.png',
         'travel_planner.weather_dashboard': 'https://res.cloudinary.com/bsingh6636/image/upload/v1728201066/travelPlannerProject/ptiuqg3nuspbcrrr9s3f.png'
     };
-    
+
     const [filteredGithubRepos, setFilteredGithubRepos] = useState(null);
     const [visibleProjects, setVisibleProjects] = useState(3);
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
         (async function fetchProject() {
-            const response = await fetch('https://api.github.com/users/bsingh6636/repos');
-            const data = await response.json();
-            const filteredData = data.filter((d) => projects.hasOwnProperty(d.name));
-            setFilteredGithubRepos(filteredData);
+            try {
+                const response = await fetch('https://api.github.com/users/bsingh6636/repos');
+                const data = await response.json();
+                const filteredData = data.filter((d) => projects.hasOwnProperty(d.name));
+                setFilteredGithubRepos(filteredData);
+            } catch (error) {
+                console.log('error fetching repo list' + error)
+            }
         })();
         // eslint-disable-next-line
     }, []);
@@ -82,15 +86,15 @@ const Projects = () => {
             {/* Button to toggle more or less projects */}
             <div className='mt-10 flex justify-center'>
                 {!showAll ? (
-                    <button 
-                        onClick={handleShowMore} 
+                    <button
+                        onClick={handleShowMore}
                         className='bg-indigo-500 text-white font-bold py-2 px-6 rounded-full hover:bg-indigo-600 transition duration-300 ease-in-out'
                     >
                         {lan.showMore}
                     </button>
                 ) : (
-                    <button 
-                        onClick={handleShowLess} 
+                    <button
+                        onClick={handleShowLess}
                         className='bg-red-500 text-white font-bold py-2 px-6 rounded-full hover:bg-red-600 transition duration-300 ease-in-out'
                     >
                         {lan.showLess}
