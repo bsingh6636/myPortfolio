@@ -3,14 +3,14 @@ export const ExperienceLan = {
         title: "Experience",
         experiences: [
             {
-                company: "BrandShark",
-                role: "SDE Intern",
-                duration: "Apr 2024 - Jul 2024",
+                company: "Vedak - The Expert Network",
+                role: "Full Stack Devloper Intern",
+                duration: "Nov 2024 - Present",
                 responsibilities: [
-                    "Developed a real-time collaboration tool with document editing, chat functionality, and task management using ReactJS and Node.js.",
-                    "Implemented secure user authentication and responsive design, increasing user engagement by 25%.",
-                    "Optimized effort by 40% through effective stakeholder engagement and clear technical specifications.",
-                    "Technologies Used: Node.js, ReactJS, AWS, MySQL, Git, Gemini, ChatGPT, Jest."
+                    "Revamped the existing UI to a modern, user-friendly interface, significantly enhancing loading time and performance.",
+                    "Designed and developed a QA feature with React.js on the frontend and Node.js on the backend.",
+                    "Collaborated with cross-functional teams to ensure seamless integration and delivery of new features.",
+                    "Technologies Used: Node.js, ReactJS, AWS, MySQL, Git, Sequalize, Redis."
                 ]
             },
             {
