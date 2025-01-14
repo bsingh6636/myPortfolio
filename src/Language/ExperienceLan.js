@@ -10,7 +10,7 @@ export const ExperienceLan = {
                     "Revamped the existing UI to a modern, user-friendly interface, significantly enhancing loading time and performance.",
                     "Designed and developed a QA feature with React.js on the frontend and Node.js on the backend.",
                     "Collaborated with cross-functional teams to ensure seamless integration and delivery of new features.",
-                    "Technologies Used: Node.js, ReactJS, AWS, MySQL, Git, Sequalize, Redis."
+                    "Technologies Used: Node.js, ReactJS, AWS, MySQL, Git, Sequalize, Redis,."
                 ]
             },
             {
