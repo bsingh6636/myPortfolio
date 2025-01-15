@@ -1,7 +1,7 @@
 export const ResumeLan = {
     en: {
         title: "Resume",
-        description: "Download or View My Resume Online",
+        description: "Download or View  Resume Online",
         downloadButton: "Download PDF",
         viewButton: "View Online",
         footer: "Feel free to download my resume and reach out if you’re interested in working together!"
