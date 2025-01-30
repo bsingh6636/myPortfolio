@@ -7,6 +7,7 @@ import Header from './component/Header';
 import PortfolioHeader from './component/PortfolioHeader';
 import Projects from './component/Projects';
 import Resume from './component/Resume';
+import SkillsSection from './component/smallComponent/SkillsSection';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <section id="about">
         <About />
       </section>
+      <SkillsSection />
       <section id="education">
         <Education />
       </section>

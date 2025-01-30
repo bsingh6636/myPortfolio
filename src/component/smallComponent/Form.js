@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { backEndPort } from '../../import';
 import { MyContext } from '../..';
 import { ContactFormLan } from '../../Language/ContactLan';
-import axios from 'axios';
+// import axios from 'axios';
 
 const ContactForm = () => {
   const { language } = useContext(MyContext);
