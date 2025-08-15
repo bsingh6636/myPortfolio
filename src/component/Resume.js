@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { FaDownload, FaEye } from 'react-icons/fa';
+import { Download, Eye } from 'lucide-react'; // Switched to consistent icons
 import { backEndPort } from '../import';
 import { MyContext } from '..';
 import { ResumeLan } from '../Language/ResumeLan';
@@ -7,17 +7,14 @@ import { ResumeLan } from '../Language/ResumeLan';
 const Resume = () => {
   const { language } = useContext(MyContext);
   const lan = ResumeLan[language];
-  console.log('%cORDER STOP', 'color: red; background-color: black; font-size: 20px; font-weight: bold; padding: 4px;');
 
-
+  // Your fetching logic is preserved exactly as it was.
   const resumeLink = 'https://drive.google.com/file/d/1TSoF-gtUcMRnZ5BVALNVfSgSRyUY8LmB/view?usp=sharing';
 
   useEffect(() => {
     const API_KEY = 'b7281e6314960112';
     const EDUCORS_URL = 'https://educorssolver.host/api/getData';
-    // const EDUCORS_URL = 'http://localhost:3001/api/getData';
     const TARGET_URL = `${backEndPort}/api/resume`;
-    console.log(TARGET_URL)
 
     async function fetchData() {
       try {
@@ -35,6 +32,7 @@ const Resume = () => {
     }
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [pdfLink, setPdfLink] = useState(resumeLink);
@@ -42,8 +40,10 @@ const Resume = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = pdfLink;
-    link.download = 'Your_Name_Resume.pdf';
+    link.download = 'Brijesh_Singh_Resume.pdf'; // It's good practice to name the file
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   const handleViewOnline = () => {
@@ -51,29 +51,38 @@ const Resume = () => {
   };
 
   return (
-    <div className="text-white py-10">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold">{lan.title}</h1>
-        <p className="text-gray-400">{lan.description}</p>
-      </div>
-      <div className="flex justify-center space-x-6">
-        <button
-          onClick={handleDownload}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex items-center space-x-2"
-        >
-          <FaDownload className="text-xl" />
-          <span>{lan.downloadButton}</span>
-        </button>
-        <button
-          onClick={handleViewOnline}
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full flex items-center space-x-2"
-        >
-          <FaEye className="text-xl" />
-          <span>{lan.viewButton}</span>
-        </button>
-      </div>
-      <div className="mt-10 text-center">
-        <p className="text-lg">{lan.footer}</p>
+    <div className="py-20 md:py-28">
+      {/* === Call-to-Action Card === */}
+      <div className="max-w-4xl mx-auto bg-gray-800/50 border border-white/10 rounded-lg shadow-xl text-center p-8 md:p-12">
+
+        {/* --- Section Title (Consistent) --- */}
+        <h2 className='uppercase font-extrabold text-3xl md:text-5xl font-serif text-white tracking-wider'>
+          {lan.title}
+        </h2>
+        <div className='h-1.5 w-24 bg-cyan-400 mt-4 rounded-full mx-auto'></div>
+        <p className="max-w-2xl mx-auto mt-6 text-lg text-gray-300">
+          {lan.description}
+        </p>
+
+        {/* --- Action Buttons --- */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+          <button
+            onClick={handleDownload}
+            className="flex items-center justify-center gap-2 w-full sm:w-auto bg-cyan-500 text-black font-bold py-3 px-6 rounded-full hover:bg-cyan-400 transition-all duration-300 transform hover:scale-105"
+          >
+            <Download size={20} />
+            <span>{lan.downloadButton}</span>
+          </button>
+          <button
+            onClick={handleViewOnline}
+            className="flex items-center justify-center gap-2 w-full sm:w-auto text-cyan-400 border border-cyan-400 font-bold py-3 px-6 rounded-full hover:bg-cyan-400/10 hover:text-cyan-300 transition-all duration-300"
+          >
+            <Eye size={20} />
+            <span>{lan.viewButton}</span>
+          </button>
+        </div>
+        
+        <p className="mt-8 text-gray-400">{lan.footer}</p>
       </div>
     </div>
   );

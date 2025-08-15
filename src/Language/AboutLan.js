@@ -1,122 +1,58 @@
 export const AboutLan = {
-    en: {
-        title: "My Biography",
-        description: "I recently graduated with a degree in Computer Science and Engineering from KNS Institute of Technology. My portfolio includes full-stack projects like a Hospital Management System and a SwiggyClone, showcasing my proficiency in React, Node.js, Express, and MongoDB. I have a deep passion for web development and have honed my skills in building responsive, user-friendly applications. My commitment to excellence and enthusiasm for learning drive me to continually improve and stay ahead in the rapidly evolving tech landscape."
-    },
-    es: {
-        title: "Mi Biografía",
-        description: "Recientemente me gradué con un título en Ciencias de la Computación e Ingeniería del KNS Institute of Technology. Mi portafolio incluye proyectos de pila completa como un Sistema de Gestión Hospitalaria y un SwiggyClone, mostrando mi competencia en React, Node.js, Express y MongoDB. Tengo una profunda pasión por el desarrollo web y he perfeccionado mis habilidades en la creación de aplicaciones responsivas y amigables para el usuario. Mi compromiso con la excelencia y entusiasmo por aprender me impulsan a mejorar continuamente y mantenerme a la vanguardia en el paisaje tecnológico en rápida evolución."
-    },
-    zh: {
-        title: "我的传记",
-        description: "我最近从KNS技术学院获得计算机科学与工程学位。我的作品集包括全栈项目，如医院管理系统和SwiggyClone，展示了我在React、Node.js、Express和MongoDB方面的熟练程度。我对Web开发充满热情，已磨练了构建响应式、用户友好型应用的技能。我的卓越追求和对学习的热情驱使我不断提升自己，以在快速发展的技术领域中保持领先地位。"
-    },
-    fr: {
-        title: "Ma Biographie",
-        description: "Je viens d'obtenir un diplôme en informatique et ingénierie de KNS Institute of Technology. Mon portfolio comprend des projets full-stack comme un Système de Gestion Hospitalière et un SwiggyClone, mettant en avant ma maîtrise de React, Node.js, Express et MongoDB. Je suis passionné par le développement web et j'ai perfectionné mes compétences dans la création d'applications réactives et conviviales. Mon engagement envers l'excellence et mon enthousiasme pour l'apprentissage me poussent à m'améliorer continuellement et à rester à la pointe dans le paysage technologique en constante évolution."
-    },
+  en: {
+    title: "About Me",
+    description: "I am a passionate Full Stack Developer with a knack for creating dynamic and intuitive web applications. With a strong foundation in both front-end and back-end technologies, I enjoy bringing ideas to life in the browser. I'm driven by a desire to solve complex problems and continuously learn new skills. When I'm not coding, you can find me exploring new technologies or contributing to open-source projects."
+  },
+  es: {
+    title: "Sobre Mí",
+    description: "Soy un apasionado Desarrollador Full Stack con talento para crear aplicaciones web dinámicas e intuitivas. Con una sólida base en tecnologías tanto de front-end como de back-end, disfruto dando vida a las ideas en el navegador. Me impulsa el deseo de resolver problemas complejos y aprender continuamente nuevas habilidades. Cuando no estoy programando, me encontrarás explorando nuevas tecnologías o contribuyendo a proyectos de código abierto."
+  },
+  fr: {
+    title: "À Propos de Moi",
+    description: "Je suis un Développeur Full Stack passionné, doué pour la création d'applications web dynamiques et intuitives. Avec une base solide dans les technologies front-end et back-end, j'aime donner vie à des idées dans le navigateur. Je suis motivé par le désir de résoudre des problèmes complexes et d'apprendre continuellement de nouvelles compétences. Quand je ne code pas, vous me trouverez en train d'explorer de nouvelles technologies ou de contribuer à des projets open-source."
+  },
+  zh: {
+    title: "关于我",
+    description: "我是一名充满激情的全栈开发人员，擅长创建动态且直观的Web应用程序。凭借在前端和后端技术方面的坚实基础，我喜欢在浏览器中将想法变为现实。解决复杂问题和不断学习新技能的愿望驱使着我前进。在不编码的时候，你会发现我正在探索新技术或为开源项目做出贡献。"
+  }
 };
 
 
 export const SkillsLan = {
-    en: {
-        title: "Skills",
-        categories: {
-            languages: {
-                title: "Languages",
-                skills: ["JavaScript", "Python", "Java", "PL/SQL", "HTML/CSS"]
-            },
-            frontend: {
-                title: "Frontend",
-                skills: ["ReactJS", "Redux"]
-            },
-            backend: {
-                title: "Backend",
-                skills: ["Node.js", "Flask", "AWS", "Linux"]
-            },
-            testing: {
-                title: "Testing",
-                skills: ["Jest", "Postman"]
-            },
-            versionControl: {
-                title: "Version Control",
-                skills: ["Git"]
-            },
-        }
-    },
-    es: {
-        title: "Habilidades",
-        categories: {
-            languages: {
-                title: "Lenguajes",
-                skills: ["JavaScript", "Python", "Java", "PL/SQL", "HTML/CSS"]
-            },
-            frontend: {
-                title: "Frontend",
-                skills: ["ReactJS", "Redux"]
-            },
-            backend: {
-                title: "Backend",
-                skills: ["Node.js", "Flask", "AWS", "Linux"]
-            },
-            testing: {
-                title: "Pruebas",
-                skills: ["Jest", "Postman"]
-            },
-            versionControl: {
-                title: "Control de Versiones",
-                skills: ["Git"]
-            },
-        }
-    },
-    fr: {
-        title: "Compétences",
-        categories: {
-            languages: {
-                title: "Langages",
-                skills: ["JavaScript", "Python", "Java", "PL/SQL", "HTML/CSS"]
-            },
-            frontend: {
-                title: "Frontend",
-                skills: ["ReactJS", "Redux"]
-            },
-            backend: {
-                title: "Backend",
-                skills: ["Node.js", "Flask", "AWS", "Linux"]
-            },
-            testing: {
-                title: "Tests",
-                skills: ["Jest", "Postman"]
-            },
-            versionControl: {
-                title: "Contrôle de Version",
-                skills: ["Git"]
-            },
-        }
-    },
-    zh: {
-        title: "技能",
-        categories: {
-            languages: {
-                title: "语言",
-                skills: ["JavaScript", "Python", "Java", "PL/SQL", "HTML/CSS"]
-            },
-            frontend: {
-                title: "前端",
-                skills: ["ReactJS", "Redux"]
-            },
-            backend: {
-                title: "后端",
-                skills: ["Node.js", "Flask", "AWS", "Linux"]
-            },
-            testing: {
-                title: "测试",
-                skills: ["Jest", "Postman"]
-            },
-            versionControl: {
-                title: "版本控制",
-                skills: ["Git"]
-            },
-        }
-    },
+  en: {
+    title: "Skills & Technologies",
+    categories: [
+      { title: "Languages", skills: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3 / Sass", "Python", "SQL"] },
+      { title: "Frontend", skills: ["React", "Next.js", "Redux Toolkit", "Tailwind CSS", "Framer Motion", "Vite"] },
+      { title: "Backend", skills: ["Node.js", "Express.js", "REST APIs", "GraphQL", "PostgreSQL", "MongoDB"] },
+      { title: "Tools & Platforms", skills: ["Git & GitHub", "Docker", "Vercel", "Jest", "Webpack", "Figma"] }
+    ]
+  },
+  es: {
+    title: "Habilidades y Tecnologías",
+    categories: [
+      { title: "Lenguajes", skills: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3 / Sass", "Python", "SQL"] },
+      { title: "Frontend", skills: ["React", "Next.js", "Redux Toolkit", "Tailwind CSS", "Framer Motion", "Vite"] },
+      { title: "Backend", skills: ["Node.js", "Express.js", "APIs REST", "GraphQL", "PostgreSQL", "MongoDB"] },
+      { title: "Herramientas y Plataformas", skills: ["Git & GitHub", "Docker", "Vercel", "Jest", "Webpack", "Figma"] }
+    ]
+  },
+  fr: {
+    title: "Compétences et Technologies",
+    categories: [
+      { title: "Langages", skills: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3 / Sass", "Python", "SQL"] },
+      { title: "Frontend", skills: ["React", "Next.js", "Redux Toolkit", "Tailwind CSS", "Framer Motion", "Vite"] },
+      { title: "Backend", skills: ["Node.js", "Express.js", "API REST", "GraphQL", "PostgreSQL", "MongoDB"] },
+      { title: "Outils et Plateformes", skills: ["Git & GitHub", "Docker", "Vercel", "Jest", "Webpack", "Figma"] }
+    ]
+  },
+  zh: {
+    title: "技能与技术",
+    categories: [
+      { title: "编程语言", skills: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3 / Sass", "Python", "SQL"] },
+      { title: "前端", skills: ["React", "Next.js", "Redux Toolkit", "Tailwind CSS", "Framer Motion", "Vite"] },
+      { title: "后端", skills: ["Node.js", "Express.js", "REST API", "GraphQL", "PostgreSQL", "MongoDB"] },
+      { title: "工具与平台", skills: ["Git & GitHub", "Docker", "Vercel", "Jest", "Webpack", "Figma"] }
+    ]
+  }
 };

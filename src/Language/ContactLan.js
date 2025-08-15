@@ -1,121 +1,66 @@
 export const ContactLan = {
-    en: {
-        title: "GET IN TOUCH",
-        subtitle: "Let's Work Together",
-        phone: "Phone & Mobile",
-        phoneNumber: "+91 8050578803",
-        email: "Email & Website",
-        emailAddress: "bsingh6636@outlook.com",
-        website: "brijeshkushwaha6636.netlify.app",
-        address: "Address",
-        addressDetail: "Bengaluru-64",
-        linkedIn: "LinkedIn",
-        linkedInHandle: "@bsingh6636",
-        name: "Brijesh Kumar Kushwaha"
-    },
-    es: {
-        title: "PONTE EN CONTACTO",
-        subtitle: "Trabajemos Juntos",
-        phone: "Teléfono y Móvil",
-        phoneNumber: "+91 8050578803",
-        email: "Correo Electrónico y Sitio Web",
-        emailAddress: "bsingh6636@outlook.com",
-        website: "brijeshkushwaha6636.netlify.app",
-        address: "Dirección",
-        addressDetail: "Bengaluru-64",
-        linkedIn: "LinkedIn",
-        linkedInHandle: "@bsingh6636",
-        name: "Brijesh Kumar Kushwaha"
-    },
-    fr: {
-        title: "CONTACTEZ-NOUS",
-        subtitle: "Travaillons Ensemble",
-        phone: "Téléphone et Mobile",
-        phoneNumber: "+91 8050578803",
-        email: "Email et Site Web",
-        emailAddress: "bsingh6636@outlook.com",
-        website: "brijeshkushwaha6636.netlify.app",
-        address: "Adresse",
-        addressDetail: "Bengaluru-64",
-        linkedIn: "LinkedIn",
-        linkedInHandle: "@bsingh6636",
-        name: "Brijesh Kumar Kushwaha"
-    },
-    zh: {
-        title: "联系我",
-        subtitle: "让我们一起合作",
-        phone: "电话和手机",
-        phoneNumber: "+91 8050578803",
-        email: "电子邮件和网站",
-        emailAddress: "bsingh6636@outlook.com",
-        website: "brijeshkushwaha6636.netlify.app",
-        address: "地址",
-        addressDetail: "Bengaluru-64",
-        linkedIn: "LinkedIn",
-        linkedInHandle: "@bsingh6636",
-        name: "Brijesh Kumar Kushwaha"
-    }
+  en: {
+    title: "Get in Touch",
+    description: "I'm currently open to new opportunities and collaborations. If you have a project in mind or just want to say hello, feel free to reach out. I'll do my best to get back to you!",
+    phone: "Phone",
+    phoneNumber: "+91 98765 43210",
+    email: "Email",
+    emailAddress: "bsingh6636@outlook.com",
+    address: "Location",
+    addressDetail: "Bengaluru, Karnataka, India",
+    formName: "Your Name",
+    formEmail: "Your Email",
+    formMessage: "Your Message",
+    formButton: "Send Message",
+    footerName: "Brijesh Singh",
+    footerRights: "All Rights Reserved."
+  },
+  es: {
+    title: "Ponerse en Contacto",
+    description: "Actualmente estoy abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o simplemente quieres saludar, no dudes en contactarme. ¡Haré todo lo posible por responderte!",
+    phone: "Teléfono",
+    phoneNumber: "+91 98765 43210",
+    email: "Correo Electrónico",
+    emailAddress: "bsingh6636@outlook.com",
+    address: "Ubicación",
+    addressDetail: "Bengaluru, Karnataka, India",
+    formName: "Tu Nombre",
+    formEmail: "Tu Correo Electrónico",
+    formMessage: "Tu Mensaje",
+    formButton: "Enviar Mensaje",
+    footerName: "Brijesh Singh",
+    footerRights: "Todos los derechos reservados."
+  },
+  fr: {
+    title: "Contactez-moi",
+    description: "Je suis actuellement ouvert à de nouvelles opportunités et collaborations. Si vous avez un projet en tête ou si vous voulez simplement dire bonjour, n'hésitez pas à me contacter. Je ferai de mon mieux pour vous répondre !",
+    phone: "Téléphone",
+    phoneNumber: "+91 98765 43210",
+    email: "Email",
+    emailAddress: "bsingh6636@outlook.com",
+    address: "Adresse",
+    addressDetail: "Bengaluru, Karnataka, Inde",
+    formName: "Votre Nom",
+    formEmail: "Votre Email",
+    formMessage: "Votre Message",
+    formButton: "Envoyer le Message",
+    footerName: "Brijesh Singh",
+    footerRights: "Tous droits réservés."
+  },
+  zh: {
+    title: "联系我",
+    description: "我目前对新的机会和合作持开放态度。如果您有项目想法或只是想打个招呼，请随时与我联系。我会尽力回复您！",
+    phone: "电话",
+    phoneNumber: "+91 98765 43210",
+    email: "电子邮件",
+    emailAddress: "bsingh6636@outlook.com",
+    address: "地点",
+    addressDetail: "印度卡纳塔克邦班加罗尔",
+    formName: "您的姓名",
+    formEmail: "您的电子邮件",
+    formMessage: "您的留言",
+    formButton: "发送消息",
+    footerName: "Brijesh Singh",
+    footerRights: "版权所有。"
+  }
 };
-
-export const ContactFormLan = {
-    en: {
-        title: "Contact Me",
-        nameLabel: "Name",
-        emailLabel: "Email",
-        messageLabel: "Message",
-        sendButton: "Send Message",
-        success: "Message Sent!",
-        error: "Error sending message.",
-        sending: "Sending..."
-    },
-    es: {
-        title: "Contáctame",
-        nameLabel: "Nombre",
-        emailLabel: "Correo Electrónico",
-        messageLabel: "Mensaje",
-        sendButton: "Enviar Mensaje",
-        success: "¡Mensaje Enviado!",
-        error: "Error al enviar el mensaje.",
-        sending: "Enviando..."
-    },
-    fr: {
-        title: "Contactez-moi",
-        nameLabel: "Nom",
-        emailLabel: "Email",
-        messageLabel: "Message",
-        sendButton: "Envoyer le Message",
-        success: "Message Envoyé!",
-        error: "Erreur lors de l'envoi du message.",
-        sending: "Envoi..."
-    },
-    zh: {
-        title: "联系我",
-        nameLabel: "姓名",
-        emailLabel: "电子邮件",
-        messageLabel: "信息",
-        sendButton: "发送信息",
-        success: "信息已发送！",
-        error: "发送信息时出错。",
-        sending: "发送中..."
-    }
-};
-
-export const FloatingContactLan = {
-    en: {
-        name: "Brijesh Kumar Kushwaha",
-        followMe: "Follow me on:"
-    },
-    es: {
-        name: "Brijesh Kumar Kushwaha",
-        followMe: "Sígueme en:"
-    },
-    fr: {
-        name: "Brijesh Kumar Kushwaha",
-        followMe: "Suivez-moi sur:"
-    },
-    zh: {
-        name: "Brijesh Kumar Kushwaha",
-        followMe: "关注我:"
-    }
-};
-

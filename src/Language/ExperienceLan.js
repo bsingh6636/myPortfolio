@@ -4,24 +4,34 @@ export const ExperienceLan = {
         experiences: [
             {
                 company: "Vedak - The Expert Network",
-                role: "Full Stack Devloper Intern",
-                duration: "Nov 2024 - Present",
+                role: "Full Stack Developer",
+                duration: "Feb 2025 - Present",
+                responsibilities: [
+                    "Lead the architecture and development of scalable, end-to-end features for the expert network platform.",
+                    "Engineered and maintained robust RESTful APIs in Node.js, ensuring high performance and reliability.",
+                    "Mentored junior developers and conducted code reviews to maintain high-quality code standards.",
+                    "Technologies Used: Node.js, ReactJS, TypeScript, AWS, Docker, PostgreSQL, Redis"
+                ]
+            },
+            {
+                company: "Vedak - The Expert Network",
+                role: "Full Stack Developer Intern",
+                duration: "Nov 2024 - Jan 2025",
                 responsibilities: [
                     "Revamped the existing UI to a modern, user-friendly interface, significantly enhancing loading time and performance.",
                     "Designed and developed a QA feature with React.js on the frontend and Node.js on the backend.",
                     "Collaborated with cross-functional teams to ensure seamless integration and delivery of new features.",
-                    "Technologies Used: Node.js, ReactJS, AWS, MySQL, Git, Sequalize, Redis,."
+                    "Technologies Used: Node.js, ReactJS, AWS, MySQL, Git, Sequelize, Redis"
                 ]
             },
             {
                 company: "AQMENZ Automation Pvt. Ltd",
-                role: "FrontEnd Dev Intern",
+                role: "Frontend Dev Intern",
                 duration: "Aug 2023 - Oct 2023",
                 responsibilities: [
                     "Developed web applications using ReactJS and Redux, improving performance by 30%.",
                     "Enhanced front-end features, leading to a 25% increase in user engagement.",
-                    "Contributed to design projects and created web development materials.",
-                    "Technologies Used: ReactJs, Redux, JEST, AWS."
+                    "Technologies Used: ReactJs, Redux, JEST, AWS"
                 ]
             }
         ]
@@ -30,14 +40,25 @@ export const ExperienceLan = {
         title: "Experiencia",
         experiences: [
             {
-                company: "BrandShark",
-                role: "Pasante SDE",
-                duration: "Abr 2024 - Jul 2024",
+                company: "Vedak - The Expert Network",
+                role: "Desarrollador Full Stack",
+                duration: "Feb 2025 - Actual",
                 responsibilities: [
-                    "Desarrollé una herramienta de colaboración en tiempo real con edición de documentos, funcionalidad de chat y gestión de tareas utilizando ReactJS y Node.js.",
-                    "Implementé autenticación de usuario segura y diseño responsivo, aumentando el compromiso del usuario en un 25%.",
-                    "Optimizé el esfuerzo en un 40% a través de un compromiso efectivo con las partes interesadas y especificaciones técnicas claras.",
-                    "Tecnologías utilizadas: Node.js, ReactJS, AWS, MySQL, Git, Gemini, ChatGPT, Jest."
+                    "Liderar la arquitectura y el desarrollo de características escalables de extremo a extremo para la plataforma de red de expertos.",
+                    "Diseñé y mantuve robustas API RESTful en Node.js, asegurando un alto rendimiento y fiabilidad.",
+                    "Mentoricé a desarrolladores junior y realicé revisiones de código para mantener altos estándares de calidad.",
+                    "Tecnologías utilizadas: Node.js, ReactJS, TypeScript, AWS, Docker, PostgreSQL, Redis"
+                ]
+            },
+            {
+                company: "Vedak - The Expert Network",
+                role: "Pasante de Desarrollador Full Stack",
+                duration: "Nov 2024 - Ene 2025",
+                responsibilities: [
+                    "Renové la interfaz de usuario existente a una moderna y fácil de usar, mejorando significativamente el tiempo de carga y el rendimiento.",
+                    "Diseñé y desarrollé una función de control de calidad con React.js en el frontend y Node.js en el backend.",
+                    "Colaboré con equipos multifuncionales para asegurar una integración y entrega fluidas de nuevas características.",
+                    "Tecnologías utilizadas: Node.js, ReactJS, AWS, MySQL, Git, Sequelize, Redis"
                 ]
             },
             {
@@ -47,8 +68,7 @@ export const ExperienceLan = {
                 responsibilities: [
                     "Desarrollé aplicaciones web utilizando ReactJS y Redux, mejorando el rendimiento en un 30%.",
                     "Mejoré las características del front-end, lo que llevó a un aumento del 25% en el compromiso del usuario.",
-                    "Contribuí a proyectos de diseño y creé materiales de desarrollo web.",
-                    "Tecnologías utilizadas: ReactJs, Redux, JEST, AWS."
+                    "Tecnologías utilizadas: ReactJs, Redux, JEST, AWS"
                 ]
             }
         ]
@@ -57,14 +77,25 @@ export const ExperienceLan = {
         title: "Expérience",
         experiences: [
             {
-                company: "BrandShark",
-                role: "Stagiaire SDE",
-                duration: "Avr 2024 - Juil 2024",
+                company: "Vedak - The Expert Network",
+                role: "Développeur Full Stack",
+                duration: "Fév 2025 - Présent",
                 responsibilities: [
-                    "Développé un outil de collaboration en temps réel avec édition de documents, fonctionnalité de chat et gestion des tâches en utilisant ReactJS et Node.js.",
-                    "Implémenté une authentification utilisateur sécurisée et un design réactif, augmentant l'engagement des utilisateurs de 25%.",
-                    "Optimisé l'effort de 40% grâce à un engagement efficace des parties prenantes et des spécifications techniques claires.",
-                    "Technologies utilisées : Node.js, ReactJS, AWS, MySQL, Git, Gemini, ChatGPT, Jest."
+                    "Diriger l'architecture et le développement de fonctionnalités évolutives de bout en bout pour la plateforme de réseau d'experts.",
+                    "Conçu et maintenu des API RESTful robustes en Node.js, garantissant des performances et une fiabilité élevées.",
+                    "Encadré des développeurs juniors et effectué des revues de code pour maintenir des normes de code de haute qualité.",
+                    "Technologies utilisées: Node.js, ReactJS, TypeScript, AWS, Docker, PostgreSQL, Redis"
+                ]
+            },
+            {
+                company: "Vedak - The Expert Network",
+                role: "Stagiaire Développeur Full Stack",
+                duration: "Nov 2024 - Jan 2025",
+                responsibilities: [
+                    "Réorganisé l'interface utilisateur existante en une interface moderne et conviviale, améliorant considérablement le temps de chargement et les performances.",
+                    "Conçu et développé une fonctionnalité d'assurance qualité avec React.js en frontend et Node.js en backend.",
+                    "Collaboré avec des équipes interfonctionnelles pour assurer une intégration et une livraison transparentes des nouvelles fonctionnalités.",
+                    "Technologies utilisées: Node.js, ReactJS, AWS, MySQL, Git, Sequelize, Redis"
                 ]
             },
             {
@@ -74,8 +105,7 @@ export const ExperienceLan = {
                 responsibilities: [
                     "Développé des applications web en utilisant ReactJS et Redux, améliorant les performances de 30%.",
                     "Amélioré les fonctionnalités front-end, ce qui a conduit à une augmentation de 25% de l'engagement des utilisateurs.",
-                    "Contribué à des projets de conception et créé des matériaux de développement web.",
-                    "Technologies utilisées : ReactJs, Redux, JEST, AWS."
+                    "Technologies utilisées: ReactJs, Redux, JEST, AWS"
                 ]
             }
         ]
@@ -84,25 +114,35 @@ export const ExperienceLan = {
         title: "经验",
         experiences: [
             {
-                company: "BrandShark",
-                role: "SDE 实习生",
-                duration: "2024 年 4 月 - 2024 年 7 月",
+                company: "Vedak - The Expert Network",
+                role: "全栈开发人员",
+                duration: "2025年2月 - 至今",
                 responsibilities: [
-                    "使用 ReactJS 和 Node.js 开发实时协作工具，具备文档编辑、聊天功能和任务管理。",
-                    "实现安全的用户身份验证和响应式设计，使用户参与度提高了 25%。",
-                    "通过有效的利益相关者参与和清晰的技术规格优化了 40% 的工作量。",
-                    "使用的技术：Node.js、ReactJS、AWS、MySQL、Git、Gemini、ChatGPT、Jest。"
+                    "领导专家网络平台的可扩展端到端功能的架构和开发。",
+                    "在Node.js中设计和维护了强大的RESTful API，确保了高性能和可靠性。",
+                    "指导初级开发人员并进行代码审查，以保持高质量的代码标准。",
+                    "使用的技术: Node.js, ReactJS, TypeScript, AWS, Docker, PostgreSQL, Redis"
+                ]
+            },
+            {
+                company: "Vedak - The Expert Network",
+                role: "全栈开发实习生",
+                duration: "2024年11月 - 2025年1月",
+                responsibilities: [
+                    "将现有用户界面改造为现代化的用户友好界面，显著提高了加载时间和性能。",
+                    "使用前端React.js和后端Node.js设计和开发了QA功能。",
+                    "与跨职能团队合作，确保新功能的无缝集成和交付。",
+                    "使用的技术: Node.js, ReactJS, AWS, MySQL, Git, Sequelize, Redis"
                 ]
             },
             {
                 company: "AQMENZ Automation Pvt. Ltd",
                 role: "前端开发实习生",
-                duration: "2023 年 8 月 - 2023 年 10 月",
+                duration: "2023年8月 - 2023年10月",
                 responsibilities: [
-                    "使用 ReactJS 和 Redux 开发 Web 应用程序，提高了 30% 的性能。",
-                    "增强前端功能，导致用户参与度提高 25%。",
-                    "参与设计项目并创建 Web 开发材料。",
-                    "使用的技术：ReactJs、Redux、JEST、AWS。"
+                    "使用ReactJS和Redux开发Web应用程序，将性能提高了30％。",
+                    "增强了前端功能，导致用户参与度提高了25％。",
+                    "使用的技术: ReactJs, Redux, JEST, AWS"
                 ]
             }
         ]
