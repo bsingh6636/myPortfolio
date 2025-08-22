@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { motion } from 'framer-motion';
 import { ProjectsLan } from '../Language/ProjectsLan';
 import { MyContext } from '..';
-import { Globe, Github } from 'lucide-react'; // Icons for project links
+import { Globe, Github } from 'lucide-react';
 
 const Projects = () => {
     const { language } = useContext(MyContext);
@@ -48,61 +49,148 @@ const Projects = () => {
     }
 
     return (
-        <div className='py-20 md:py-28'>
-            {/* === Section Title - Consistent with other sections === */}
-            <div className='text-center mb-16'>
-                <h2 className='uppercase font-extrabold text-3xl md:text-5xl font-serif text-white tracking-wider'>
-                    {lan.title}
-                </h2>
-                <div className='h-1.5 w-24 bg-cyan-400 mt-4 rounded-full mx-auto'></div>
-            </div>
+        <div className='py-32'>
+            {/* Enhanced Section Header */}
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className='text-center mb-20'
+            >
+                <div className="flex items-center justify-center space-x-4 mb-6">
+                    <div className="w-16 h-[2px] bg-gradient-to-r from-transparent to-primary-400"></div>
+                    <h2 className='text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight'>
+                        <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                            {lan.title}
+                        </span>
+                    </h2>
+                    <div className="w-16 h-[2px] bg-gradient-to-l from-transparent to-accent-400"></div>
+                </div>
+                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                    A showcase of my recent work and creative solutions
+                </p>
+            </motion.div>
 
-            {/* === Projects Grid === */}
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-                {filteredGithubRepos.slice(0, visibleProjects).map((repo) => (
-                    <div key={repo.id} className='bg-gray-800/50 border border-white/10 rounded-lg shadow-lg overflow-hidden group flex flex-col'>
-                        <div className="overflow-hidden">
-                            <img className='w-full h-48 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110' src={projects[repo.name]} alt={repo.name} />
-                        </div>
-                        <div className='p-6 flex flex-col flex-grow'>
-                            <h3 className='text-xl font-bold text-white mb-2'>{repo.name.replace(/[-_]/g, ' ')}</h3>
-                            <p className='text-gray-300 text-sm mb-4 flex-grow'>{repo.description}</p>
-                            
-                            {/* Topics/Tags */}
-                            <div className='flex flex-wrap gap-2 mb-4'>
-                                {repo.topics.map((topic, index) => (
-                                    <span key={index} className='bg-cyan-900/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full'>
-                                        {topic}
-                                    </span>
-                                ))}
-                            </div>
-                            
-                            {/* Links with Icons */}
-                            <div className='mt-auto pt-4 border-t border-white/10 flex items-center justify-end gap-4'>
+            {/* Enhanced Projects Grid */}
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto'>
+                {filteredGithubRepos.slice(0, visibleProjects).map((repo, index) => (
+                    <motion.div 
+                        key={repo.id}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        className='group'
+                    >
+                        <div className='bg-glass backdrop-blur-sm border border-white/10 rounded-3xl shadow-glass overflow-hidden hover:bg-white/5 transition-all duration-500 hover:shadow-card-hover hover:border-white/20 flex flex-col h-full'>
+                            {/* Image Section with Enhanced Hover */}
+                            <div className="relative overflow-hidden rounded-t-3xl">
+                                <img 
+                                    className='w-full h-56 object-cover transition-all duration-700 group-hover:scale-110' 
+                                    src={projects[repo.name]} 
+                                    alt={repo.name} 
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                
+                                {/* Floating Live/Demo Badge */}
                                 {repo.homepage && (
-                                    <a href={repo.homepage} target="_blank" rel="noopener noreferrer" aria-label="Live Demo" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300">
-                                        <Globe size={24} />
-                                    </a>
+                                    <div className="absolute top-4 right-4 bg-primary-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        Live Demo
+                                    </div>
                                 )}
-                                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300">
-                                    <Github size={24} />
-                                </a>
+                            </div>
+
+                            {/* Content Section */}
+                            <div className='p-6 flex flex-col flex-grow space-y-4'>
+                                {/* Project Title */}
+                                <h3 className='text-xl font-bold text-white group-hover:text-primary-300 transition-colors duration-300'>
+                                    {repo.name.replace(/[-_]/g, ' ')}
+                                </h3>
+
+                                {/* Description */}
+                                <p className='text-gray-300 text-sm leading-relaxed flex-grow'>
+                                    {repo.description}
+                                </p>
+                                
+                                {/* Tech Stack Tags */}
+                                <div className='flex flex-wrap gap-2'>
+                                    {repo.topics.slice(0, 4).map((topic, index) => (
+                                        <span 
+                                            key={index} 
+                                            className='bg-primary-900/30 border border-primary-400/30 text-primary-300 text-xs font-medium px-3 py-1 rounded-full hover:bg-primary-400/20 transition-colors duration-300'
+                                        >
+                                            {topic}
+                                        </span>
+                                    ))}
+                                    {repo.topics.length > 4 && (
+                                        <span className='text-gray-400 text-xs font-medium px-2 py-1'>
+                                            +{repo.topics.length - 4} more
+                                        </span>
+                                    )}
+                                </div>
+                                
+                                {/* Action Links */}
+                                <div className='flex items-center justify-between pt-4 border-t border-white/10'>
+                                    <div className="flex items-center space-x-4">
+                                        {repo.homepage && (
+                                            <a 
+                                                href={repo.homepage} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="group/link inline-flex items-center text-primary-400 hover:text-primary-300 transition-all duration-300"
+                                            >
+                                                <Globe size={18} className="mr-2 group-hover/link:rotate-12 transition-transform duration-300" />
+                                                <span className="text-sm font-medium">Live Demo</span>
+                                            </a>
+                                        )}
+                                        <a 
+                                            href={repo.html_url} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            className="group/link inline-flex items-center text-gray-400 hover:text-white transition-all duration-300"
+                                        >
+                                            <Github size={18} className="mr-2 group-hover/link:scale-110 transition-transform duration-300" />
+                                            <span className="text-sm font-medium">Code</span>
+                                        </a>
+                                    </div>
+
+                                    {/* View Details Arrow */}
+                                    <button className="p-2 rounded-full bg-white/5 hover:bg-primary-500/20 border border-white/10 hover:border-primary-400/30 transition-all duration-300 group/btn">
+                                        <svg className="w-4 h-4 text-gray-400 group-hover/btn:text-primary-400 group-hover/btn:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
-            {/* === Show More/Less Button === */}
+            {/* Enhanced Show More/Less Button */}
             {filteredGithubRepos.length > 3 && (
-                <div className='mt-16 flex justify-center'>
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className='mt-16 flex justify-center'
+                >
                     <button
                         onClick={handleToggleProjects}
-                        className='text-cyan-400 border border-cyan-400 font-bold py-2 px-8 rounded-full hover:bg-cyan-400/10 hover:text-cyan-300 transition-all duration-300'
+                        className='group inline-flex items-center px-8 py-4 bg-glass backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl hover:bg-white/10 hover:border-primary-400/50 transition-all duration-300 shadow-glass hover:shadow-glow'
                     >
-                        {visibleProjects === 3 ? lan.showMore : lan.showLess}
+                        <span>{visibleProjects === 3 ? lan.showMore : lan.showLess}</span>
+                        <svg 
+                            className={`w-5 h-5 ml-2 transition-transform duration-300 ${visibleProjects === 3 ? 'rotate-0' : 'rotate-180'}`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
                     </button>
-                </div>
+                </motion.div>
             )}
         </div>
     );

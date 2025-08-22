@@ -1,16 +1,16 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import { Link } from 'react-scroll';
+import React, { useContext, useState, useEffect, useRef, memo } from 'react';
 import { MyContext } from '..';
 import { HeaderLan } from '../Language/HeaderLan';
-import { Globe } from 'lucide-react'; // Icon for the language selector
+import { Globe } from 'lucide-react';
+import ThemeToggle from '../components/ui/ThemeToggle';
+import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
-const Header = () => {
-  // Access language state and setter from context
+const Header = memo(() => {
   const { language, setLanguage } = useContext(MyContext);
+  const { scrollTo } = useSmoothScroll();
   const [isLangMenuOpen, setLangMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   
-  // Get the correct text for the current language
   const lan = HeaderLan[language];
 
   // Data for navigation links, making the JSX cleaner
@@ -32,80 +32,104 @@ const Header = () => {
     { code: 'zh', name: '中文' },
   ];
 
-  // Effect to close the language menu when clicking outside of it
+  // Enhanced click outside handler with performance optimization
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setLangMenuOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    
+    if (isLangMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside, { passive: true });
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isLangMenuOpen]);
+
+  // Custom scroll handler for better performance
+  const handleNavClick = (target) => {
+    scrollTo(`#${target}`);
+    setLangMenuOpen(false);
+  };
 
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 bg-black/30 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 animate-slide-up">
+      {/* Glassmorphism Container with Theme Support */}
+      <div className="bg-glass-light dark:bg-glass backdrop-blur-xl border border-black/10 dark:border-white/20 rounded-2xl shadow-glass">
+        <div className="px-6 py-4">
+          <div className="flex items-center justify-between">
 
-          {/* Navigation Links for medium screens and up */}
-          <nav className="hidden md:flex md:space-x-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                activeClass="text-cyan-400" // Style for the active link
-                to={link.to}
-                spy={true}
-                smooth={true}
-                offset={-80} // Offset to account for the header's height
-                duration={500}
-                className="cursor-pointer text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+            {/* Navigation Links for medium screens and up */}
+            <nav className="hidden md:flex md:space-x-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.to}
+                  onClick={() => handleNavClick(link.to)}
+                  className="cursor-pointer text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-300 transition-all duration-300 font-medium text-sm uppercase tracking-wider px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 relative group"
+                >
+                  {link.label}
+                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary-400 to-accent-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </button>
+              ))}
+            </nav>
+            
+            {/* Mobile Logo/Title */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => handleNavClick('portfolio')}
+                className="text-xl font-bold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-300 transition-colors duration-300 cursor-pointer"
               >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-          
-          {/* Simple Title for small screens. A hamburger menu could be added here later. */}
-          <div className="md:hidden text-lg font-bold text-white">
-             <Link to="portfolio" smooth={true} duration={500}>My Portfolio</Link>
-          </div>
+                <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+                  Portfolio
+                </span>
+              </button>
+            </div>
 
-          {/* Language Selector Dropdown */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center space-x-2 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-gray-300 hover:bg-white/10 focus:outline-none transition"
-            >
-              <Globe size={20} />
-              <span className='hidden sm:inline'>{language.toUpperCase()}</span>
-            </button>
+            {/* Controls Group */}
+            <div className="flex items-center space-x-3">
+              {/* Theme Toggle */}
+              <ThemeToggle />
 
-            {/* Dropdown Menu Panel */}
-            {isLangMenuOpen && (
-              <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg py-1 bg-gray-800 ring-1 ring-black ring-opacity-5 z-50">
-                {availableLanguages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setLanguage(lang.code);
-                      setLangMenuOpen(false); // Close menu after selection
-                    }}
-                    className="w-full text-left block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
-                  >
-                    {lang.name}
-                  </button>
-                ))}
+              {/* Language Selector Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setLangMenuOpen(!isLangMenuOpen)}
+                  className="flex items-center space-x-2 px-4 py-2 bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-300 hover:bg-black/10 dark:hover:bg-white/20 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400/50 transition-all duration-300 group"
+                >
+                  <Globe size={18} className="text-primary-400 group-hover:rotate-12 transition-transform duration-300" />
+                  <span className='hidden sm:inline font-mono text-xs tracking-wider'>{language.toUpperCase()}</span>
+                </button>
+
+                {/* Enhanced Dropdown Menu */}
+                {isLangMenuOpen && (
+                  <div className="origin-top-right absolute right-0 mt-3 w-48 rounded-xl shadow-glass py-2 bg-white/90 dark:bg-dark-800/90 backdrop-blur-xl border border-black/10 dark:border-white/20 z-50 animate-slide-up">
+                    {availableLanguages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => {
+                          setLanguage(lang.code);
+                          setLangMenuOpen(false);
+                        }}
+                        className="w-full text-left flex items-center px-4 py-3 text-sm text-gray-600 dark:text-gray-300 hover:bg-primary-500/10 dark:hover:bg-primary-500/20 hover:text-gray-900 dark:hover:text-white transition-all duration-300 group"
+                      >
+                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-accent-400 flex items-center justify-center text-xs font-bold mr-3 group-hover:scale-110 transition-transform duration-300 text-white">
+                          {lang.code.toUpperCase()}
+                        </span>
+                        {lang.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
     </header>
   );
-}
+});
+
+Header.displayName = 'Header';
 
 export default Header;
