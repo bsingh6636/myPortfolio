@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Server, Cloud, Cpu, Database, KeyRound } from 'lucide-react';
+import { Code, Server, Cloud, Cpu, Database, KeyRound, Terminal } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 
@@ -134,7 +134,7 @@ const Skills = () => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Technologies and tools I work with to bring ideas to life
+              Core engineering competencies, frameworks, and infrastructure tools
             </p>
           </motion.div>
 
@@ -211,7 +211,7 @@ const Skills = () => {
               <CardContent className="p-6">
                 <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center">
                   <span className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center mr-3">
-                    🛠️
+                    <Terminal className="h-4 w-4 text-primary-500" />
                   </span>
                   Tooling & Workflow
                 </h4>
@@ -230,14 +230,6 @@ const Skills = () => {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
-
-          {/* Bottom Note */}
-          <motion.div variants={itemVariants} className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground inline-flex items-center">
-              <span className="w-2 h-2 rounded-full bg-primary-500 mr-2 animate-pulse" />
-              Always learning and exploring new technologies
-            </p>
           </motion.div>
         </motion.div>
       </div>

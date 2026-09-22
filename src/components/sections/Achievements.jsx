@@ -8,7 +8,7 @@ import { Badge } from '../ui/badge';
 const achievements = [
   {
     icon: Trophy,
-    title: 'Winner – College Coding Competition',
+    title: 'College Coding Competition Winner',
     description:
       'Demonstrated high-speed algorithmic thinking and problem solving in competitive college-wide programming.',
     color: 'from-amber-500 to-yellow-500',
@@ -86,7 +86,7 @@ const Achievements = () => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Milestones and recognition along my journey
+              Key engineering milestones, internal tooling, and operational reliability impact
             </p>
           </motion.div>
 
@@ -145,18 +145,6 @@ const Achievements = () => {
                 </Card>
               ))}
             </div>
-          </motion.div>
-
-          {/* Motivational Note */}
-          <motion.div variants={itemVariants} className="mt-12 text-center">
-            <Card className="inline-block bg-gradient-to-br from-primary-500/5 to-accent-500/5 border-primary-500/20">
-              <CardContent className="p-6">
-                <p className="text-sm text-muted-foreground italic">
-                  "Every project I build, every problem I solve, is another step
-                  towards mastery."
-                </p>
-              </CardContent>
-            </Card>
           </motion.div>
         </motion.div>
       </div>

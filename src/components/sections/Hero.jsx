@@ -22,19 +22,15 @@ const Hero = () => {
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Status Badge */}
+        {/* Role Location Tag */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary-500/30 bg-primary-500/5">
-            <span className="relative flex h-2 w-2 mr-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
-            </span>
-            Available for opportunities
+          <Badge variant="outline" className="px-3.5 py-1 text-xs font-medium border-border/60 bg-muted/40 text-muted-foreground">
+            Full Stack Engineer, Bengaluru
           </Badge>
         </motion.div>
 
@@ -58,15 +54,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium mb-6 max-w-3xl mx-auto"
+          className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-medium mb-6 max-w-2xl mx-auto"
         >
-          Full Stack Engineer{' '}
-          <span className="text-foreground/60">•</span>{' '}
-          <span className="text-primary-500">Node.js Backend</span>{' '}
-          <span className="text-foreground/60">•</span>{' '}
-          <span className="text-primary-500">React Frontend</span>{' '}
-          <span className="text-foreground/60">•</span>{' '}
-          Real-Time & Cloud Systems
+          Building reliable Node.js backends, React interfaces, and real-time systems.
         </motion.p>
 
         {/* Description */}
@@ -76,9 +66,9 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Full stack engineer with 2 years of experience on a multi-service Node.js and TypeScript backend
-          and the React frontends it serves. Specializing in real-time WebSockets, event-driven pipelines, 
-          third-party integrations (payments, video, LLMs), and cloud deployments.
+          Full stack engineer with 2 years of experience developing multi-service Node.js and TypeScript
+          backends and production React frontends. Hands-on experience with WebSocket notifications,
+          event-driven pipelines, payment integrations, and cloud infrastructure.
         </motion.p>
 
         {/* CTA Buttons */}

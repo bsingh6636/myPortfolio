@@ -77,42 +77,38 @@ const About = () => {
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardContent className="p-6 sm:p-8">
                   <h3 className="text-xl font-semibold text-foreground mb-4">
-                    My Story & Background
+                    Background
                   </h3>
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
                       I'm a Full Stack Engineer with 2 years of experience building multi-service 
-                      Node.js and TypeScript backends, cloud-native infrastructure, and modern React frontends. 
+                      Node.js and TypeScript backends, cloud infrastructure, and modern React frontends. 
                       I hold a Bachelor of Engineering in Computer Science from Visvesvaraya Technological University (VTU).
                     </p>
                     <p>
-                      <span className="text-foreground font-medium">
-                        Backend is where I go deepest:
-                      </span>{' '}
-                      I've owned third-party integration surfaces end to end (payments via Cashfree, video conferencing via Zoom SDK, LLM APIs via OpenAI Assistants, and observability with Datadog). 
-                      I've engineered HMAC-SHA256 webhook verification, idempotent ingestion pipelines into S3, and database-driven schedulers on MySQL and Redis that replaced host crontabs.
+                      On the backend, I have owned integration surfaces end to end for payments (Cashfree), 
+                      video conferencing (Zoom), LLM APIs (OpenAI Assistants), and Datadog monitoring. 
+                      I have built HMAC-SHA256 signature verification, media ingestion into S3 with retry handling, 
+                      and database-driven schedulers on MySQL and Redis that replaced host crontabs.
                     </p>
                     <p>
-                      On the frontend, I build the customer-facing and internal interfaces those services power—shipping 
-                      real-time WebSocket notifications sustaining 500+ concurrent users, dynamic filtering tools, and optimizing 
-                      bundles by 35% via intelligent code-splitting.
+                      On the frontend, I build the customer-facing and internal interfaces those services power, 
+                      delivering real-time WebSocket notifications for 500+ concurrent users, dynamic filtering tools, 
+                      and cutting bundle sizes by 35% with code-splitting.
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Philosophy Section */}
+              {/* Reliability Note */}
               <Card className="bg-gradient-to-br from-primary-500/5 to-accent-500/5 border-primary-500/20">
                 <CardContent className="p-6">
-                  <h4 className="text-lg font-semibold text-foreground mb-3 flex items-center">
-                    <span className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center mr-3">
-                      💡
-                    </span>
-                    Engineering Philosophy
+                  <h4 className="text-base font-semibold text-foreground mb-2">
+                    System Reliability & Ownership
                   </h4>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    I believe in true end-to-end ownership: <span className="text-foreground font-medium">architecture → code → testing → containerization → deployment → observability</span>. 
-                    Systems must be resilient under failure, idempotent under repeated triggers, and measurable through clear telemetry.
+                    I focus on building resilient services with clear failure boundaries, idempotent handlers 
+                    for repeated webhook triggers, and actionable telemetry for production observability.
                   </p>
                 </CardContent>
               </Card>
@@ -121,10 +117,10 @@ const About = () => {
             {/* Right Column - Highlights */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h3 className="text-xl font-semibold text-foreground mb-6">
-                What I Bring to Teams
+                Core Areas
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
-                {highlights.map((item, index) => (
+                {highlights.map((item) => (
                   <motion.div
                     key={item.title}
                     variants={itemVariants}
@@ -152,28 +148,25 @@ const About = () => {
               <Separator className="my-6" />
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardContent className="p-6">
-                  <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center">
-                    <span className="w-8 h-8 rounded-lg bg-accent-500/10 flex items-center justify-center mr-3">
-                      ⚡
-                    </span>
-                    Key Engineering Competencies
+                  <h4 className="text-base font-semibold text-foreground mb-3">
+                    Engineering Focus
                   </h4>
                   <ul className="space-y-2.5 text-sm text-muted-foreground">
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Idempotency & retry handling in asynchronous webhook pipelines
+                      Idempotency and retry handling in asynchronous webhook pipelines
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Zero-downtime database-driven job scheduling (MySQL + Redis)
+                      Zero-downtime database-driven job scheduling with MySQL and Redis
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Centralized error logging & Datadog dashboards cutting MTTR by 45%
+                      Centralized error logging and Datadog monitoring cutting MTTR by 45%
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Self-hosted infrastructure: Docker Compose, Nginx reverse proxy, Certbot SSL
+                      Self-hosted infrastructure with Docker Compose, Nginx reverse proxy, and Certbot SSL
                     </li>
                   </ul>
                 </CardContent>

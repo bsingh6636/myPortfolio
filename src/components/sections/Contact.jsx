@@ -152,7 +152,7 @@ const Contact = () => {
                     brijesh@brijeshhq.com
                   </a>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Primary Domain Email • Directly monitored & active
+                    Primary domain inbox, directly monitored and active
                   </p>
                   <div className="mt-3 pt-3 border-t border-border/40">
                     <p className="text-xs text-muted-foreground">Alternate / Personal Gmail:</p>
@@ -163,8 +163,8 @@ const Contact = () => {
                       bkushwaha.dev@gmail.com
                     </a>
                   </div>
-                  <Badge variant="gradient" className="mt-4">
-                    <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
+                  <Badge variant="outline" className="mt-4 border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2" />
                     Typically replies within 24 hours
                   </Badge>
                 </CardContent>

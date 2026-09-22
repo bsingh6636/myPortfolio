@@ -6,7 +6,6 @@ import {
   Calendar,
   MapPin,
   CheckCircle2,
-  Sparkles,
   Zap,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
@@ -18,7 +17,7 @@ const experiences = [
     company: 'Vedak',
     subtitle: 'The Expert Network',
     type: 'Full-time',
-    period: 'Nov 2024 – Present',
+    period: 'Nov 2024 to Present',
     location: 'Bengaluru, India',
     current: true,
     summary:
@@ -62,7 +61,7 @@ const experiences = [
     company: 'AQMENZ Automation Pvt. Ltd',
     subtitle: 'Industrial Automation & Software',
     type: 'Internship',
-    period: 'Aug 2023 – Oct 2023',
+    period: 'Aug 2023 to Oct 2023',
     location: 'Bengaluru, India',
     current: false,
     summary:
@@ -124,7 +123,7 @@ const Experience = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <Badge variant="outline" className="mb-4 px-3 py-1 border-primary-500/30 bg-primary-500/5">
               <Briefcase className="w-3.5 h-3.5 mr-1 text-primary-500" />
-              Career Journey
+              Experience
             </Badge>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Work Experience
@@ -161,7 +160,7 @@ const Experience = () => {
                           </Badge>
                           {exp.current && (
                             <Badge variant="outline" className="text-xs border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5 animate-pulse" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5" />
                               Current Role
                             </Badge>
                           )}
@@ -182,7 +181,7 @@ const Experience = () => {
                           <Calendar className="h-4 w-4 mr-1.5 text-primary-500" />
                           {exp.period}
                         </span>
-                        <span className="hidden sm:inline text-border">•</span>
+                        <span className="hidden sm:inline text-border">/</span>
                         <span className="flex items-center">
                           <MapPin className="h-4 w-4 mr-1.5 text-primary-500" />
                           {exp.location}
@@ -256,16 +255,6 @@ const Experience = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Experience Summary Footer */}
-          <motion.div variants={itemVariants} className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-sm font-medium text-foreground">
-              <Sparkles className="h-4 w-4 text-primary-500" />
-              <span>
-                2+ years of production full-stack engineering across distributed Node.js backends and high-performance React frontends
-              </span>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -93,7 +93,7 @@ const Education = () => {
                       </span>
                       <span className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1 text-primary-500" />
-                        Dec 2020 – July 2024
+                        Dec 2020 to Jul 2024
                       </span>
                     </div>
                   </div>
@@ -159,50 +159,32 @@ const Education = () => {
                 </Card>
               </motion.div>
 
-              {/* Learning Philosophy */}
+              {/* Technical Foundations & Lab Work */}
               <motion.div variants={itemVariants}>
-                <Card className="bg-gradient-to-br from-primary-500/5 to-accent-500/5 border-primary-500/20">
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-semibold text-foreground mb-3 flex items-center">
-                      <span className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center mr-3">
-                        📚
-                      </span>
-                      Continuous Learning
-                    </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      Beyond formal education, I believe in learning by doing. I
-                      actively build projects, experiment with production-grade
-                      tools, and focus on understanding how real systems work
-                      outside of tutorials.
-                    </p>
+                <Card className="bg-card/50 backdrop-blur-sm border-border/50">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+                        <BookOpen className="h-5 w-5 text-white" />
+                      </div>
+                      Curriculum & Lab Practicals
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="p-3 bg-muted/40 rounded-lg border border-border/40 text-sm">
+                      <p className="font-semibold text-foreground">Relational Systems & Algorithms</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Rigorous coursework in normalization, ACID transactions, relational indexing, and algorithmic complexity analysis.
+                      </p>
+                    </div>
+                    <div className="p-3 bg-muted/40 rounded-lg border border-border/40 text-sm">
+                      <p className="font-semibold text-foreground">Operating Systems & Networking</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        UNIX process management, concurrency models, socket communication, and TCP/IP protocol architectures.
+                      </p>
+                    </div>
                   </CardContent>
                 </Card>
-              </motion.div>
-
-              {/* Quick Stats */}
-              <motion.div variants={itemVariants}>
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-                    <CardContent className="p-4 text-center">
-                      <p className="text-3xl font-bold text-primary-500 mb-1">
-                        4
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Years of Study
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-                    <CardContent className="p-4 text-center">
-                      <p className="text-3xl font-bold text-primary-500 mb-1">
-                        5+
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Core CS Subjects
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
               </motion.div>
             </div>
           </div>
