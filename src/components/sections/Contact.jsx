@@ -16,24 +16,44 @@ import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Separator } from '../ui/separator';
 
+import { Phone, FileText } from 'lucide-react';
+
 const socialLinks = [
   {
     name: 'GitHub',
     icon: Github,
     href: 'https://github.com/bsingh6636',
-    username: '@bsingh6636',
+    username: 'github.com/bsingh6636',
   },
   {
     name: 'LinkedIn',
     icon: Linkedin,
-    href: 'https://linkedin.com/in/brijeshkushwaha',
-    username: 'Brijesh Kushwaha',
+    href: 'https://linkedin.com/in/bsingh6636',
+    username: 'linkedin.com/in/bsingh6636',
   },
   {
-    name: 'Email',
+    name: 'Domain Email (Primary)',
     icon: Mail,
-    href: 'mailto:hello@brijesh.fun',
-    username: 'hello@brijesh.fun',
+    href: 'mailto:brijesh@brijeshhq.com',
+    username: 'brijesh@brijeshhq.com',
+  },
+  {
+    name: 'Direct Gmail',
+    icon: Mail,
+    href: 'mailto:bkushwaha.dev@gmail.com',
+    username: 'bkushwaha.dev@gmail.com',
+  },
+  {
+    name: 'Phone / WhatsApp',
+    icon: Phone,
+    href: 'tel:+918050578803',
+    username: '+91 8050578803',
+  },
+  {
+    name: 'Resume (PDF)',
+    icon: FileText,
+    href: '/resume.pdf',
+    username: 'Download Latest Resume',
   },
 ];
 
@@ -126,15 +146,23 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <a
-                    href="mailto:hello@brijesh.fun"
-                    className="text-2xl sm:text-3xl font-bold text-primary-500 hover:text-primary-400 transition-colors break-all"
+                    href="mailto:brijesh@brijeshhq.com"
+                    className="text-xl sm:text-2xl font-bold text-primary-500 hover:text-primary-400 transition-colors break-all"
                   >
-                    hello@brijesh.fun
+                    brijesh@brijeshhq.com
                   </a>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Professional domain email powered by my own infrastructure
-                    setup
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Primary Domain Email • Directly monitored & active
                   </p>
+                  <div className="mt-3 pt-3 border-t border-border/40">
+                    <p className="text-xs text-muted-foreground">Alternate / Personal Gmail:</p>
+                    <a
+                      href="mailto:bkushwaha.dev@gmail.com"
+                      className="text-sm font-semibold text-foreground hover:text-primary-500 transition-colors"
+                    >
+                      bkushwaha.dev@gmail.com
+                    </a>
+                  </div>
                   <Badge variant="gradient" className="mt-4">
                     <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
                     Typically replies within 24 hours
@@ -145,7 +173,7 @@ const Contact = () => {
               {/* Social Links */}
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardHeader>
-                  <CardTitle className="text-lg">Find me on</CardTitle>
+                  <CardTitle className="text-lg">Contact Channels & Profiles</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {socialLinks.map((link) => (
@@ -178,7 +206,7 @@ const Contact = () => {
               {/* Location */}
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="h-5 w-5 text-primary-500" />
-                <span>Karnataka, India</span>
+                <span>Bengaluru, Karnataka, India</span>
               </div>
             </motion.div>
 

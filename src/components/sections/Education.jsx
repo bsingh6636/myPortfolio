@@ -8,15 +8,17 @@ import { Separator } from '../ui/separator';
 
 const coreSubjects = [
   'Data Structures & Algorithms',
-  'DBMS',
+  'DBMS & SQL',
   'Operating Systems',
   'Computer Networks',
-  'Machine Learning',
+  'Cloud Computing',
+  'OOP & System Design',
 ];
 
 const certifications = [
   { name: 'React.js & Node.js', issuer: 'NamasteDev' },
-  { name: 'AICTE Programs', issuer: 'AICTE' },
+  { name: 'AWS Cloud Fundamentals & Core Services', issuer: 'Amazon Web Services Training' },
+  { name: 'AICTE Technical Certifications', issuer: 'AICTE' },
 ];
 
 const Education = () => {
@@ -58,7 +60,7 @@ const Education = () => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              My academic journey and continuous learning path
+              Academic foundation in computer engineering and continuous technical learning
             </p>
           </motion.div>
 
@@ -72,23 +74,26 @@ const Education = () => {
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
                       <GraduationCap className="h-7 w-7 text-white" />
                     </div>
-                    <Badge variant="gradient">University</Badge>
+                    <Badge variant="gradient">First Class (74%)</Badge>
                   </div>
                   <CardTitle className="text-xl sm:text-2xl mb-2">
                     Bachelor of Engineering in Computer Science
                   </CardTitle>
                   <div className="space-y-2 text-muted-foreground">
-                    <p className="font-medium text-foreground">
+                    <p className="font-semibold text-foreground">
+                      KNS Institute of Technology
+                    </p>
+                    <p className="text-sm font-medium text-primary-500">
                       Visvesvaraya Technological University (VTU)
                     </p>
-                    <div className="flex flex-wrap items-center gap-4 text-sm">
+                    <div className="flex flex-wrap items-center gap-4 text-sm pt-1">
                       <span className="flex items-center">
                         <MapPin className="h-4 w-4 mr-1 text-primary-500" />
-                        Karnataka, India
+                        Bengaluru, Karnataka, India
                       </span>
                       <span className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1 text-primary-500" />
-                        Dec 2020 – June 2024
+                        Dec 2020 – July 2024
                       </span>
                     </div>
                   </div>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, FileText } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useTheme } from '../../contexts/ThemeContext';
 import { cn } from '../../lib/utils';
 
 const navLinks = [
   { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Education', href: '#education' },
@@ -103,6 +104,22 @@ const Navbar = () => {
                 </AnimatePresence>
               </Button>
 
+              {/* Resume Button - Desktop */}
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex"
+              >
+                <Button
+                  variant="outline"
+                  className="border-primary-500/30 hover:bg-primary-500/10 text-foreground"
+                >
+                  <FileText className="mr-1.5 h-4 w-4 text-primary-500" />
+                  Resume
+                </Button>
+              </a>
+
               {/* CTA Button - Desktop */}
               <Button
                 onClick={() => scrollToSection('#contact')}
@@ -157,8 +174,22 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navLinks.length * 0.05 }}
-                  className="pt-2"
+                  className="pt-2 space-y-2"
                 >
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full"
+                  >
+                    <Button
+                      variant="outline"
+                      className="w-full border-primary-500/30 text-foreground"
+                    >
+                      <FileText className="mr-2 h-4 w-4 text-primary-500" />
+                      View Resume
+                    </Button>
+                  </a>
                   <Button
                     onClick={() => scrollToSection('#contact')}
                     className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white"

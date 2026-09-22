@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Github, Linkedin, ChevronDown } from 'lucide-react';
+import { ArrowRight, Mail, Github, Linkedin, ChevronDown, FileText } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 
@@ -58,15 +58,15 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium mb-8 max-w-2xl mx-auto"
+          className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium mb-6 max-w-3xl mx-auto"
         >
-          Full-Stack Developer{' '}
+          Full Stack Engineer{' '}
           <span className="text-foreground/60">•</span>{' '}
-          <span className="text-primary-500">React</span>{' '}
+          <span className="text-primary-500">Node.js Backend</span>{' '}
           <span className="text-foreground/60">•</span>{' '}
-          <span className="text-primary-500">Node.js</span>{' '}
+          <span className="text-primary-500">React Frontend</span>{' '}
           <span className="text-foreground/60">•</span>{' '}
-          Infra & DevOps Curious
+          Real-Time & Cloud Systems
         </motion.p>
 
         {/* Description */}
@@ -74,11 +74,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
+          className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          I build end-to-end systems—from frontend UI to backend APIs, cloud deployment, 
-          and infrastructure. I love owning the full stack: 
-          <span className="font-medium text-foreground"> domain → DNS → server → app → delivery</span>.
+          Full stack engineer with 2 years of experience on a multi-service Node.js and TypeScript backend
+          and the React frontends it serves. Specializing in real-time WebSockets, event-driven pipelines, 
+          third-party integrations (payments, video, LLMs), and cloud deployments.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -86,7 +86,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          className="flex flex-wrap items-center justify-center gap-4 mb-12"
         >
           <Button
             size="lg"
@@ -96,6 +96,22 @@ const Hero = () => {
             View My Work
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              size="lg"
+              variant="outline"
+              className="px-8 border-primary-500/40 hover:bg-primary-500/10 text-foreground"
+            >
+              <FileText className="mr-2 h-4 w-4 text-primary-500" />
+              View Resume
+            </Button>
+          </a>
+
           <Button
             size="lg"
             variant="outline"
@@ -118,20 +134,23 @@ const Hero = () => {
             href="https://github.com/bsingh6636"
             target="_blank"
             rel="noopener noreferrer"
+            title="GitHub: bsingh6636"
             className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
           >
             <Github className="h-5 w-5" />
           </a>
           <a
-            href="https://linkedin.com/in/brijeshkushwaha"
+            href="https://linkedin.com/in/bsingh6636"
             target="_blank"
             rel="noopener noreferrer"
+            title="LinkedIn: bsingh6636"
             className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
           >
             <Linkedin className="h-5 w-5" />
           </a>
           <a
-            href="mailto:hello@brijesh.fun"
+            href="mailto:brijesh@brijeshhq.com"
+            title="Email: brijesh@brijeshhq.com"
             className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
           >
             <Mail className="h-5 w-5" />

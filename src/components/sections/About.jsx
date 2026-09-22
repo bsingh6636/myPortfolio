@@ -1,30 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Zap, Users, Globe, Terminal } from 'lucide-react';
+import { Zap, Globe, Server, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
 import { Separator } from '../ui/separator';
 
 const highlights = [
   {
-    icon: Globe,
-    title: 'Full-Stack Ownership',
-    description: 'From domain to delivery, I own every layer of the stack.',
+    icon: Server,
+    title: 'Distributed Backends',
+    description: 'Node.js & TypeScript microservices, event-driven pipelines, and DB-driven job scheduling.',
   },
   {
-    icon: Terminal,
-    title: 'Production Systems',
-    description: 'Experience with Vercel, Azure VM, Nginx, PM2, DNS, SMTP.',
+    icon: Globe,
+    title: 'High-Performance UI',
+    description: 'React, Vite, Redux & Tailwind interfaces with code-splitting cutting bundle size by 35%.',
   },
   {
     icon: Zap,
-    title: 'Fast Learner',
-    description: 'Always eager to learn new technologies and best practices.',
+    title: 'Real-Time & Integrations',
+    description: 'WebSockets for 500+ users, Cashfree HMAC payments, Zoom S3 streams, and OpenAI Assistants.',
   },
   {
-    icon: Users,
-    title: 'Team Player',
-    description: 'Collaborate effectively with cross-functional teams.',
+    icon: TrendingUp,
+    title: 'Cloud & Observability',
+    description: 'AWS S3/SQS/EC2, Azure VMs, Docker Compose, Nginx, Datadog monitoring cutting MTTR by 45%.',
   },
 ];
 
@@ -77,26 +77,25 @@ const About = () => {
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardContent className="p-6 sm:p-8">
                   <h3 className="text-xl font-semibold text-foreground mb-4">
-                    My Story
+                    My Story & Background
                   </h3>
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      I'm a Computer Science graduate and full-stack developer with 
-                      strong foundations in web development, system design, and core 
-                      CS subjects. I enjoy building real-world systems end-to-end—from 
-                      frontend UI to backend APIs, cloud deployment, and even 
-                      infrastructure-level setups like DNS, Nginx, and email delivery.
+                      I'm a Full Stack Engineer with 2 years of experience building multi-service 
+                      Node.js and TypeScript backends, cloud-native infrastructure, and modern React frontends. 
+                      I hold a Bachelor of Engineering in Computer Science from Visvesvaraya Technological University (VTU).
                     </p>
                     <p>
                       <span className="text-foreground font-medium">
-                        What excites me most is owning the full stack:
+                        Backend is where I go deepest:
                       </span>{' '}
-                      domain → DNS → server → app → delivery.
+                      I've owned third-party integration surfaces end to end (payments via Cashfree, video conferencing via Zoom SDK, LLM APIs via OpenAI Assistants, and observability with Datadog). 
+                      I've engineered HMAC-SHA256 webhook verification, idempotent ingestion pipelines into S3, and database-driven schedulers on MySQL and Redis that replaced host crontabs.
                     </p>
                     <p>
-                      I actively experiment with production-grade tooling (Vercel, 
-                      Azure VM, Nginx, PM2, DNS, SMTP) and focus on learning how 
-                      real systems behave outside tutorials.
+                      On the frontend, I build the customer-facing and internal interfaces those services power—shipping 
+                      real-time WebSocket notifications sustaining 500+ concurrent users, dynamic filtering tools, and optimizing 
+                      bundles by 35% via intelligent code-splitting.
                     </p>
                   </div>
                 </CardContent>
@@ -109,12 +108,11 @@ const About = () => {
                     <span className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center mr-3">
                       💡
                     </span>
-                    My Philosophy
+                    Engineering Philosophy
                   </h4>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    I believe the best way to learn is by building real systems that 
-                    solve real problems. Theory matters, but production experience 
-                    teaches lessons that tutorials never will.
+                    I believe in true end-to-end ownership: <span className="text-foreground font-medium">architecture → code → testing → containerization → deployment → observability</span>. 
+                    Systems must be resilient under failure, idempotent under repeated triggers, and measurable through clear telemetry.
                   </p>
                 </CardContent>
               </Card>
@@ -123,7 +121,7 @@ const About = () => {
             {/* Right Column - Highlights */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h3 className="text-xl font-semibold text-foreground mb-6">
-                What I Bring
+                What I Bring to Teams
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {highlights.map((item, index) => (
@@ -150,32 +148,32 @@ const About = () => {
                 ))}
               </div>
 
-              {/* Currently Exploring */}
+              {/* Production Practices */}
               <Separator className="my-6" />
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardContent className="p-6">
                   <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center">
                     <span className="w-8 h-8 rounded-lg bg-accent-500/10 flex items-center justify-center mr-3">
-                      🔭
+                      ⚡
                     </span>
-                    Currently Exploring
+                    Key Engineering Competencies
                   </h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <ul className="space-y-2.5 text-sm text-muted-foreground">
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Self-hosted mail servers (Postfix / Exim)
+                      Idempotency & retry handling in asynchronous webhook pipelines
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Hybrid reliability setups for infrastructure
+                      Zero-downtime database-driven job scheduling (MySQL + Redis)
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Advanced system design patterns
+                      Centralized error logging & Datadog dashboards cutting MTTR by 45%
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Kubernetes and container orchestration
+                      Self-hosted infrastructure: Docker Compose, Nginx reverse proxy, Certbot SSL
                     </li>
                   </ul>
                 </CardContent>

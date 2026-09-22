@@ -1,62 +1,99 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Server, Cloud, Cpu } from 'lucide-react';
+import { Code, Server, Cloud, Cpu, Database, KeyRound } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 
 const skillCategories = [
   {
-    title: 'Frontend',
-    icon: Code,
-    color: 'from-blue-500 to-cyan-500',
-    skills: [
-      { name: 'React.js', level: 'Advanced' },
-      { name: 'JavaScript', level: 'Advanced' },
-      { name: 'HTML5', level: 'Advanced' },
-      { name: 'CSS3', level: 'Advanced' },
-      { name: 'Tailwind CSS', level: 'Advanced' },
-    ],
-  },
-  {
-    title: 'Backend',
+    title: 'Backend & System Architecture',
     icon: Server,
     color: 'from-green-500 to-emerald-500',
     skills: [
       { name: 'Node.js', level: 'Advanced' },
-      { name: 'REST APIs', level: 'Advanced' },
-      { name: 'Express.js', level: 'Intermediate' },
-      { name: 'MongoDB', level: 'Intermediate' },
+      { name: 'Express.js', level: 'Advanced' },
+      { name: 'REST API Design', level: 'Advanced' },
+      { name: 'WebSockets (Socket.IO)', level: 'Advanced' },
+      { name: 'Event-Driven Architecture', level: 'Advanced' },
+      { name: 'Webhooks & HMAC-SHA256', level: 'Advanced' },
+      { name: 'Idempotency & Retries', level: 'Advanced' },
+      { name: 'Sequelize ORM', level: 'Advanced' },
+      { name: 'Job Scheduling (DB Crons)', level: 'Advanced' },
     ],
   },
   {
-    title: 'Infra / DevOps',
+    title: 'Frontend & UI Engineering',
+    icon: Code,
+    color: 'from-blue-500 to-cyan-500',
+    skills: [
+      { name: 'React.js', level: 'Advanced' },
+      { name: 'Redux Toolkit', level: 'Advanced' },
+      { name: 'Vite', level: 'Advanced' },
+      { name: 'Tailwind CSS', level: 'Advanced' },
+      { name: 'Shadcn/ui', level: 'Advanced' },
+      { name: 'Code-Splitting & Bundling', level: 'Advanced' },
+      { name: 'Responsive UI Design', level: 'Advanced' },
+      { name: 'WebSocket Clients', level: 'Advanced' },
+    ],
+  },
+  {
+    title: 'Cloud, DevOps & Infra',
     icon: Cloud,
     color: 'from-purple-500 to-pink-500',
     skills: [
-      { name: 'Nginx', level: 'Intermediate' },
-      { name: 'PM2', level: 'Intermediate' },
-      { name: 'DNS (SPF, DKIM, DMARC)', level: 'Intermediate' },
-      { name: 'Vercel', level: 'Advanced' },
-      { name: 'Azure VM', level: 'Intermediate' },
-      { name: 'Linux Server', level: 'Intermediate' },
-      { name: 'Domain & Email Systems', level: 'Advanced' },
+      { name: 'AWS S3 (Streaming & SDK v3)', level: 'Advanced' },
+      { name: 'AWS SQS & EC2', level: 'Intermediate' },
+      { name: 'AWS Lambda & RDS', level: 'Intermediate' },
+      { name: 'Azure VMs', level: 'Intermediate' },
+      { name: 'Docker & Compose', level: 'Advanced' },
+      { name: 'Nginx Reverse Proxy', level: 'Advanced' },
+      { name: 'SSL/TLS (Certbot)', level: 'Advanced' },
+      { name: 'Datadog Monitoring', level: 'Advanced' },
+      { name: 'CI/CD (GitHub Actions)', level: 'Intermediate' },
     ],
   },
   {
-    title: 'Core CS',
+    title: 'Databases & In-Memory',
+    icon: Database,
+    color: 'from-amber-500 to-yellow-500',
+    skills: [
+      { name: 'PostgreSQL', level: 'Advanced' },
+      { name: 'MySQL', level: 'Advanced' },
+      { name: 'MongoDB', level: 'Advanced' },
+      { name: 'Redis (Caching & Pub/Sub)', level: 'Advanced' },
+      { name: 'DynamoDB', level: 'Intermediate' },
+      { name: 'Database Migrations', level: 'Advanced' },
+    ],
+  },
+  {
+    title: 'Integrations, Auth & Security',
+    icon: KeyRound,
+    color: 'from-rose-500 to-red-500',
+    skills: [
+      { name: 'Cashfree Verification Suite', level: 'Advanced' },
+      { name: 'Zoom API & SDK v3', level: 'Advanced' },
+      { name: 'OpenAI Assistants API', level: 'Advanced' },
+      { name: 'JWT & OAuth 2.0', level: 'Advanced' },
+      { name: 'RBAC (Role Access)', level: 'Advanced' },
+      { name: 'DNS (SPF, DKIM, DMARC)', level: 'Advanced' },
+    ],
+  },
+  {
+    title: 'Core Computer Science',
     icon: Cpu,
-    color: 'from-orange-500 to-red-500',
+    color: 'from-indigo-500 to-violet-500',
     skills: [
       { name: 'Data Structures & Algorithms', level: 'Strong' },
-      { name: 'DBMS', level: 'Strong' },
-      { name: 'Operating Systems', level: 'Strong' },
+      { name: 'DBMS & Query Optimization', level: 'Strong' },
+      { name: 'Operating Systems & Linux', level: 'Strong' },
       { name: 'Computer Networks', level: 'Strong' },
+      { name: 'System Design Patterns', level: 'Strong' },
     ],
   },
 ];
 
-const languages = ['C', 'C++', 'Java', 'Python', 'JavaScript'];
+const languages = ['JavaScript (ES6+)', 'TypeScript', 'SQL', 'Python', 'Bash', 'HTML5 & CSS3', 'C/C++'];
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -120,7 +157,7 @@ const Skills = () => {
           </motion.div>
 
           {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
@@ -179,7 +216,7 @@ const Skills = () => {
                   Tooling & Workflow
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {['VS Code', 'Git', 'GitHub', 'Postman', 'Figma', 'Terminal', 'npm/yarn', 'Chrome DevTools'].map(
+                  {['Docker', 'Datadog', 'Nginx', 'Postman', 'Git & GitHub', 'GitHub Actions', 'VS Code', 'Linux / Bash', 'npm & yarn', 'Chrome DevTools', 'Claude AI (Daily use)'].map(
                     (tool) => (
                       <Badge
                         key={tool}

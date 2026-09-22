@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Users, Star, Target } from 'lucide-react';
+import { Trophy, Users, Star, Target, Package, Zap, Activity } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 
@@ -10,23 +10,41 @@ const achievements = [
     icon: Trophy,
     title: 'Winner – College Coding Competition',
     description:
-      'Demonstrated problem-solving skills and algorithmic thinking in a competitive environment.',
+      'Demonstrated high-speed algorithmic thinking and problem solving in competitive college-wide programming.',
     color: 'from-amber-500 to-yellow-500',
-    badge: 'Competition',
+    badge: 'Competition Winner',
+  },
+  {
+    icon: Package,
+    title: 'Published Internal NPM Package',
+    description:
+      'Consolidated Sequelize models, migrations, and schema contracts, adopted across multi-repository backend services.',
+    color: 'from-emerald-500 to-teal-500',
+    badge: 'Architecture',
+  },
+  {
+    icon: Zap,
+    title: '45% MTTR Reduction & Production Cutover',
+    description:
+      'Led seamless production migration to database-driven job scheduling and Datadog monitoring cutting incident response time by 45%.',
+    color: 'from-purple-500 to-indigo-500',
+    badge: 'Reliability',
   },
   {
     icon: Users,
-    title: 'Class Representative',
+    title: 'Class Representative (CR)',
     description:
-      'Led and coordinated class activities, demonstrating leadership and communication skills.',
+      'Coordinated department activities and represented student cohort across four years of engineering at VTU.',
     color: 'from-blue-500 to-cyan-500',
     badge: 'Leadership',
   },
 ];
 
 const stats = [
-  { label: 'Projects Built', value: '15+', icon: Target },
-  { label: 'Technologies', value: '20+', icon: Star },
+  { label: 'Engineering Experience', value: '2+ Years', icon: Activity },
+  { label: 'Monthly API Requests', value: '50k+', icon: Target },
+  { label: 'Concurrent WebSocket Users', value: '500+', icon: Users },
+  { label: 'Frontend Bundle Cut', value: '35%', icon: Star },
 ];
 
 const Achievements = () => {
@@ -112,7 +130,7 @@ const Achievements = () => {
           {/* Quick Stats */}
           <motion.div variants={itemVariants}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {stats.map((stat, index) => (
+              {stats.map((stat) => (
                 <Card
                   key={stat.label}
                   className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary-500/30 transition-all duration-300"
@@ -126,24 +144,6 @@ const Achievements = () => {
                   </CardContent>
                 </Card>
               ))}
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary-500/30 transition-all duration-300">
-                <CardContent className="p-6 text-center">
-                  <Trophy className="h-6 w-6 text-amber-500 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-foreground mb-1">1</p>
-                  <p className="text-xs text-muted-foreground">
-                    Competition Won
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary-500/30 transition-all duration-300">
-                <CardContent className="p-6 text-center">
-                  <Users className="h-6 w-6 text-blue-500 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-foreground mb-1">CR</p>
-                  <p className="text-xs text-muted-foreground">
-                    Leadership Role
-                  </p>
-                </CardContent>
-              </Card>
             </div>
           </motion.div>
 
