@@ -4,6 +4,7 @@ import { Menu, X, Sun, Moon, FileText } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useTheme } from '../../contexts/ThemeContext';
 import { cn } from '../../lib/utils';
+import useResume from '../../hooks/useResume';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -16,6 +17,7 @@ const navLinks = [
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
+  const { resumeUrl } = useResume();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -106,7 +108,7 @@ const Navbar = () => {
 
               {/* Resume Button - Desktop */}
               <a
-                href="/resume.pdf"
+                href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:inline-flex"
@@ -177,7 +179,7 @@ const Navbar = () => {
                   className="pt-2 space-y-2"
                 >
                   <a
-                    href="/resume.pdf"
+                    href={resumeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full"

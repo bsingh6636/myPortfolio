@@ -15,8 +15,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Separator } from '../ui/separator';
-
-import { Phone, FileText } from 'lucide-react';
+import { Phone, FileText, AlertCircle } from 'lucide-react';
+import useResume from '../../hooks/useResume';
 
 const socialLinks = [
   {
@@ -58,6 +58,7 @@ const socialLinks = [
 ];
 
 const Contact = () => {
+  const { resumeUrl } = useResume();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -65,6 +66,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -88,19 +90,46 @@ const Contact = () => {
     },
   };
 
+  const contactChannels = [
+    ...socialLinks.slice(0, 5),
+    {
+      name: 'Resume (PDF)',
+      icon: FileText,
+      href: resumeUrl,
+      username: 'Download Latest Resume',
+    },
+  ];
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormState({ name: '', email: '', message: '' });
-    
-    // Reset success state after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://backend-dev-beige.vercel.app/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.status === 'success') {
+        setIsSubmitted(true);
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        setErrorMessage(
+          result.message || 'Failed to send message. Please use direct email below.'
+        );
+      }
+    } catch (err) {
+      console.error('Contact submit error:', err);
+      setErrorMessage('Network connection error. Please use direct email below.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -176,7 +205,7 @@ const Contact = () => {
                   <CardTitle className="text-lg">Contact Channels & Profiles</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {socialLinks.map((link) => (
+                  {contactChannels.map((link) => (
                     <a
                       key={link.name}
                       href={link.href}
@@ -227,14 +256,38 @@ const Contact = () => {
                         <CheckCircle className="h-8 w-8 text-green-500" />
                       </div>
                       <h3 className="text-xl font-semibold text-foreground mb-2">
-                        Message Sent!
+                        Message Delivered
                       </h3>
-                      <p className="text-muted-foreground">
-                        Thank you for reaching out. I'll get back to you soon.
+                      <p className="text-muted-foreground text-sm max-w-sm mx-auto leading-relaxed">
+                        Thank you for reaching out. Your message has been sent directly to brijesh@brijeshhq.com.
                       </p>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setIsSubmitted(false)}
+                        className="mt-6 text-xs border-border"
+                      >
+                        Send Another Message
+                      </Button>
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
+                      {errorMessage && (
+                        <div className="p-3.5 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm flex items-start justify-between gap-3">
+                          <div className="flex items-start gap-2">
+                            <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                            <span>{errorMessage}</span>
+                          </div>
+                          <a
+                            href={`mailto:brijesh@brijeshhq.com?subject=${encodeURIComponent(
+                              'Portfolio message from ' + (formState.name || 'Visitor')
+                            )}&body=${encodeURIComponent(formState.message || '')}`}
+                            className="text-xs font-semibold underline whitespace-nowrap self-center hover:opacity-80"
+                          >
+                            Open Mail App
+                          </a>
+                        </div>
+                      )}
                       <div>
                         <label
                           htmlFor="name"

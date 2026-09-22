@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Github, Linkedin, ChevronDown, FileText } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
+import useResume from '../../hooks/useResume';
 
 const Hero = () => {
+  const { resumeUrl } = useResume();
+
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -88,7 +91,7 @@ const Hero = () => {
           </Button>
 
           <a
-            href="/resume.pdf"
+            href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
