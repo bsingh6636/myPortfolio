@@ -56,7 +56,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-medium mb-6 max-w-2xl mx-auto"
         >
-          Backend-leaning full-stack engineer with 2 years of production experience.
+          Backend focused full stack engineer with 2 years of production experience.
         </motion.p>
 
         {/* Description */}
@@ -66,8 +66,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          At Vedak I build multi-service Node.js and TypeScript backends and the React apps on top of them:
-          Cashfree payments, Zoom-to-S3 recording ingestion, real-time WebSocket notifications, and a
+          At Vedak I build multi service Node.js and TypeScript backends and the React apps on top of them:
+          Cashfree payments, Zoom to S3 recording ingestion, real time WebSocket notifications, and a
           MySQL/Redis job scheduler whose production cutover I led.
         </motion.p>
 

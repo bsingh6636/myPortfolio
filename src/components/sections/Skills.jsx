@@ -14,8 +14,8 @@ const skillCategories = [
       { name: 'Express.js', level: 'Advanced' },
       { name: 'REST API Design', level: 'Advanced' },
       { name: 'WebSockets (Socket.IO)', level: 'Advanced' },
-      { name: 'Event-Driven Architecture', level: 'Advanced' },
-      { name: 'Webhooks & HMAC-SHA256', level: 'Advanced' },
+      { name: 'Event Driven Architecture', level: 'Advanced' },
+      { name: 'Webhooks & HMAC SHA256', level: 'Advanced' },
       { name: 'Idempotency & Retries', level: 'Advanced' },
       { name: 'Sequelize ORM', level: 'Advanced' },
       { name: 'Job Scheduling (DB Crons)', level: 'Advanced' },
@@ -31,7 +31,7 @@ const skillCategories = [
       { name: 'Vite', level: 'Advanced' },
       { name: 'Tailwind CSS', level: 'Advanced' },
       { name: 'Shadcn/ui', level: 'Advanced' },
-      { name: 'Code-Splitting & Bundling', level: 'Advanced' },
+      { name: 'Code Splitting & Bundling', level: 'Advanced' },
       { name: 'Responsive UI Design', level: 'Advanced' },
       { name: 'WebSocket Clients', level: 'Advanced' },
     ],
@@ -53,7 +53,7 @@ const skillCategories = [
     ],
   },
   {
-    title: 'Databases & In-Memory',
+    title: 'Databases & In Memory',
     icon: Database,
     color: 'from-amber-500 to-yellow-500',
     skills: [
@@ -178,7 +178,7 @@ const Skills = () => {
                   Tooling & Workflow
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {['Docker', 'Datadog', 'Nginx', 'Postman', 'Git & GitHub', 'GitHub Actions', 'VS Code', 'Linux / Bash', 'npm & yarn', 'Chrome DevTools', 'Claude AI (Daily use)'].map(
+                  {['Docker', 'Datadog', 'Nginx', 'Postman', 'Git & GitHub', 'GitHub Actions', 'VS Code', 'Linux / Bash', 'npm & yarn', 'Chrome DevTools'].map(
                     (tool) => (
                       <Badge
                         key={tool}

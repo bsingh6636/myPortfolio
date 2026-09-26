@@ -92,7 +92,7 @@ const Education = () => {
               </Card>
             </div>
 
-            {/* Right Column - Certifications & Stats */}
+            {/* Right Column: Certifications & Stats */}
             <div className="space-y-6">
               {/* Certifications */}
               <div>

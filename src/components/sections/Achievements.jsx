@@ -9,7 +9,7 @@ const achievements = [
     icon: Trophy,
     title: 'College Coding Competition Winner',
     description:
-      'Demonstrated high-speed algorithmic thinking and problem solving in competitive college-wide programming.',
+      'Demonstrated algorithmic problem solving in competitive college programming contests.',
     color: 'from-amber-500 to-yellow-500',
     badge: 'Competition Winner',
   },
@@ -17,7 +17,7 @@ const achievements = [
     icon: Package,
     title: 'Published Internal NPM Package',
     description:
-      'Consolidated Sequelize models, migrations, and schema contracts, adopted across multi-repository backend services.',
+      'Consolidated Sequelize models, migrations, and schema contracts, adopted across multi repository backend services.',
     color: 'from-emerald-500 to-teal-500',
     badge: 'Architecture',
   },
@@ -25,7 +25,7 @@ const achievements = [
     icon: Zap,
     title: '45% MTTR Reduction & Production Cutover',
     description:
-      'Led seamless production migration to database-driven job scheduling and Datadog monitoring cutting incident response time by 45%.',
+      'Led the production migration to database job scheduling and Datadog monitoring, cutting incident response time by 45%.',
     color: 'from-purple-500 to-indigo-500',
     badge: 'Reliability',
   },

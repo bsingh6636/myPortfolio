@@ -8,16 +8,16 @@ const highlights = [
   {
     icon: Server,
     title: 'Distributed Backends',
-    description: 'Node.js & TypeScript microservices, event-driven pipelines, and DB-driven job scheduling.',
+    description: 'Node.js and TypeScript microservices, event driven pipelines, and database job scheduling.',
   },
   {
     icon: Globe,
-    title: 'High-Performance UI',
-    description: 'React, Vite, Redux & Tailwind interfaces with code-splitting cutting bundle size by 35%.',
+    title: 'High Performance UI',
+    description: 'React, Vite, Redux and Tailwind interfaces with code splitting cutting bundle size by 35%.',
   },
   {
     icon: Zap,
-    title: 'Real-Time & Integrations',
+    title: 'Real Time & Integrations',
     description: 'WebSockets for 500+ users, Cashfree HMAC payments, Zoom S3 streams, and OpenAI Assistants.',
   },
   {
@@ -42,7 +42,7 @@ const About = () => {
 
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left Column - Story */}
+            {/* Left Column: Story */}
             <div className="space-y-6">
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardContent className="p-6 sm:p-8">
@@ -51,20 +51,20 @@ const About = () => {
                   </h3>
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      I'm a Full Stack Engineer with 2 years of experience building multi-service 
+                      I'm a Full Stack Engineer with 2 years of experience building multi service 
                       Node.js and TypeScript backends, cloud infrastructure, and modern React frontends. 
                       I hold a Bachelor of Engineering in Computer Science from Visvesvaraya Technological University (VTU).
                     </p>
                     <p>
                       On the backend, I have owned integration surfaces end to end for payments (Cashfree), 
                       video conferencing (Zoom), LLM APIs (OpenAI Assistants), and Datadog monitoring. 
-                      I have built HMAC-SHA256 signature verification, media ingestion into S3 with retry handling, 
-                      and database-driven schedulers on MySQL and Redis that replaced host crontabs.
+                      I have built HMAC SHA256 signature verification, media ingestion into S3 with retry handling, 
+                      and database schedulers on MySQL and Redis that replaced host crontabs.
                     </p>
                     <p>
-                      On the frontend, I build the customer-facing and internal interfaces those services power, 
-                      delivering real-time WebSocket notifications for 500+ concurrent users, dynamic filtering tools, 
-                      and cutting bundle sizes by 35% with code-splitting.
+                      On the frontend, I build customer facing and internal interfaces, 
+                      delivering real time WebSocket notifications for 500+ concurrent users, dynamic filtering tools, 
+                      and cutting bundle sizes by 35% with code splitting.
                     </p>
                   </div>
                 </CardContent>
@@ -84,7 +84,7 @@ const About = () => {
               </Card>
             </div>
 
-            {/* Right Column - Highlights */}
+            {/* Right Column: Highlights */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-foreground mb-6">
                 Core Areas
@@ -127,7 +127,7 @@ const About = () => {
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Zero-downtime database-driven job scheduling with MySQL and Redis
+                      Zero downtime database job scheduling with MySQL and Redis
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
@@ -135,7 +135,7 @@ const About = () => {
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Self-hosted infrastructure with Docker Compose, Nginx reverse proxy, and Certbot SSL
+                      Self hosted infrastructure with Docker Compose, Nginx reverse proxy, and Certbot SSL
                     </li>
                   </ul>
                 </CardContent>

@@ -133,7 +133,7 @@ const Contact = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left Column - Contact Info */}
+            {/* Left Column: Contact Info */}
             <div className="space-y-6">
               {/* Quick Contact Card */}
               <Card className="bg-gradient-to-br from-primary-500/5 to-accent-500/5 border-primary-500/20">
@@ -211,7 +211,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Right Column - Contact Form */}
+            {/* Right Column: Contact Form */}
             <div>
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardHeader>

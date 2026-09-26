@@ -107,7 +107,7 @@ const Navbar = () => {
                 </AnimatePresence>
               </Button>
 
-              {/* Resume Button - Desktop */}
+              {/* Resume Button: Desktop */}
               <a
                 href={resumeUrl}
                 target="_blank"
@@ -123,7 +123,7 @@ const Navbar = () => {
                 </Button>
               </a>
 
-              {/* CTA Button - Desktop */}
+              {/* CTA Button: Desktop */}
               <Button
                 onClick={() => scrollToSection('#contact')}
                 className="hidden sm:flex bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"

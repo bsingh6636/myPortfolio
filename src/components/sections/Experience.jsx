@@ -14,12 +14,12 @@ const experiences = [
     role: 'Full Stack Engineer',
     company: 'Vedak',
     subtitle: 'The Expert Network',
-    type: 'Full-time',
+    type: 'Full time',
     period: 'Nov 2024 to Present',
     location: 'Bengaluru, India',
     current: true,
     summary:
-      'Engineered multi-service Node.js & TypeScript backends and production React interfaces. Owned integration surfaces (payments, video, LLM, observability), data pipelines, and real-time systems.',
+      'Built multi service Node.js and TypeScript backends and production React interfaces. Owned integration surfaces (payments, video, LLM, observability), data pipelines, and real time systems.',
     metrics: [
       { label: 'Concurrent Users', value: '500+' },
       { label: 'Bundle Size Cut', value: '35%' },
@@ -27,14 +27,14 @@ const experiences = [
       { label: 'Page Load Speed', value: '2.4s (from 3.2s)' },
     ],
     accomplishments: [
-      'Built webhook-driven ingestion pipeline for Zoom cloud recordings, streaming media directly to AWS S3 via SDK v3 with idempotency guarantees and retry handling, eliminating duplicate ingestion under repeated webhook delivery.',
-      'Replaced host-level crontab with a database-driven job scheduler on MySQL and Redis, adding execution history, Datadog failure alerting, and runtime schedule changes without redeployment; planned and led the production cutover.',
-      'Delivered customer-facing and internal React interfaces end to end: real-time WebSocket notifications (Socket.IO) for 500+ concurrent users, an expert rating and dynamic filtering system, and a CRM reporting module; cut bundle size 35% (3.2s to 2.4s load) via code-splitting.',
-      'Integrated Cashfree Verification Suite end to end across its full API surface, implementing HMAC-SHA256 webhook signature verification and a polling-based workaround for an unavailable balance endpoint.',
-      'Designed and shipped an LLM-based project classification service on the OpenAI Assistants API with injected domain taxonomy, replacing manual categorisation of incoming records.',
+      'Built webhook ingestion pipeline for Zoom cloud recordings, streaming media directly to AWS S3 via SDK v3 with idempotency guarantees and retry handling, eliminating duplicate ingestion under repeated webhook delivery.',
+      'Replaced host level crontab with a database job scheduler on MySQL and Redis, adding execution history, Datadog failure alerting, and runtime schedule changes without redeployment; planned and led the production cutover.',
+      'Delivered customer facing and internal React interfaces end to end: real time WebSocket notifications (Socket.IO) for 500+ concurrent users, an expert rating and dynamic filtering system, and a CRM reporting module; cut bundle size 35% (3.2s to 2.4s load) via code splitting.',
+      'Integrated Cashfree Verification Suite end to end across its full API surface, implementing HMAC SHA256 webhook signature verification and a polling workaround for an unavailable balance endpoint.',
+      'Designed and shipped an LLM project classification service on the OpenAI Assistants API with injected domain taxonomy, replacing manual categorisation of incoming records.',
       'Established centralized error logging and Datadog monitoring across backend services, cutting mean time to resolution by 45%.',
-      'Authored and published an internal npm package consolidating Sequelize models and migrations, adopted across a multi-repository backend codebase.',
-      'Integrated enterprise client APIs into backend workflows, including an automated transcript-delivery pipeline for a global consulting firm.',
+      'Authored and published an internal npm package consolidating Sequelize models and migrations, adopted across a multi repository backend codebase.',
+      'Integrated enterprise client APIs into backend workflows, including an automated transcript delivery pipeline for a global consulting firm.',
     ],
     technologies: [
       'Node.js',
@@ -63,15 +63,15 @@ const experiences = [
     location: 'Bengaluru, India',
     current: false,
     summary:
-      'Engineered interactive, responsive web applications in React and Redux, optimizing frontend load performance and user workflows.',
+      'Built interactive and responsive web applications in React and Redux, optimizing frontend load performance and user workflows.',
     metrics: [
       { label: 'Performance Boost', value: '30%' },
       { label: 'User Engagement', value: '+25%' },
     ],
     accomplishments: [
       'Developed modular web applications using ReactJS and Redux, optimizing rendering cycles and improving client performance by 30%.',
-      'Enhanced front-end feature sets and responsiveness, contributing to a 25% increase in user engagement.',
-      'Built unit test suites with Jest and collaborated on cross-functional UI delivery and API integration.',
+      'Enhanced frontend feature sets and responsiveness, contributing to a 25% increase in user engagement.',
+      'Built unit test suites with Jest and collaborated on cross functional UI delivery and API integration.',
     ],
     technologies: [
       'React.js',

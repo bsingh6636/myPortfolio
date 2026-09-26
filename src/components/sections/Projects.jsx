@@ -43,12 +43,12 @@ const curatedProjects = [
     category: 'backend',
     featured: true,
     description:
-      'CORS proxy API with JWT login, per-user API-key generation, and MongoDB usage tracking (total, monthly, daily, and per-endpoint call counts). Includes a React/Tailwind dashboard for issuing keys and charting usage.',
+      'CORS proxy API with JWT login, user API key generation, and MongoDB usage tracking (total, monthly, daily, and per endpoint call counts). Includes a React and Tailwind dashboard for issuing keys and charting usage.',
     tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'React', 'Docker', 'Tailwind CSS'],
     image: projectImages['EduCors-Helper'],
     github: 'https://github.com/bsingh6636/EduCors-Helper',
     live: 'https://cors-proxy.brijeshhq.com',
-    highlight: 'Per-Endpoint Usage Analytics',
+    highlight: 'Endpoint Usage Analytics',
   },
   {
     id: 'web-hook-service',
@@ -56,19 +56,19 @@ const curatedProjects = [
     category: 'backend',
     featured: true,
     description:
-      'Multi-source webhook relay (Facebook, WhatsApp, Zoom, and a generic /:source route) that forwards events to per-source targets. Failed deliveries are stored in MongoDB with payload, headers, and error, and listed via GET /missed-requests.',
+      'Multi source webhook relay (Facebook, WhatsApp, Zoom, and a generic /:source route) that forwards events to target endpoints. Failed deliveries are stored in MongoDB with payload, headers, and error, and listed via GET /missed-requests.',
     tags: ['TypeScript', 'Node.js', 'Express', 'MongoDB', 'Webhooks', 'REST API'],
     image: null,
     github: 'https://github.com/bsingh6636/web-hook-service',
-    highlight: 'Failed-Delivery Capture',
+    highlight: 'Failed Delivery Capture',
   },
   {
     id: 'infra',
-    name: 'Self-Hosted Production Cloud Stack',
+    name: 'Self Hosted Production Cloud Stack',
     category: 'backend',
     featured: true,
     description:
-      'Config-driven Docker Compose and Nginx stack on AWS EC2: one stack.yaml renders compose and Nginx configs, with validation checks, local previews, release snapshots, and rollback. TLS via Certbot DNS-01 (Cloudflare) per root domain.',
+      'Declarative Docker Compose and Nginx stack on AWS EC2: one stack.yaml renders compose and Nginx configs, with validation checks, local previews, release snapshots, and rollback. TLS via Certbot DNS-01 (Cloudflare) per root domain.',
     tags: ['Docker Compose', 'Nginx', 'AWS EC2', 'Certbot', 'Bash', 'Node.js', 'SSL/TLS'],
     image: null,
     github: 'https://github.com/bsingh6636/infra',
@@ -80,7 +80,7 @@ const curatedProjects = [
     category: 'fullstack',
     featured: false,
     description:
-      'GoFundMe-style fundraising site for Nepal: users request campaigns, an admin approves them, and donors record pledges (eSewa/Khalti/bank; no live payment gateway yet). JWT auth, organiser updates, a blog, and rate-limited APIs.',
+      'Fundraising and crowdfunding platform for Nepal: users create campaigns, admins review them, and donors record pledges (eSewa, Khalti, bank transfer). Includes JWT auth, organiser updates, a blog, and rate limited APIs.',
     tags: ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'],
     image: null,
     github: 'https://github.com/bsingh6636/sahayog-crowdfunding',
@@ -92,7 +92,7 @@ const curatedProjects = [
     category: 'fullstack',
     featured: false,
     description:
-      'Food delivery web app that loads live Swiggy restaurant data through the EduCors proxy (with mock-data fallback), a Redux Toolkit cart, Firebase phone-OTP verification at checkout, a lazy-loaded route, and shimmer loading placeholders.',
+      'Food delivery web app that loads live Swiggy restaurant data through the EduCors proxy (with mock data fallback), a Redux Toolkit cart, Firebase phone OTP verification at checkout, lazy loaded routes, and shimmer loading placeholders.',
     tags: ['React.js', 'Redux Toolkit', 'Tailwind CSS', 'Firebase Phone Auth', 'Leaflet'],
     image: projectImages['swiggy.clone'],
     github: 'https://github.com/bsingh6636/swiggy.clone',
@@ -103,7 +103,7 @@ const curatedProjects = [
     category: 'fullstack',
     featured: false,
     description:
-      'MERN hospital app with a patient site and an admin dashboard: registration, appointment booking with Pending/Accepted/Rejected status, contact messages, and doctor profiles with Cloudinary avatars. Role-based JWT cookies and bcrypt hashing.',
+      'MERN hospital application with a patient portal and admin dashboard: registration, appointment booking with status workflows, contact messages, and doctor profiles with Cloudinary avatars. Role based JWT cookies and bcrypt hashing.',
     tags: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'Cloudinary'],
     image: null,
     github: 'https://github.com/bsingh6636/Hospital_Management_System',
@@ -114,7 +114,7 @@ const curatedProjects = [
     category: 'data',
     featured: false,
     description:
-      'React dashboard that charts a sample Shopify orders/customers dataset with Chart.js: sales over time, growth rate, new and repeat customers, cohort lifetime value, and a Leaflet map of customers by city.',
+      'React dashboard that charts a sample Shopify orders and customers dataset with Chart.js: sales over time, growth rate, new and repeat customers, cohort lifetime value, and a Leaflet map of customers by city.',
     tags: ['React.js', 'Chart.js', 'Leaflet', 'Tailwind CSS'],
     image: projectImages['ShopifyOrder-FrontEnd'],
     github: 'https://github.com/bsingh6636/ShopifyOrder-FrontEnd',
@@ -125,7 +125,7 @@ const curatedProjects = [
     category: 'data',
     featured: false,
     description:
-      'Netflix-style movie browser where a natural-language query is sent to Google Gemini for movie suggestions, which are then looked up on TMDB for posters and trailers. Firebase email/password auth, Redux Toolkit state, hosted on Firebase.',
+      'Movie discovery app where natural language queries are sent to Google Gemini for movie suggestions, then looked up on TMDB for posters and trailers. Firebase authentication and Redux Toolkit state management.',
     tags: ['React.js', 'Redux Toolkit', 'Gemini API', 'TMDB API', 'Firebase'],
     image: projectImages['NetflixGpt'],
     github: 'https://github.com/bsingh6636/NetflixGpt',
@@ -137,7 +137,7 @@ const curatedProjects = [
     category: 'data',
     featured: false,
     description:
-      'Stock dashboard with Chart.js price charts (intraday/weekly/monthly) and company search via Alpha Vantage, sector performance and market quotes via Financial Modeling Prep, a rotating news-sentiment card, and Firebase auth.',
+      'Stock dashboard with Chart.js price charts (intraday, weekly, monthly) and company search via Alpha Vantage, sector performance and market quotes via Financial Modeling Prep, a rotating news sentiment card, and Firebase auth.',
     tags: ['React.js', 'Alpha Vantage API', 'Financial Modeling Prep API', 'Chart.js', 'Tailwind CSS', 'Firebase'],
     image: projectImages['Stock_Market'],
     github: 'https://github.com/bsingh6636/Stock_Market',
@@ -149,7 +149,7 @@ const curatedProjects = [
     category: 'data',
     featured: false,
     description:
-      'TypeScript React app that lists Art Institute of Chicago artworks in a PrimeReact DataTable with server-side pagination, multi-row selection, an overlay panel to select N rows across pages, and a loading spinner.',
+      'TypeScript React app that lists Art Institute of Chicago artworks in a PrimeReact DataTable with server side pagination, multi row selection, an overlay panel to select N rows across pages, and a loading spinner.',
     tags: ['TypeScript', 'React.js', 'PrimeReact', 'Vite', 'Art Institute of Chicago API'],
     image: null,
     github: 'https://github.com/bsingh6636/Artwork-Data-Table',
@@ -160,7 +160,7 @@ const curatedProjects = [
     category: 'fullstack',
     featured: false,
     description:
-      'Travel planner with Ixigo airport/city autocomplete (through a small Express CORS proxy), trip date pickers, and a user-submitted places feed; photos are uploaded to Cloudinary by a companion Express/MongoDB backend repo.',
+      'Travel planner with Ixigo airport and city autocomplete (via an Express CORS proxy), trip date pickers, and a community places feed; photos are uploaded to Cloudinary by an Express and MongoDB backend service.',
     tags: ['React', 'Node.js', 'Express', 'Ixigo API', 'Cloudinary', 'MongoDB'],
     image: projectImages['travel_planner_weather_dashboard'],
     github: 'https://github.com/bsingh6636/travel_planner.weather_dashboard',
@@ -181,10 +181,10 @@ const emailSystemDetails = {
     'Used for my own inbound and outbound email',
   ],
   learnings: [
-    'A custom-domain address can run on free forwarding and SMTP services instead of Google Workspace',
+    'A custom domain address can run on free forwarding and SMTP services instead of Google Workspace',
     'SPF, DKIM, and DMARC let receiving servers check that mail from a domain is authorised',
     'Receiving (MX forwarding) and sending (SMTP relay) can be handled by separate providers',
-    'Hands-on practice with MX, TXT, and CNAME records and how mail routing uses them',
+    'Direct practice configuring MX, TXT, and CNAME records for reliable mail routing',
   ],
 };
 
@@ -211,11 +211,11 @@ const Projects = () => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real-world systems, API services, cloud infrastructure, and full-stack applications
+              Production systems, API services, cloud infrastructure, and full stack applications
             </p>
           </div>
 
-          {/* Featured Highlight - Domain Email System */}
+          {/* Featured Highlight: Domain Email System */}
           <div className="mb-16">
             <Card className="overflow-hidden bg-gradient-to-br from-primary-500/5 via-background to-accent-500/5 border-primary-500/20 shadow-sm">
               <CardHeader className="pb-4">
@@ -224,7 +224,7 @@ const Projects = () => {
                     Infrastructure Spotlight
                   </Badge>
                   <Badge variant="outline" className="text-xs border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5">
-                    Free-Tier Services
+                    Free Tier Services
                   </Badge>
                 </div>
                 <CardTitle className="text-2xl sm:text-3xl flex items-center gap-3">
@@ -234,7 +234,7 @@ const Projects = () => {
                   Custom Domain Email Setup
                 </CardTitle>
                 <CardDescription className="text-base mt-2">
-                  Set up a custom-domain address on free tiers: ImprovMX forwards inbound mail for brijeshhq.com,
+                  Set up a custom domain address on free tiers: ImprovMX forwards inbound mail for brijeshhq.com,
                   Brevo SMTP sends outbound mail, and Cloudflare DNS holds the MX and SPF records, instead of paying
                   for Google Workspace.
                 </CardDescription>
