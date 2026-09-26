@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Zap, Globe, Server, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
 import { Separator } from '../ui/separator';
@@ -29,51 +28,22 @@ const highlights = [
 ];
 
 const About = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
     <section id="about" className="py-24 sm:py-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div>
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               About Me
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
-          </motion.div>
+          </div>
 
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left Column - Story */}
-            <motion.div variants={itemVariants} className="space-y-6">
+            <div className="space-y-6">
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardContent className="p-6 sm:p-8">
                   <h3 className="text-xl font-semibold text-foreground mb-4">
@@ -112,10 +82,10 @@ const About = () => {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Right Column - Highlights */}
-            <motion.div variants={itemVariants} className="space-y-4">
+            <div className="space-y-4">
               <h3 className="text-xl font-semibold text-foreground mb-6">
                 Core Areas
               </h3>
@@ -123,7 +93,6 @@ const About = () => {
                 {highlights.map((item) => (
                   <motion.div
                     key={item.title}
-                    variants={itemVariants}
                     whileHover={{ scale: 1.02, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -171,9 +140,9 @@ const About = () => {
                   </ul>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

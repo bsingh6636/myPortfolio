@@ -1,6 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import {
   Briefcase,
   Calendar,
@@ -88,39 +86,12 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
     <section id="experience" className="py-24 sm:py-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div>
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4 px-3 py-1 border-primary-500/30 bg-primary-500/5">
               <Briefcase className="w-3.5 h-3.5 mr-1 text-primary-500" />
               Experience
@@ -132,12 +103,12 @@ const Experience = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Production engineering on scalable distributed backends, cloud infrastructure, and responsive React web apps
             </p>
-          </motion.div>
+          </div>
 
           {/* Experience List */}
           <div className="space-y-10">
             {experiences.map((exp, expIndex) => (
-              <motion.div key={exp.company} variants={itemVariants}>
+              <div key={exp.company}>
                 <Card className="overflow-hidden bg-card/60 backdrop-blur-sm border-border/50 hover:border-primary-500/30 transition-all duration-300 shadow-sm hover:shadow-md">
                   {/* Top Highlight Accent */}
                   <div
@@ -252,10 +223,10 @@ const Experience = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

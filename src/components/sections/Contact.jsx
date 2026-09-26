@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import {
   Mail,
   Send,
@@ -68,28 +67,6 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   const contactChannels = [
     ...socialLinks.slice(0, 5),
     {
@@ -142,14 +119,9 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 sm:py-32 bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div>
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Let's Connect
             </h2>
@@ -158,11 +130,11 @@ const Contact = () => {
               Have a project in mind or want to discuss opportunities? I'd love
               to hear from you.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Column - Contact Info */}
-            <motion.div variants={itemVariants} className="space-y-6">
+            <div className="space-y-6">
               {/* Quick Contact Card */}
               <Card className="bg-gradient-to-br from-primary-500/5 to-accent-500/5 border-primary-500/20">
                 <CardHeader>
@@ -237,10 +209,10 @@ const Contact = () => {
                 <MapPin className="h-5 w-5 text-primary-500" />
                 <span>Bengaluru, Karnataka, India</span>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Column - Contact Form */}
-            <motion.div variants={itemVariants}>
+            <div>
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardHeader>
                   <CardTitle className="text-xl">Send a Message</CardTitle>
@@ -367,11 +339,11 @@ const Contact = () => {
                   )}
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
 
           {/* Footer Note */}
-          <motion.div variants={itemVariants} className="mt-16 text-center">
+          <div className="mt-16 text-center">
             <Separator className="mb-8" />
             <p className="text-sm text-muted-foreground">
               Built with{' '}
@@ -384,8 +356,8 @@ const Contact = () => {
               © {new Date().getFullYear()} Brijesh Kushwaha. All rights
               reserved.
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Toaster } from 'react-hot-toast';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 
 // New Modern Portfolio Components
@@ -40,21 +39,6 @@ function AppContent() {
         <Achievements />
         <Contact />
       </main>
-
-      {/* Toast Notifications */}
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          duration: 4000,
-          style: {
-            background: isDark ? 'hsl(222.2 84% 4.9%)' : 'hsl(0 0% 100%)',
-            color: isDark ? 'hsl(210 40% 98%)' : 'hsl(222.2 84% 4.9%)',
-            border: isDark ? '1px solid hsl(217.2 32.6% 17.5%)' : '1px solid hsl(214.3 31.8% 91.4%)',
-            borderRadius: '0.75rem',
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-          },
-        }}
-      />
     </div>
   );
 }

@@ -1,6 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { GraduationCap, Calendar, MapPin, BookOpen, Award } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -22,39 +20,12 @@ const certifications = [
 ];
 
 const Education = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
     <section id="education" className="py-24 sm:py-32 bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div>
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Education
             </h2>
@@ -62,11 +33,11 @@ const Education = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Academic foundation in computer engineering and continuous technical learning
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Main Education Card */}
-            <motion.div variants={itemVariants}>
+            <div>
               <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary-500/30 transition-all duration-300 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-accent-500" />
                 <CardHeader>
@@ -119,12 +90,12 @@ const Education = () => {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Right Column - Certifications & Stats */}
             <div className="space-y-6">
               {/* Certifications */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary-500/30 transition-all duration-300">
                   <CardHeader className="pb-4">
                     <CardTitle className="text-lg flex items-center gap-2">
@@ -157,10 +128,10 @@ const Education = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
 
               {/* Technical Foundations & Lab Work */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg flex items-center gap-2">
@@ -185,10 +156,10 @@ const Education = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

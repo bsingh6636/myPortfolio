@@ -33,7 +33,7 @@ const Hero = () => {
           className="mb-8"
         >
           <Badge variant="outline" className="px-3.5 py-1 text-xs font-medium border-border/60 bg-muted/40 text-muted-foreground">
-            Full Stack Engineer, Bengaluru
+            Full Stack Engineer at Vedak · Bengaluru
           </Badge>
         </motion.div>
 
@@ -44,11 +44,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-6"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            <span className="block text-foreground">Hi, I'm</span>
-            <span className="block mt-2 bg-gradient-to-r from-primary-500 via-primary-400 to-accent-500 bg-clip-text text-transparent">
-              Brijesh Kushwaha
-            </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-primary-500 via-primary-400 to-accent-500 bg-clip-text text-transparent">
+            Brijesh Kushwaha
           </h1>
         </motion.div>
 
@@ -59,7 +56,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-medium mb-6 max-w-2xl mx-auto"
         >
-          Building reliable Node.js backends, React interfaces, and real-time systems.
+          Backend-leaning full-stack engineer with 2 years of production experience.
         </motion.p>
 
         {/* Description */}
@@ -69,9 +66,9 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Full stack engineer with 2 years of experience developing multi-service Node.js and TypeScript
-          backends and production React frontends. Hands-on experience with WebSocket notifications,
-          event-driven pipelines, payment integrations, and cloud infrastructure.
+          At Vedak I build multi-service Node.js and TypeScript backends and the React apps on top of them:
+          Cashfree payments, Zoom-to-S3 recording ingestion, real-time WebSocket notifications, and a
+          MySQL/Redis job scheduler whose production cutover I led.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -155,7 +152,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="mt-10 flex justify-center"
         >
           <motion.button
             onClick={() => scrollToSection('#about')}

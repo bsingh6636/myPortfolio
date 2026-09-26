@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Code, Server, Cloud, Cpu, Database, KeyRound, Terminal } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -96,39 +95,12 @@ const skillCategories = [
 const languages = ['JavaScript (ES6+)', 'TypeScript', 'SQL', 'Python', 'Bash', 'HTML5 & CSS3', 'C/C++'];
 
 const Skills = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
     <section id="skills" className="py-24 sm:py-32 bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div>
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Skills & Expertise
             </h2>
@@ -136,10 +108,10 @@ const Skills = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Core engineering competencies, frameworks, and infrastructure tools
             </p>
-          </motion.div>
+          </div>
 
           {/* Languages Badge Row */}
-          <motion.div variants={itemVariants} className="mb-12">
+          <div className="mb-12">
             <div className="flex flex-wrap justify-center gap-3">
               <span className="text-sm text-muted-foreground mr-2 self-center">
                 Languages:
@@ -154,14 +126,13 @@ const Skills = () => {
                 </Badge>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Skills Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((category, categoryIndex) => (
+            {skillCategories.map((category) => (
               <motion.div
                 key={category.title}
-                variants={itemVariants}
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
@@ -180,23 +151,14 @@ const Skills = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      {category.skills.map((skill, skillIndex) => (
-                        <motion.div
+                      {category.skills.map((skill) => (
+                        <Badge
                           key={skill.name}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={inView ? { opacity: 1, scale: 1 } : {}}
-                          transition={{
-                            delay: categoryIndex * 0.1 + skillIndex * 0.05,
-                            duration: 0.3,
-                          }}
+                          variant="outline"
+                          className="px-3 py-1.5 text-sm bg-background/50 hover:bg-primary-500/10 hover:border-primary-500/30 transition-colors cursor-default"
                         >
-                          <Badge
-                            variant="outline"
-                            className="px-3 py-1.5 text-sm bg-background/50 hover:bg-primary-500/10 hover:border-primary-500/30 transition-colors cursor-default"
-                          >
-                            {skill.name}
-                          </Badge>
-                        </motion.div>
+                          {skill.name}
+                        </Badge>
                       ))}
                     </div>
                   </CardContent>
@@ -206,7 +168,7 @@ const Skills = () => {
           </div>
 
           {/* Tooling Section */}
-          <motion.div variants={itemVariants} className="mt-12">
+          <div className="mt-12">
             <Card className="bg-gradient-to-br from-primary-500/5 to-accent-500/5 border-primary-500/20">
               <CardContent className="p-6">
                 <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center">
@@ -230,8 +192,8 @@ const Skills = () => {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

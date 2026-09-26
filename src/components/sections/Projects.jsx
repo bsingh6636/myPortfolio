@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import {
   Globe,
   Github,
@@ -8,11 +7,11 @@ import {
   Server,
   Shield,
   CheckCircle,
-  ExternalLink,
   ChevronDown,
   Layers,
   Terminal,
   Cpu,
+  ExternalLink,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -44,11 +43,12 @@ const curatedProjects = [
     category: 'backend',
     featured: true,
     description:
-      'Public API proxy handling 50,000+ monthly requests with JWT & API-key authentication, per-key rate limiting, and request-level analytics. Shipped a React/Tailwind console for key issuance and quota visibility.',
+      'CORS proxy API with JWT login, per-user API-key generation, and MongoDB usage tracking (total, monthly, daily, and per-endpoint call counts). Includes a React/Tailwind dashboard for issuing keys and charting usage.',
     tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'React', 'Docker', 'Tailwind CSS'],
     image: projectImages['EduCors-Helper'],
     github: 'https://github.com/bsingh6636/EduCors-Helper',
-    highlight: '50,000+ Monthly Requests',
+    live: 'https://cors-proxy.brijeshhq.com',
+    highlight: 'Per-Endpoint Usage Analytics',
   },
   {
     id: 'web-hook-service',
@@ -56,11 +56,11 @@ const curatedProjects = [
     category: 'backend',
     featured: true,
     description:
-      'Multi-source webhook relay forwarding inbound events to per-source targets. Persists failed deliveries into MongoDB with a complete retrieval API for manual and automated replay.',
+      'Multi-source webhook relay (Facebook, WhatsApp, Zoom, and a generic /:source route) that forwards events to per-source targets. Failed deliveries are stored in MongoDB with payload, headers, and error, and listed via GET /missed-requests.',
     tags: ['TypeScript', 'Node.js', 'Express', 'MongoDB', 'Webhooks', 'REST API'],
     image: null,
     github: 'https://github.com/bsingh6636/web-hook-service',
-    highlight: 'Idempotent Replay API',
+    highlight: 'Failed-Delivery Capture',
   },
   {
     id: 'infra',
@@ -68,11 +68,11 @@ const curatedProjects = [
     category: 'backend',
     featured: true,
     description:
-      'Production Docker Compose and Nginx stack hosting personal web applications on an Azure VM. Features multi-domain reverse proxy routing, wildcard SSL via Certbot, and automated renewal checks.',
-    tags: ['Docker Compose', 'Nginx', 'Certbot', 'Azure VM', 'Bash', 'SSL/TLS'],
+      'Config-driven Docker Compose and Nginx stack on AWS EC2: one stack.yaml renders compose and Nginx configs, with validation checks, local previews, release snapshots, and rollback. TLS via Certbot DNS-01 (Cloudflare) per root domain.',
+    tags: ['Docker Compose', 'Nginx', 'AWS EC2', 'Certbot', 'Bash', 'Node.js', 'SSL/TLS'],
     image: null,
     github: 'https://github.com/bsingh6636/infra',
-    highlight: 'Automated Wildcard SSL',
+    highlight: 'Release Snapshots + Rollback',
   },
   {
     id: 'sahayog-crowdfunding',
@@ -80,10 +80,11 @@ const curatedProjects = [
     category: 'fullstack',
     featured: false,
     description:
-      'Minimal GoFundMe-style crowdfunding platform built for transparent community causes in Nepal. Features campaign creation, fund tracking, backer pledges, and an intuitive modern UI.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+      'GoFundMe-style fundraising site for Nepal: users request campaigns, an admin approves them, and donors record pledges (eSewa/Khalti/bank; no live payment gateway yet). JWT auth, organiser updates, a blog, and rate-limited APIs.',
+    tags: ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'],
     image: null,
     github: 'https://github.com/bsingh6636/sahayog-crowdfunding',
+    live: 'https://nepalfundme.com',
   },
   {
     id: 'swiggy.clone',
@@ -91,74 +92,76 @@ const curatedProjects = [
     category: 'fullstack',
     featured: false,
     description:
-      'End-to-end food delivery web app with Firebase mobile OTP authentication, real-time WebSocket order status tracking, lazy loading, and code chunking for fast sub-2 second load times.',
-    tags: ['React.js', 'Redux', 'Tailwind CSS', 'Firebase OTP', 'WebSockets'],
+      'Food delivery web app that loads live Swiggy restaurant data through the EduCors proxy (with mock-data fallback), a Redux Toolkit cart, Firebase phone-OTP verification at checkout, a lazy-loaded route, and shimmer loading placeholders.',
+    tags: ['React.js', 'Redux Toolkit', 'Tailwind CSS', 'Firebase Phone Auth', 'Leaflet'],
     image: projectImages['swiggy.clone'],
     github: 'https://github.com/bsingh6636/swiggy.clone',
   },
   {
     id: 'Hospital_Management_System',
-    name: 'Cloud-Native Hospital Management',
+    name: 'Hospital Management System (MERN)',
     category: 'fullstack',
     featured: false,
     description:
-      'Healthcare platform with AWS EC2 hosting, RDS MySQL for ACID-compliant patient data, S3 for encrypted medical records, IAM role-based access control, and secure multi-tier JWT authentication.',
-    tags: ['MERN Stack', 'AWS EC2', 'AWS RDS', 'AWS S3', 'IAM', 'JWT'],
+      'MERN hospital app with a patient site and an admin dashboard: registration, appointment booking with Pending/Accepted/Rejected status, contact messages, and doctor profiles with Cloudinary avatars. Role-based JWT cookies and bcrypt hashing.',
+    tags: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'Cloudinary'],
     image: null,
     github: 'https://github.com/bsingh6636/Hospital_Management_System',
   },
   {
     id: 'ShopifyOrder-FrontEnd',
-    name: 'Shopify E-Commerce Analytics Suite',
+    name: 'Shopify Sales Analytics Dashboard',
     category: 'data',
     featured: false,
     description:
-      'Interactive visual dashboard for Shopify merchants using Chart.js: tracks sales growth rates over time, customer lifetime values by cohort, repeat vs new buyer ratios, and geographic breakdowns.',
-    tags: ['React.js', 'Node.js', 'Express', 'Chart.js', 'Tailwind CSS'],
+      'React dashboard that charts a sample Shopify orders/customers dataset with Chart.js: sales over time, growth rate, new and repeat customers, cohort lifetime value, and a Leaflet map of customers by city.',
+    tags: ['React.js', 'Chart.js', 'Leaflet', 'Tailwind CSS'],
     image: projectImages['ShopifyOrder-FrontEnd'],
     github: 'https://github.com/bsingh6636/ShopifyOrder-FrontEnd',
   },
   {
     id: 'NetflixGpt',
-    name: 'NetflixGPT (AI Movie Discovery)',
+    name: 'NetflixGPT (AI Movie Search)',
     category: 'data',
     featured: false,
     description:
-      'AI-powered movie recommendation platform leveraging the OpenAI API for natural language conversational movie search, TMDB API for high-res media metadata, and Firebase authentication.',
-    tags: ['React.js', 'Redux', 'OpenAI API', 'TMDB API', 'Firebase'],
+      'Netflix-style movie browser where a natural-language query is sent to Google Gemini for movie suggestions, which are then looked up on TMDB for posters and trailers. Firebase email/password auth, Redux Toolkit state, hosted on Firebase.',
+    tags: ['React.js', 'Redux Toolkit', 'Gemini API', 'TMDB API', 'Firebase'],
     image: projectImages['NetflixGpt'],
     github: 'https://github.com/bsingh6636/NetflixGpt',
+    live: 'https://nwtflixgpt.web.app',
   },
   {
     id: 'Stock_Market',
-    name: 'Stock Market Sentiment Dashboard',
+    name: 'Stock Market Dashboard',
     category: 'data',
     featured: false,
     description:
-      'Financial analysis web app consuming Alpha Vantage APIs for dynamic stock movement charts, sector performance comparisons, and real-time market sentiment indicators.',
-    tags: ['React.js', 'Alpha Vantage API', 'Chart.js', 'Tailwind CSS'],
+      'Stock dashboard with Chart.js price charts (intraday/weekly/monthly) and company search via Alpha Vantage, sector performance and market quotes via Financial Modeling Prep, a rotating news-sentiment card, and Firebase auth.',
+    tags: ['React.js', 'Alpha Vantage API', 'Financial Modeling Prep API', 'Chart.js', 'Tailwind CSS', 'Firebase'],
     image: projectImages['Stock_Market'],
     github: 'https://github.com/bsingh6636/Stock_Market',
+    live: 'https://stock-market-eosin.vercel.app',
   },
   {
     id: 'Artwork-Data-Table',
-    name: 'Artwork Paginated Data Platform',
+    name: 'Artwork Data Table',
     category: 'data',
     featured: false,
     description:
-      'TypeScript React enterprise application showcasing a paginated data table of artworks using PrimeReact with multi-row selection, dynamic lazy loading, and custom loading states.',
-    tags: ['TypeScript', 'React.js', 'PrimeReact', 'REST APIs'],
+      'TypeScript React app that lists Art Institute of Chicago artworks in a PrimeReact DataTable with server-side pagination, multi-row selection, an overlay panel to select N rows across pages, and a loading spinner.',
+    tags: ['TypeScript', 'React.js', 'PrimeReact', 'Vite', 'Art Institute of Chicago API'],
     image: null,
     github: 'https://github.com/bsingh6636/Artwork-Data-Table',
   },
   {
     id: 'travel_planner_weather_dashboard',
-    name: 'Travel Planner & Weather Dashboard',
+    name: 'Travel Planner',
     category: 'fullstack',
     featured: false,
     description:
-      'Travel discovery portal integrating Ixigo APIs for route ticket pricing, real-time weather forecasts, and Cloudinary media uploading for user-contributed recommendations.',
-    tags: ['Node.js', 'Express', 'React', 'Ixigo API', 'Cloudinary'],
+      'Travel planner with Ixigo airport/city autocomplete (through a small Express CORS proxy), trip date pickers, and a user-submitted places feed; photos are uploaded to Cloudinary by a companion Express/MongoDB backend repo.',
+    tags: ['React', 'Node.js', 'Express', 'Ixigo API', 'Cloudinary', 'MongoDB'],
     image: projectImages['travel_planner_weather_dashboard'],
     github: 'https://github.com/bsingh6636/travel_planner.weather_dashboard',
   },
@@ -167,55 +170,38 @@ const curatedProjects = [
 const emailSystemDetails = {
   architecture: [
     { name: 'Receive & Forward', tool: 'ImprovMX', icon: Mail },
-    { name: 'Send Emails', tool: 'Brevo (SMTP + DKIM)', icon: Server },
-    { name: 'DNS Management', tool: 'Namecheap', icon: Globe },
+    { name: 'Send Emails', tool: 'Brevo (SMTP relay)', icon: Server },
+    { name: 'DNS Management', tool: 'Cloudflare DNS', icon: Globe },
   ],
-  configured: ['SPF', 'DKIM', 'DMARC', 'CNAME', 'A Records'],
+  configured: ['MX', 'SPF', 'CNAME', 'A Records'],
   impact: [
-    'Zero monthly recurring cost',
-    '100% deliverability with DKIM/SPF cryptographic signatures',
-    'Custom domain branding with brijesh@brijeshhq.com on brijeshhq.com',
-    'Production system used daily for professional inbound and outbound communications',
+    'No paid mailbox subscription (ImprovMX and Brevo free tiers)',
+    'Inbound mail routed via MX records; outbound sent through Brevo SMTP',
+    'Custom address brijesh@brijeshhq.com instead of a Gmail address',
+    'Used for my own inbound and outbound email',
   ],
   learnings: [
-    "You don't need Google Workspace or expensive SaaS to build a professional mail pipeline",
-    'DNS records (SPF, DKIM, DMARC) provide critical domain authority and anti-spoofing',
-    'SMTP relay architecture allows clean decoupling of receiving and sending pipelines',
-    'Owning domain infrastructure builds deep networking fundamentals',
+    'A custom-domain address can run on free forwarding and SMTP services instead of Google Workspace',
+    'SPF, DKIM, and DMARC let receiving servers check that mail from a domain is authorised',
+    'Receiving (MX forwarding) and sending (SMTP relay) can be handled by separate providers',
+    'Hands-on practice with MX, TXT, and CNAME records and how mail routing uses them',
   ],
 };
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [visibleCount, setVisibleCount] = useState(6);
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
   const filteredProjects =
     selectedCategory === 'all'
       ? curatedProjects
       : curatedProjects.filter((p) => p.category === selectedCategory);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
     <section id="projects" className="py-24 sm:py-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div>
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4 px-3 py-1 border-primary-500/30 bg-primary-500/5">
               <Layers className="w-3.5 h-3.5 mr-1 text-primary-500" />
               Software & Systems
@@ -227,10 +213,10 @@ const Projects = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Real-world systems, API services, cloud infrastructure, and full-stack applications
             </p>
-          </motion.div>
+          </div>
 
           {/* Featured Highlight - Domain Email System */}
-          <motion.div variants={itemVariants} className="mb-16">
+          <div className="mb-16">
             <Card className="overflow-hidden bg-gradient-to-br from-primary-500/5 via-background to-accent-500/5 border-primary-500/20 shadow-sm">
               <CardHeader className="pb-4">
                 <div className="flex items-center gap-2 mb-2">
@@ -238,18 +224,19 @@ const Projects = () => {
                     Infrastructure Spotlight
                   </Badge>
                   <Badge variant="outline" className="text-xs border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5">
-                    Zero Cost / Active Daily
+                    Free-Tier Services
                   </Badge>
                 </div>
                 <CardTitle className="text-2xl sm:text-3xl flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-sm">
                     <Mail className="h-6 w-6 text-white" />
                   </div>
-                  Professional Domain Email Architecture
+                  Custom Domain Email Setup
                 </CardTitle>
                 <CardDescription className="text-base mt-2">
-                  Engineered a zero-cost professional email infrastructure using custom domain routing, SMTP relay,
-                  and cryptographic DKIM/SPF verification, avoiding expensive SaaS subscriptions.
+                  Set up a custom-domain address on free tiers: ImprovMX forwards inbound mail for brijeshhq.com,
+                  Brevo SMTP sends outbound mail, and Cloudflare DNS holds the MX and SPF records, instead of paying
+                  for Google Workspace.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -265,7 +252,7 @@ const Projects = () => {
                   <div className="flex items-center gap-2">
                     <Mail className="h-5 w-5 text-primary-500" />
                     <div>
-                      <p className="text-xs text-muted-foreground">Active Inbound Endpoint</p>
+                      <p className="text-xs text-muted-foreground">Address</p>
                       <p className="font-semibold text-foreground text-sm">
                         brijesh@brijeshhq.com
                       </p>
@@ -345,10 +332,10 @@ const Projects = () => {
                 </Tabs>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Category Filter Tabs */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-2 mb-10">
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
             {[
               { id: 'all', label: 'All Projects' },
               { id: 'backend', label: 'Backend & Cloud' },
@@ -372,14 +359,14 @@ const Projects = () => {
                 {tab.label}
               </Button>
             ))}
-          </motion.div>
+          </div>
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.slice(0, visibleCount).map((project) => (
               <motion.div
                 key={project.id}
-                variants={itemVariants}
+                className="min-w-0"
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
               >
@@ -418,7 +405,7 @@ const Projects = () => {
                           </Badge>
                         )}
                       </div>
-                      <p className="text-xs font-mono text-muted-foreground flex items-center">
+                      <p className="text-xs font-mono text-muted-foreground flex items-center break-all">
                         <Terminal className="h-3.5 w-3.5 mr-1.5 text-primary-500" />
                         github.com/bsingh6636/{project.id}
                       </p>
@@ -464,15 +451,17 @@ const Projects = () => {
                         <Github className="h-4 w-4 mr-1.5" />
                         View Code
                       </a>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-xs text-primary-500 hover:text-primary-400 transition-colors"
-                      >
-                        Details
-                        <ExternalLink className="h-3 w-3 ml-1" />
-                      </a>
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-xs text-primary-500 hover:text-primary-400 transition-colors"
+                        >
+                          Live Demo
+                          <ExternalLink className="h-3 w-3 ml-1" />
+                        </a>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -482,7 +471,7 @@ const Projects = () => {
 
           {/* Show More / Less Button */}
           {filteredProjects.length > 6 && (
-            <motion.div variants={itemVariants} className="mt-12 text-center">
+            <div className="mt-12 text-center">
               <Button
                 variant="outline"
                 size="lg"
@@ -502,11 +491,11 @@ const Projects = () => {
                   }`}
                 />
               </Button>
-            </motion.div>
+            </div>
           )}
 
           {/* GitHub Profile Callout */}
-          <motion.div variants={itemVariants} className="mt-16 text-center">
+          <div className="mt-16 text-center">
             <Card className="inline-block bg-muted/40 border-border/50 max-w-xl">
               <CardContent className="p-6">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -531,8 +520,8 @@ const Projects = () => {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

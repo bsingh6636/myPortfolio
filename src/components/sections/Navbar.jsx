@@ -88,6 +88,7 @@ const Navbar = () => {
                 size="icon"
                 onClick={toggleTheme}
                 className="rounded-full"
+                aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
               >
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
@@ -136,6 +137,8 @@ const Navbar = () => {
                 size="icon"
                 className="lg:hidden"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? (
                   <X className="h-5 w-5" />
