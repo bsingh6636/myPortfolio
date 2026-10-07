@@ -1,214 +1,134 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, FileText } from 'lucide-react';
-import { Button } from '../ui/button';
-import { useTheme } from '../../contexts/ThemeContext';
-import { cn } from '../../lib/utils';
-import useResume from '../../hooks/useResume';
-
-const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Education', href: '#education' },
-  { name: 'Contact', href: '#contact' },
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "../../contexts/ThemeContext";
+import { profile } from "../../data/profile";
+const links = [
+  ["Experience", "#experience"],
+  ["Work", "#projects"],
+  ["About", "#about"],
+  ["Skills", "#skills"],
+  ["Contact", "#contact"],
 ];
-
-const Navbar = () => {
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
   const { isDark, toggleTheme } = useTheme();
-  const { resumeUrl } = useResume();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const menuButton = useRef(null);
+  const navigation = useRef(null);
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const close = (event) => {
+      if (event.key === "Escape" && open) {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const outside = (event) => {
+      if (open && !navigation.current?.contains(event.target)) setOpen(false);
+    };
+    const media = window.matchMedia("(min-width: 901px)");
+    const resize = (event) => {
+      if (event.matches) setOpen(false);
+    };
+    document.addEventListener("keydown", close);
+    document.addEventListener("pointerdown", outside);
+    media.addEventListener("change", resize);
+    return () => {
+      document.removeEventListener("keydown", close);
+      document.removeEventListener("pointerdown", outside);
+      media.removeEventListener("change", resize);
+    };
+  }, [open]);
+  useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: "-15% 0px -60% 0px", threshold: 0 },
+    );
+    links.forEach(([, href]) => {
+      const section = document.querySelector(href);
+      if (section) observer.observe(section);
+    });
+    return () => observer.disconnect();
   }, []);
-
-  const scrollToSection = (href) => {
-    setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled
-            ? 'bg-background/80 backdrop-blur-xl border-b border-border shadow-sm'
-            : 'bg-transparent'
-        )}
+    <header className="site-header">
+      <nav
+        className="container navigation"
+        aria-label="Main navigation"
+        ref={navigation}
       >
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <motion.a
-              href="#"
-              className="flex items-center space-x-2"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+        <a
+          href="#home"
+          className="wordmark"
+          aria-label={`${profile.displayName}, home`}
+        >
+          bk<span className="wordmark-dot">.</span>
+        </a>
+        <span className="nav-caption">
+          {profile.displayName}
+          <span>Engineer · Bengaluru</span>
+        </span>
+        <div
+          id="navigation-links"
+          className={`navigation-links ${open ? "is-open" : ""}`}
+        >
+          {links.map(([label, href]) => (
+            <a
+              key={href}
+              href={href}
+              onClick={() => setOpen(false)}
+              aria-current={active === href ? "location" : undefined}
             >
-              <span className="text-xl font-bold bg-gradient-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
-                BK
-              </span>
-              <span className="hidden sm:block text-sm font-medium text-muted-foreground">
-                Brijesh Kushwaha
-              </span>
-            </motion.a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-muted"
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-
-            {/* Right Side Actions */}
-            <div className="flex items-center space-x-2">
-              {/* Theme Toggle */}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="rounded-full"
-                aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={isDark ? 'dark' : 'light'}
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    exit={{ scale: 0, rotate: 180 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {isDark ? (
-                      <Sun className="h-5 w-5 text-yellow-500" />
-                    ) : (
-                      <Moon className="h-5 w-5 text-slate-700" />
-                    )}
-                  </motion.div>
-                </AnimatePresence>
-              </Button>
-
-              {/* Resume Button: Desktop */}
-              <a
-                href={resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:inline-flex"
-              >
-                <Button
-                  variant="outline"
-                  className="border-primary-500/30 hover:bg-primary-500/10 text-foreground"
-                >
-                  <FileText className="mr-1.5 h-4 w-4 text-primary-500" />
-                  Resume
-                </Button>
-              </a>
-
-              {/* CTA Button: Desktop */}
-              <Button
-                onClick={() => scrollToSection('#contact')}
-                className="hidden sm:flex bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Contact Me
-              </Button>
-
-              {/* Mobile Menu Button */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="lg:hidden"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={isMobileMenuOpen}
-              >
-                {isMobileMenuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
-              </Button>
-            </div>
-          </div>
-        </nav>
-      </motion.header>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 lg:hidden"
+              {label}
+            </a>
+          ))}
+          <a
+            className="mobile-resume"
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <div className="bg-background/95 backdrop-blur-xl border-b border-border shadow-lg">
-              <div className="max-w-6xl mx-auto px-4 py-4 space-y-2">
-                {navLinks.map((link, index) => (
-                  <motion.button
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    onClick={() => scrollToSection(link.href)}
-                    className="block w-full text-left px-4 py-3 text-base font-medium text-foreground hover:bg-muted rounded-lg transition-colors duration-200"
-                  >
-                    {link.name}
-                  </motion.button>
-                ))}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.05 }}
-                  className="pt-2 space-y-2"
-                >
-                  <a
-                    href={resumeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full"
-                  >
-                    <Button
-                      variant="outline"
-                      className="w-full border-primary-500/30 text-foreground"
-                    >
-                      <FileText className="mr-2 h-4 w-4 text-primary-500" />
-                      View Resume
-                    </Button>
-                  </a>
-                  <Button
-                    onClick={() => scrollToSection('#contact')}
-                    className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white"
-                  >
-                    Contact Me
-                  </Button>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            Resume PDF <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        </div>
+        <div className="navigation-actions">
+          <button
+            type="button"
+            className="icon-button theme-button"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+          >
+            {isDark ? (
+              <Sun size={18} aria-hidden="true" />
+            ) : (
+              <Moon size={18} aria-hidden="true" />
+            )}
+          </button>
+          <a
+            className="nav-resume"
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+          <button
+            ref={menuButton}
+            type="button"
+            className="icon-button menu-button"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-controls="navigation-links"
+            aria-label={open ? "Close navigation" : "Open navigation"}
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
+        </div>
+      </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}
