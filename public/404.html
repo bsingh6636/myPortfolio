@@ -1,45 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>Page not found | Brijesh Kushwaha</title>
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" />
     <style>
       body {
         margin: 0;
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: #030712;
-        color: #94a3b8;
-        font-family: 'Inter', system-ui, sans-serif;
-        text-align: center;
-        padding: 0 16px;
+        display: grid;
+        place-content: center;
+        background: #f6f4ee;
+        color: #292b26;
+        font-family: Georgia, serif;
+        padding: 24px;
+      }
+      main {
+        max-width: 460px;
+      }
+      p {
+        line-height: 1.7;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        color: #65675d;
       }
       h1 {
-        margin: 0 0 8px;
-        font-size: 4rem;
-        color: #0ea5e9;
+        font-size: 70px;
+        font-weight: 400;
+        margin: 0 0 18px;
+        letter-spacing: -0.06em;
+      }
+      span {
+        color: #a5422d;
       }
       a {
+        display: inline-block;
         margin-top: 24px;
-        color: #0ea5e9;
+        color: #292b26;
+        text-underline-offset: 6px;
       }
-      @media (prefers-color-scheme: light) {
-        body {
-          background: #ffffff;
-          color: #475569;
-        }
+      a:focus-visible {
+        outline: 2px solid #a5422d;
+        outline-offset: 5px;
       }
     </style>
   </head>
   <body>
-    <h1>404</h1>
-    <p>This page doesn't exist.</p>
-    <a href="/">Back to brijeshhq.com</a>
+    <main>
+      <p>BRIJESH KUSHWAHA / 404</p>
+      <h1>
+        A wrong <em>turn<span>.</span></em>
+      </h1>
+      <p>
+        This page doesn’t exist. My projects, experience, and contact details
+        are back on the homepage.
+      </p>
+      <a href="/">Back to the portfolio ↗</a>
+    </main>
   </body>
 </html>

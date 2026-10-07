@@ -3,32 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@radix-ui/react-separator": "^1.1.8",
-    "@radix-ui/react-slot": "^1.2.4",
-    "@radix-ui/react-tabs": "^1.1.13",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "framer-motion": "^12.0.6",
     "lucide-react": "^0.539.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "tailwind-merge": "^3.4.0"
+    "react-dom": "^18.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env CI=false GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build && node scripts/prerender.cjs"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -44,7 +29,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/preset-react": "^7.24.7",
     "cross-env": "^10.1.0",
-    "tailwindcss": "^3.4.9"
+    "react-scripts": "^5.0.1"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
