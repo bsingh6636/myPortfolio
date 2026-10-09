@@ -26,9 +26,7 @@ const Education = () => {
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Education
-            </h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Education</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Academic foundation in computer engineering and continuous technical learning
@@ -51,9 +49,7 @@ const Education = () => {
                     Bachelor of Engineering in Computer Science
                   </CardTitle>
                   <div className="space-y-2 text-muted-foreground">
-                    <p className="font-semibold text-foreground">
-                      KNS Institute of Technology
-                    </p>
+                    <p className="font-semibold text-foreground">KNS Institute of Technology</p>
                     <p className="text-sm font-medium text-primary-500">
                       Visvesvaraya Technological University (VTU)
                     </p>
@@ -78,11 +74,7 @@ const Education = () => {
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {coreSubjects.map((subject) => (
-                        <Badge
-                          key={subject}
-                          variant="secondary"
-                          className="text-xs"
-                        >
+                        <Badge key={subject} variant="secondary" className="text-xs">
                           {subject}
                         </Badge>
                       ))}
@@ -107,18 +99,14 @@ const Education = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      {certifications.map((cert, index) => (
+                      {certifications.map((cert) => (
                         <div
                           key={cert.name}
                           className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
                         >
                           <div>
-                            <p className="font-medium text-foreground text-sm">
-                              {cert.name}
-                            </p>
-                            <p className="text-xs text-muted-foreground">
-                              {cert.issuer}
-                            </p>
+                            <p className="font-medium text-foreground text-sm">{cert.name}</p>
+                            <p className="text-xs text-muted-foreground">{cert.issuer}</p>
                           </div>
                           <Badge variant="outline" className="text-xs">
                             Verified
@@ -143,15 +131,21 @@ const Education = () => {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="p-3 bg-muted/40 rounded-lg border border-border/40 text-sm">
-                      <p className="font-semibold text-foreground">Relational Systems & Algorithms</p>
+                      <p className="font-semibold text-foreground">
+                        Relational Systems & Algorithms
+                      </p>
                       <p className="text-xs text-muted-foreground mt-1">
-                        Rigorous coursework in normalization, ACID transactions, relational indexing, and algorithmic complexity analysis.
+                        Rigorous coursework in normalization, ACID transactions, relational
+                        indexing, and algorithmic complexity analysis.
                       </p>
                     </div>
                     <div className="p-3 bg-muted/40 rounded-lg border border-border/40 text-sm">
-                      <p className="font-semibold text-foreground">Operating Systems & Networking</p>
+                      <p className="font-semibold text-foreground">
+                        Operating Systems & Networking
+                      </p>
                       <p className="text-xs text-muted-foreground mt-1">
-                        UNIX process management, concurrency models, socket communication, and TCP/IP protocol architectures.
+                        UNIX process management, concurrency models, socket communication, and
+                        TCP/IP protocol architectures.
                       </p>
                     </div>
                   </CardContent>

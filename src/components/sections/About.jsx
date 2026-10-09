@@ -8,22 +8,26 @@ const highlights = [
   {
     icon: Server,
     title: 'Distributed Backends',
-    description: 'Node.js and TypeScript microservices, event driven pipelines, and database job scheduling.',
+    description:
+      'Node.js and TypeScript microservices, event driven pipelines, and database job scheduling.',
   },
   {
     icon: Globe,
     title: 'High Performance UI',
-    description: 'React, Vite, Redux and Tailwind interfaces with code splitting cutting bundle size by 35%.',
+    description:
+      'React, Vite, Redux and Tailwind interfaces with code splitting cutting bundle size by 35%.',
   },
   {
     icon: Zap,
     title: 'Real Time & Integrations',
-    description: 'WebSockets for 500+ users, Cashfree HMAC payments, Zoom S3 streams, and OpenAI Assistants.',
+    description:
+      'WebSockets for 500+ users, Cashfree HMAC payments, Zoom S3 streams, and OpenAI Assistants.',
   },
   {
     icon: TrendingUp,
     title: 'Cloud & Observability',
-    description: 'AWS S3/SQS/EC2, Azure VMs, Docker Compose, Nginx, Datadog monitoring cutting MTTR by 45%.',
+    description:
+      'AWS S3/SQS/EC2, Azure VMs, Docker Compose, Nginx, Datadog monitoring cutting MTTR by 45%.',
   },
 ];
 
@@ -34,9 +38,7 @@ const About = () => {
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              About Me
-            </h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">About Me</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
           </div>
 
@@ -46,25 +48,25 @@ const About = () => {
             <div className="space-y-6">
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardContent className="p-6 sm:p-8">
-                  <h3 className="text-xl font-semibold text-foreground mb-4">
-                    Background
-                  </h3>
+                  <h3 className="text-xl font-semibold text-foreground mb-4">Background</h3>
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      I'm a Full Stack Engineer with 2 years of experience building multi service 
-                      Node.js and TypeScript backends, cloud infrastructure, and modern React frontends. 
-                      I hold a Bachelor of Engineering in Computer Science from Visvesvaraya Technological University (VTU).
+                      I'm a Full Stack Engineer with 2 years of experience building multi service
+                      Node.js and TypeScript backends, cloud infrastructure, and modern React
+                      frontends. I hold a Bachelor of Engineering in Computer Science from
+                      Visvesvaraya Technological University (VTU).
                     </p>
                     <p>
-                      On the backend, I have owned integration surfaces end to end for payments (Cashfree), 
-                      video conferencing (Zoom), LLM APIs (OpenAI Assistants), and Datadog monitoring. 
-                      I have built HMAC SHA256 signature verification, media ingestion into S3 with retry handling, 
-                      and database schedulers on MySQL and Redis that replaced host crontabs.
+                      On the backend, I have owned integration surfaces end to end for payments
+                      (Cashfree), video conferencing (Zoom), LLM APIs (OpenAI Assistants), and
+                      Datadog monitoring. I have built HMAC SHA256 signature verification, media
+                      ingestion into S3 with retry handling, and database schedulers on MySQL and
+                      Redis that replaced host crontabs.
                     </p>
                     <p>
-                      On the frontend, I build customer facing and internal interfaces, 
-                      delivering real time WebSocket notifications for 500+ concurrent users, dynamic filtering tools, 
-                      and cutting bundle sizes by 35% with code splitting.
+                      On the frontend, I build customer facing and internal interfaces, delivering
+                      real time WebSocket notifications for 500+ concurrent users, dynamic filtering
+                      tools, and cutting bundle sizes by 35% with code splitting.
                     </p>
                   </div>
                 </CardContent>
@@ -77,8 +79,9 @@ const About = () => {
                     System Reliability & Ownership
                   </h4>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    I focus on building resilient services with clear failure boundaries, idempotent handlers 
-                    for repeated webhook triggers, and actionable telemetry for production observability.
+                    I focus on building resilient services with clear failure boundaries, idempotent
+                    handlers for repeated webhook triggers, and actionable telemetry for production
+                    observability.
                   </p>
                 </CardContent>
               </Card>
@@ -86,9 +89,7 @@ const About = () => {
 
             {/* Right Column: Highlights */}
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground mb-6">
-                Core Areas
-              </h3>
+              <h3 className="text-xl font-semibold text-foreground mb-6">Core Areas</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {highlights.map((item) => (
                   <motion.div
@@ -101,12 +102,8 @@ const About = () => {
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500/10 to-accent-500/10 flex items-center justify-center mb-4">
                           <item.icon className="h-5 w-5 text-primary-500" />
                         </div>
-                        <h4 className="font-semibold text-foreground mb-2">
-                          {item.title}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          {item.description}
-                        </p>
+                        <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -135,7 +132,8 @@ const About = () => {
                     </li>
                     <li className="flex items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
-                      Self hosted infrastructure with Docker Compose, Nginx reverse proxy, and Certbot SSL
+                      Self hosted infrastructure with Docker Compose, Nginx reverse proxy, and
+                      Certbot SSL
                     </li>
                   </ul>
                 </CardContent>

@@ -9,12 +9,14 @@ import {
   ArrowRight,
   CheckCircle,
   Loader2,
+  Phone,
+  FileText,
+  AlertCircle,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Separator } from '../ui/separator';
-import { Phone, FileText, AlertCircle } from 'lucide-react';
 import useResume from '../../hooks/useResume';
 
 const socialLinks = [
@@ -97,9 +99,7 @@ const Contact = () => {
         setIsSubmitted(true);
         setFormState({ name: '', email: '', message: '' });
       } else {
-        setErrorMessage(
-          result.message || 'Failed to send message. Please use direct email below.'
-        );
+        setErrorMessage(result.message || 'Failed to send message. Please use direct email below.');
       }
     } catch (err) {
       console.error('Contact submit error:', err);
@@ -122,13 +122,10 @@ const Contact = () => {
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Let's Connect
-            </h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Let's Connect</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind or want to discuss opportunities? I'd love
-              to hear from you.
+              Have a project in mind or want to discuss opportunities? I'd love to hear from you.
             </p>
           </div>
 
@@ -164,7 +161,10 @@ const Contact = () => {
                       bkushwaha.dev@gmail.com
                     </a>
                   </div>
-                  <Badge variant="outline" className="mt-4 border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5">
+                  <Badge
+                    variant="outline"
+                    className="mt-4 border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5"
+                  >
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2" />
                     Typically replies within 24 hours
                   </Badge>
@@ -190,12 +190,8 @@ const Contact = () => {
                           <link.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary-500 transition-colors" />
                         </div>
                         <div>
-                          <p className="font-medium text-foreground text-sm">
-                            {link.name}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {link.username}
-                          </p>
+                          <p className="font-medium text-foreground text-sm">{link.name}</p>
+                          <p className="text-xs text-muted-foreground">{link.username}</p>
                         </div>
                       </div>
                       <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary-500 group-hover:translate-x-1 transition-all" />
@@ -231,7 +227,8 @@ const Contact = () => {
                         Message Delivered
                       </h3>
                       <p className="text-muted-foreground text-sm max-w-sm mx-auto leading-relaxed">
-                        Thank you for reaching out. Your message has been sent directly to brijesh@brijeshhq.com.
+                        Thank you for reaching out. Your message has been sent directly to
+                        brijesh@brijeshhq.com.
                       </p>
                       <Button
                         variant="outline"
@@ -346,15 +343,12 @@ const Contact = () => {
           <div className="mt-16 text-center">
             <Separator className="mb-8" />
             <p className="text-sm text-muted-foreground">
-              Built with{' '}
-              <span className="text-primary-500 font-medium">React</span>,{' '}
-              <span className="text-primary-500 font-medium">Tailwind CSS</span>
-              , and{' '}
+              Built with <span className="text-primary-500 font-medium">React</span>,{' '}
+              <span className="text-primary-500 font-medium">Tailwind CSS</span>, and{' '}
               <span className="text-primary-500 font-medium">shadcn/ui</span>
             </p>
             <p className="text-xs text-muted-foreground mt-2">
-              © {new Date().getFullYear()} Brijesh Kushwaha. All rights
-              reserved.
+              © {new Date().getFullYear()} Brijesh Kushwaha. All rights reserved.
             </p>
           </div>
         </div>

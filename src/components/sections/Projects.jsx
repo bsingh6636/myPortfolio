@@ -138,7 +138,14 @@ const curatedProjects = [
     featured: false,
     description:
       'Stock dashboard with Chart.js price charts (intraday, weekly, monthly) and company search via Alpha Vantage, sector performance and market quotes via Financial Modeling Prep, a rotating news sentiment card, and Firebase auth.',
-    tags: ['React.js', 'Alpha Vantage API', 'Financial Modeling Prep API', 'Chart.js', 'Tailwind CSS', 'Firebase'],
+    tags: [
+      'React.js',
+      'Alpha Vantage API',
+      'Financial Modeling Prep API',
+      'Chart.js',
+      'Tailwind CSS',
+      'Firebase',
+    ],
     image: projectImages['Stock_Market'],
     github: 'https://github.com/bsingh6636/Stock_Market',
     live: 'https://stock-market-eosin.vercel.app',
@@ -202,7 +209,10 @@ const Projects = () => {
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 px-3 py-1 border-primary-500/30 bg-primary-500/5">
+            <Badge
+              variant="outline"
+              className="mb-4 px-3 py-1 border-primary-500/30 bg-primary-500/5"
+            >
               <Layers className="w-3.5 h-3.5 mr-1 text-primary-500" />
               Software & Systems
             </Badge>
@@ -223,7 +233,10 @@ const Projects = () => {
                   <Badge variant="gradient" className="text-xs">
                     Infrastructure Spotlight
                   </Badge>
-                  <Badge variant="outline" className="text-xs border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5">
+                  <Badge
+                    variant="outline"
+                    className="text-xs border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5"
+                  >
                     Free Tier Services
                   </Badge>
                 </div>
@@ -234,9 +247,9 @@ const Projects = () => {
                   Custom Domain Email Setup
                 </CardTitle>
                 <CardDescription className="text-base mt-2">
-                  Set up a custom domain address on free tiers: ImprovMX forwards inbound mail for brijeshhq.com,
-                  Brevo SMTP sends outbound mail, and Cloudflare DNS holds the MX and SPF records, instead of paying
-                  for Google Workspace.
+                  Set up a custom domain address on free tiers: ImprovMX forwards inbound mail for
+                  brijeshhq.com, Brevo SMTP sends outbound mail, and Cloudflare DNS holds the MX and
+                  SPF records, instead of paying for Google Workspace.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -253,9 +266,7 @@ const Projects = () => {
                     <Mail className="h-5 w-5 text-primary-500" />
                     <div>
                       <p className="text-xs text-muted-foreground">Address</p>
-                      <p className="font-semibold text-foreground text-sm">
-                        brijesh@brijeshhq.com
-                      </p>
+                      <p className="font-semibold text-foreground text-sm">brijesh@brijeshhq.com</p>
                     </div>
                   </div>
                 </div>
@@ -276,9 +287,7 @@ const Projects = () => {
                           className="p-4 bg-card rounded-xl border border-border/50"
                         >
                           <item.icon className="h-5 w-5 text-primary-500 mb-2" />
-                          <p className="text-xs text-muted-foreground">
-                            {item.name}
-                          </p>
+                          <p className="text-xs text-muted-foreground">{item.name}</p>
                           <p className="font-semibold text-foreground text-sm mt-0.5">
                             {item.tool}
                           </p>
@@ -305,10 +314,7 @@ const Projects = () => {
                   <TabsContent value="impact">
                     <ul className="space-y-2.5">
                       {emailSystemDetails.impact.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-center text-sm text-muted-foreground"
-                        >
+                        <li key={item} className="flex items-center text-sm text-muted-foreground">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2.5 flex-shrink-0" />
                           {item}
                         </li>
@@ -319,10 +325,7 @@ const Projects = () => {
                   <TabsContent value="learnings">
                     <ul className="space-y-2.5">
                       {emailSystemDetails.learnings.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-start text-sm text-muted-foreground"
-                        >
+                        <li key={item} className="flex items-start text-sm text-muted-foreground">
                           <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2.5 mt-1.5 flex-shrink-0" />
                           {item}
                         </li>
@@ -400,7 +403,10 @@ const Projects = () => {
                           )}
                         </div>
                         {project.highlight && (
-                          <Badge variant="outline" className="text-xs bg-background/80 border-primary-500/30 text-primary-600 dark:text-primary-400">
+                          <Badge
+                            variant="outline"
+                            className="text-xs bg-background/80 border-primary-500/30 text-primary-600 dark:text-primary-400"
+                          >
                             {project.highlight}
                           </Badge>
                         )}
@@ -425,11 +431,7 @@ const Projects = () => {
                     {/* Tech Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {project.tags.slice(0, 4).map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="text-xs px-2 py-0.5"
-                        >
+                        <Badge key={tag} variant="secondary" className="text-xs px-2 py-0.5">
                           {tag}
                         </Badge>
                       ))}
@@ -476,9 +478,7 @@ const Projects = () => {
                 variant="outline"
                 size="lg"
                 onClick={() =>
-                  setVisibleCount((prev) =>
-                    prev === 6 ? filteredProjects.length : 6
-                  )
+                  setVisibleCount((prev) => (prev === 6 ? filteredProjects.length : 6))
                 }
                 className="group border-border hover:bg-muted"
               >
@@ -504,15 +504,16 @@ const Projects = () => {
                       Explore All Repositories on GitHub
                     </h4>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      30+ open source repositories covering microservices, CLIs, clones, and data structures.
+                      30+ open source repositories covering microservices, CLIs, clones, and data
+                      structures.
                     </p>
                   </div>
-                  <a
-                    href="https://github.com/bsingh6636"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button size="sm" variant="outline" className="border-primary-500/40 text-primary-600 dark:text-primary-400 hover:bg-primary-500/10 whitespace-nowrap">
+                  <a href="https://github.com/bsingh6636" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-primary-500/40 text-primary-600 dark:text-primary-400 hover:bg-primary-500/10 whitespace-nowrap"
+                    >
                       <Github className="h-4 w-4 mr-1.5" />
                       @bsingh6636
                     </Button>

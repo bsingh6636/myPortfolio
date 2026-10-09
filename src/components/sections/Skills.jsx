@@ -92,7 +92,15 @@ const skillCategories = [
   },
 ];
 
-const languages = ['JavaScript (ES6+)', 'TypeScript', 'SQL', 'Python', 'Bash', 'HTML5 & CSS3', 'C/C++'];
+const languages = [
+  'JavaScript (ES6+)',
+  'TypeScript',
+  'SQL',
+  'Python',
+  'Bash',
+  'HTML5 & CSS3',
+  'C/C++',
+];
 
 const Skills = () => {
   return (
@@ -113,15 +121,9 @@ const Skills = () => {
           {/* Languages Badge Row */}
           <div className="mb-12">
             <div className="flex flex-wrap justify-center gap-3">
-              <span className="text-sm text-muted-foreground mr-2 self-center">
-                Languages:
-              </span>
+              <span className="text-sm text-muted-foreground mr-2 self-center">Languages:</span>
               {languages.map((lang) => (
-                <Badge
-                  key={lang}
-                  variant="secondary"
-                  className="px-4 py-1.5 text-sm font-medium"
-                >
+                <Badge key={lang} variant="secondary" className="px-4 py-1.5 text-sm font-medium">
                   {lang}
                 </Badge>
               ))}
@@ -144,9 +146,7 @@ const Skills = () => {
                       >
                         <category.icon className="h-5 w-5 text-white" />
                       </div>
-                      <span className="text-lg font-semibold">
-                        {category.title}
-                      </span>
+                      <span className="text-lg font-semibold">{category.title}</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -178,17 +178,22 @@ const Skills = () => {
                   Tooling & Workflow
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {['Docker', 'Datadog', 'Nginx', 'Postman', 'Git & GitHub', 'GitHub Actions', 'VS Code', 'Linux / Bash', 'npm & yarn', 'Chrome DevTools'].map(
-                    (tool) => (
-                      <Badge
-                        key={tool}
-                        variant="secondary"
-                        className="px-3 py-1.5"
-                      >
-                        {tool}
-                      </Badge>
-                    )
-                  )}
+                  {[
+                    'Docker',
+                    'Datadog',
+                    'Nginx',
+                    'Postman',
+                    'Git & GitHub',
+                    'GitHub Actions',
+                    'VS Code',
+                    'Linux / Bash',
+                    'npm & yarn',
+                    'Chrome DevTools',
+                  ].map((tool) => (
+                    <Badge key={tool} variant="secondary" className="px-3 py-1.5">
+                      {tool}
+                    </Badge>
+                  ))}
                 </div>
               </CardContent>
             </Card>

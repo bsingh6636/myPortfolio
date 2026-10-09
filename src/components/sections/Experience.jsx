@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Briefcase,
-  Calendar,
-  MapPin,
-  CheckCircle2,
-  Zap,
-} from 'lucide-react';
+import { Briefcase, Calendar, MapPin, CheckCircle2, Zap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 
@@ -92,22 +86,24 @@ const Experience = () => {
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 px-3 py-1 border-primary-500/30 bg-primary-500/5">
+            <Badge
+              variant="outline"
+              className="mb-4 px-3 py-1 border-primary-500/30 bg-primary-500/5"
+            >
               <Briefcase className="w-3.5 h-3.5 mr-1 text-primary-500" />
               Experience
             </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Work Experience
-            </h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Work Experience</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Production engineering on scalable distributed backends, cloud infrastructure, and responsive React web apps
+              Production engineering on scalable distributed backends, cloud infrastructure, and
+              responsive React web apps
             </p>
           </div>
 
           {/* Experience List */}
           <div className="space-y-10">
-            {experiences.map((exp, expIndex) => (
+            {experiences.map((exp) => (
               <div key={exp.company}>
                 <Card className="overflow-hidden bg-card/60 backdrop-blur-sm border-border/50 hover:border-primary-500/30 transition-all duration-300 shadow-sm hover:shadow-md">
                   {/* Top Highlight Accent */}
@@ -118,7 +114,7 @@ const Experience = () => {
                         : 'bg-muted'
                     }`}
                   />
-                  
+
                   <CardHeader className="pb-4">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
@@ -130,7 +126,10 @@ const Experience = () => {
                             {exp.type}
                           </Badge>
                           {exp.current && (
-                            <Badge variant="outline" className="text-xs border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5">
+                            <Badge
+                              variant="outline"
+                              className="text-xs border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/5"
+                            >
                               <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5" />
                               Current Role
                             </Badge>
@@ -177,9 +176,7 @@ const Experience = () => {
                             <p className="text-lg sm:text-xl font-bold text-primary-500">
                               {metric.value}
                             </p>
-                            <p className="text-xs text-muted-foreground mt-0.5">
-                              {metric.label}
-                            </p>
+                            <p className="text-xs text-muted-foreground mt-0.5">{metric.label}</p>
                           </div>
                         ))}
                       </div>

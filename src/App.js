@@ -24,10 +24,10 @@ function AppContent() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-primary-500/20 selection:text-primary-600 dark:selection:text-primary-400 transition-colors duration-300">
       {/* Subtle Background Pattern */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.08),transparent)] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.15),transparent)] pointer-events-none" />
-      
+
       {/* Navbar */}
       <Navbar />
-      
+
       {/* Main Content */}
       <main>
         <Hero />
@@ -52,4 +52,3 @@ function App() {
 }
 
 export default App;
-

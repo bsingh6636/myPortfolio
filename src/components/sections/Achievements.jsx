@@ -53,9 +53,7 @@ const Achievements = () => {
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Achievements
-            </h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Achievements</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Key engineering milestones, internal tooling, and operational reliability impact
@@ -64,7 +62,7 @@ const Achievements = () => {
 
           {/* Achievement Cards */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {achievements.map((achievement, index) => (
+            {achievements.map((achievement) => (
               <motion.div
                 key={achievement.title}
                 whileHover={{ scale: 1.02, y: -4 }}
@@ -87,9 +85,7 @@ const Achievements = () => {
                         <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary-500 transition-colors">
                           {achievement.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
-                          {achievement.description}
-                        </p>
+                        <p className="text-sm text-muted-foreground">{achievement.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -108,9 +104,7 @@ const Achievements = () => {
                 >
                   <CardContent className="p-6 text-center">
                     <stat.icon className="h-6 w-6 text-primary-500 mx-auto mb-3" />
-                    <p className="text-3xl font-bold text-foreground mb-1">
-                      {stat.value}
-                    </p>
+                    <p className="text-3xl font-bold text-foreground mb-1">{stat.value}</p>
                     <p className="text-xs text-muted-foreground">{stat.label}</p>
                   </CardContent>
                 </Card>

@@ -32,7 +32,10 @@ const Hero = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <Badge variant="outline" className="px-3.5 py-1 text-xs font-medium border-border/60 bg-muted/40 text-muted-foreground">
+          <Badge
+            variant="outline"
+            className="px-3.5 py-1 text-xs font-medium border-border/60 bg-muted/40 text-muted-foreground"
+          >
             Full Stack Engineer at Vedak · Bengaluru
           </Badge>
         </motion.div>
@@ -66,9 +69,9 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          At Vedak I build multi service Node.js and TypeScript backends and the React apps on top of them:
-          Cashfree payments, Zoom to S3 recording ingestion, real time WebSocket notifications, and a
-          MySQL/Redis job scheduler whose production cutover I led.
+          At Vedak I build multi service Node.js and TypeScript backends and the React apps on top
+          of them: Cashfree payments, Zoom to S3 recording ingestion, real time WebSocket
+          notifications, and a MySQL/Redis job scheduler whose production cutover I led.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -87,11 +90,7 @@ const Hero = () => {
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
 
-          <a
-            href={resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               variant="outline"
