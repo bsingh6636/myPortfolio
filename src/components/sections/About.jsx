@@ -11,7 +11,7 @@ export default function About() {
           <span id="about-title">
             The person <em>behind the code.</em>
           </span>
-        }
+        }k
       />
       <div className="about-layout">
         <div className="about-intro">
