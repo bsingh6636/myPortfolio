@@ -1,86 +1,73 @@
-# Getting Started with Create React App
+# Brijesh Kushwaha’s portfolio
 
 [![ESLint](https://github.com/bsingh6636/myPortfolio/actions/workflows/eslint.yml/badge.svg)](https://github.com/bsingh6636/myPortfolio/actions/workflows/eslint.yml)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A personal developer portfolio built with React and plain CSS. The design uses warm paper tones, charcoal type, restrained rust and olive accents, and a real photograph. Experience, project write-ups, and a grouped skills inventory carry the page.
 
-## Available Scripts
+## Run locally
 
-In the project directory, you can run:
+Use Node.js 20 or newer.
 
-### `npm start`
+```sh
+npm ci
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The development server runs at http://localhost:3000. Runtime dependencies are React, React DOM, and Lucide icons. Build tools are kept in `devDependencies`; Babel is required by the prerender script and the existing React build pipeline.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Code checks
 
-### `npm test`
+```sh
+npm run lint
+npm run lint:fix
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ESLint rules live in `.eslintrc.json`, formatting settings in `.prettierrc.json`, and generated-file exclusions in `.eslintignore`. Lint checks JavaScript and JSX for correctness and formatting; errors and warnings fail the check. `lint:fix` formats files and fixes supported issues.
 
-### `npm run lint`
+The ESLint GitHub Actions workflow runs on every push and pull request, showing a green check on success and a red cross on failure. Each run includes a pass/fail summary.
 
-Checks JavaScript and JSX files using ESLint's recommended rules, the Create React App rules, and explicit rules configured in `.eslintrc.json`. Prettier formatting is enforced through ESLint using `.prettierrc.json`. Errors and warnings cause the command to fail. Generated files are excluded through `.eslintignore`.
+## Production build
 
-The explicit rules enforce strict equality, `const` where possible, no `var` or `debugger`, no duplicate imports, and no unused variables or parameters. Unused parameters prefixed with `_` are allowed. JSX lists require keys, duplicate JSX props are rejected, and React hooks are checked for valid usage and dependency arrays. Console calls warn, except for `console.warn` and `console.error`.
+```sh
+npm run build
+```
 
-### `npm run lint:fix`
+This produces `build/` and prerenders the React components into `build/index.html`. Visitors and crawlers receive readable profile content before JavaScript runs. Native disclosures keep experience details and all eleven projects available without JavaScript. Interactive filters, theme preferences, and the contact form run in the browser.
 
-Runs the same checks and automatically fixes supported issues, including formatting: two-space indentation, single quotes in JavaScript, double quotes in JSX, semicolons, spacing, line wrapping, and extra blank lines. Any remaining code correctness issues must be corrected manually.
+Preview the production build:
 
-For inline diagnostics in VS Code, install the ESLint extension (`dbaeumer.vscode-eslint`).
+```sh
+python3 -m http.server 4173 --bind 127.0.0.1 --directory build
+```
 
-GitHub Actions runs `npm run lint` on every push and pull request using `.github/workflows/eslint.yml`. The ESLint check shows a green check when it passes and a red cross when it fails. Warnings and formatting violations also fail the check. Each Actions run includes a summary showing ✅ ESLint passed or ❌ ESLint failed. You can view the results in the repository's Actions tab or the commit and pull request checks. Commit and push the workflow and lint configuration to activate these checks on GitHub.
+The Docker and Nginx setup serves `build/` and returns a real 404 for unknown paths. The Docker build uses Node.js 24 and the committed package lock. The deployment workflow builds and tests the container, exports the static files, and deploys them through the shared Nginx on EC2. See [DEPLOYMENT.md](DEPLOYMENT.md) for the required settings and deployment guide.
 
-### `npm run build`
+## Edit content
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `src/data/profile.js`: contact details, work history, skills, learning, certifications, achievements.
+- `src/data/projects.js`: every project preserved from the original portfolio, with descriptions and source/live links.
+- `src/components/sections/`: page sections.
+- `src/App.css`: responsive design, themes, print layout, and reduced-motion support.
+- `public/resume.pdf`: the supplied `brijesh_immediate_joiner-YOE-1.pdf`.
+- `public/images/og-image.svg`: editable source of the social sharing image.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Content sources and reconciliation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Professional content was merged from the existing portfolio, the supplied profile handoff, and the supplied resume. Embedded resume-writing and job-application instructions were treated as document context, not as requests to change resumes, apply to jobs, or contact anyone.
 
-### `npm run eject`
+- Brijesh confirmed that his entire Vedak tenure, November 2024 to September 2026, was as a Full Stack Engineer. This direct correction takes precedence over the role split in the supplied PDF. Backend and frontend contributions are shown together, with deployment support reduced to one short note. The earlier AQMENZ internship, its contributions, and its reported metrics remain.
+- EduCors uses the corrected 2,000+ monthly requests, rather than the obsolete 50,000+ number.
+- Cashfree is described as the Verification Suite, rather than payment collection.
+- Infrastructure credits Claude Code for the build and Brijesh for deployment and operation. Azure details from the handoff and AWS/config-driven deployment details from the existing portfolio are retained.
+- Every original project, certification, contact channel, and skill is retained. Tools present only in the older skills inventory are grouped under additional cloud and database tools; skill rankings were removed. Firebase remains in the original project descriptions and project tools, where its use is documented.
+- Jenkins, Kubernetes, and Terraform are explicitly listed as currently learning, following the supplied PDF.
+- job-tracker-mcp is labeled as built with Claude as a learning project. Authentication and service tooling are included without inventing repository URLs or an unconfirmed 2FA stack.
+- The supplied resume is served consistently from `/resume.pdf`. The former remote resume lookup was removed to prevent an older API response from replacing this PDF with stale content.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The displayed Vedak title and dates follow Brijesh’s direct clarification. No new impact metrics have been invented.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact behavior
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The form preserves the existing contact API at `https://backend-dev-beige.vercel.app/api/contact`. It provides a visible success state, a 15-second timeout, retained form input on failure, and an email-app fallback. Browser verification mocks success and failure responses so no test messages are sent. Actual delivery still depends on the existing external API.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Both `bkushwaha.dev@gmail.com` and `brijesh@brijeshhq.com`, the phone number, GitHub, LinkedIn, and resume links remain available independently of the form.

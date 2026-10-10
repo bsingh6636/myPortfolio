@@ -1,170 +1,95 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Github, Linkedin, ChevronDown, FileText } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
-import useResume from '../../hooks/useResume';
-
-const Hero = () => {
-  const { resumeUrl } = useResume();
-
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { profile } from '../../data/profile';
+import ExternalLink from '../ExternalLink';
+export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-accent-500/5 dark:bg-accent-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary-500/3 to-transparent rounded-full" />
+    <section id="home" className="hero container" aria-labelledby="hero-title">
+      <div className="hero-topline">
+        <span className="eyebrow">A personal portfolio / 2026</span>
+        <span className="availability">
+          <span aria-hidden="true" />
+          Available to join immediately
+        </span>
       </div>
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Role Location Tag */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <Badge
-            variant="outline"
-            className="px-3.5 py-1 text-xs font-medium border-border/60 bg-muted/40 text-muted-foreground"
-          >
-            Full Stack Engineer at Vedak · Bengaluru
-          </Badge>
-        </motion.div>
-
-        {/* Main Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6"
-        >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-primary-500 via-primary-400 to-accent-500 bg-clip-text text-transparent">
-            Brijesh Kushwaha
+      <div className="hero-layout">
+        <div className="hero-copy">
+          <p className="hero-hello">Hello, I’m</p>
+          <h1 id="hero-title">
+            Brijesh
+            <br />
+            <em>
+              Kushwaha<span>.</span>
+            </em>
           </h1>
-        </motion.div>
-
-        {/* Title */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-medium mb-6 max-w-2xl mx-auto"
-        >
-          Backend focused full stack engineer with 2 years of production experience.
-        </motion.p>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          At Vedak I build multi service Node.js and TypeScript backends and the React apps on top
-          of them: Cashfree payments, Zoom to S3 recording ingestion, real time WebSocket
-          notifications, and a MySQL/Redis job scheduler whose production cutover I led.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-12"
-        >
-          <Button
-            size="lg"
-            onClick={() => scrollToSection('#projects')}
-            className="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 px-8"
-          >
-            View My Work
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-
-          <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-            <Button
-              size="lg"
-              variant="outline"
-              className="px-8 border-primary-500/40 hover:bg-primary-500/10 text-foreground"
+          <h2>
+            Full stack engineer.
+            <br />
+            From API to production.
+          </h2>
+          <p className="hero-description">
+            I build Node.js backends and React interfaces. Two years of full stack work at Vedak,
+            from recording pipelines and client integrations to real-time notifications and internal
+            tools.
+          </p>
+          <div className="hero-actions">
+            <a className="button button-solid" href="#projects">
+              Explore my work <ArrowDown size={17} aria-hidden="true" />
+            </a>
+            <a
+              className="button button-text"
+              href={profile.resume}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <FileText className="mr-2 h-4 w-4 text-primary-500" />
-              View Resume
-            </Button>
-          </a>
-
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={() => scrollToSection('#contact')}
-            className="px-8 border-border hover:bg-muted"
-          >
-            <Mail className="mr-2 h-4 w-4" />
-            Get in Touch
-          </Button>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex items-center justify-center gap-4"
-        >
-          <a
-            href="https://github.com/bsingh6636"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="GitHub: bsingh6636"
-            className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
-          >
-            <Github className="h-5 w-5" />
-          </a>
-          <a
-            href="https://linkedin.com/in/bsingh6636"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="LinkedIn: bsingh6636"
-            className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
-          >
-            <Linkedin className="h-5 w-5" />
-          </a>
-          <a
-            href="mailto:brijesh@brijeshhq.com"
-            title="Email: brijesh@brijeshhq.com"
-            className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
-          >
-            <Mail className="h-5 w-5" />
-          </a>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="mt-10 flex justify-center"
-        >
-          <motion.button
-            onClick={() => scrollToSection('#about')}
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="p-2 rounded-full text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ChevronDown className="h-6 w-6" />
-          </motion.button>
-        </motion.div>
+              View resume <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
+          <div className="hero-socials">
+            <ExternalLink href={profile.github}>GitHub</ExternalLink>
+            <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
+            <ExternalLink href={`mailto:${profile.email}`}>Email me</ExternalLink>
+          </div>
+        </div>
+        <div className="hero-aside">
+          <figure className="portrait">
+            <img
+              src="/images/portrait.jpg"
+              alt="Brijesh Kushwaha giving a presentation at college"
+              width="1000"
+              height="750"
+              fetchpriority="high"
+            />
+            <figcaption>
+              <span>Brijesh, in person.</span>
+              <span className="portrait-caption">{profile.location} ↗</span>
+            </figcaption>
+          </figure>
+          <div className="hero-note">
+            <span className="note-mark" aria-hidden="true">
+              ↳
+            </span>
+            <p>
+              Backends. Interfaces.
+              <br />
+              <em>Everything in between.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="hero-facts">
+        <div>
+          <span className="eyebrow">My focus</span>
+          <p>React interfaces, APIs & integrations</p>
+        </div>
+        <div>
+          <span className="eyebrow">My toolkit</span>
+          <p>Node.js · React · AWS · Docker</p>
+        </div>
+        <a href="#experience" className="hero-scroll">
+          <span>Keep reading</span>
+          <ArrowDown size={17} aria-hidden="true" />
+        </a>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
