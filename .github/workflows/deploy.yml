@@ -1,0 +1,87 @@
+name: Deploy portfolio
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Deploy after building (turn off to test the container only)'
+        type: boolean
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: portfolio-production
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out the exact triggering portfolio commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - name: Build and test the standalone container
+        env:
+          COMMIT: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          docker buildx build --load --target runtime --tag "portfolio:$COMMIT" .
+          docker run --detach --name portfolio-smoke --publish 127.0.0.1::80 "portfolio:$COMMIT"
+          trap 'docker logs portfolio-smoke; docker rm -f portfolio-smoke' EXIT
+          for attempt in {1..30}; do
+            health="$(docker inspect --format '{{.State.Health.Status}}' portfolio-smoke)"
+            [[ "$health" == healthy ]] && break
+            sleep 2
+          done
+          [[ "$health" == healthy ]]
+          port="$(docker port portfolio-smoke 80/tcp | cut -d: -f2)"
+          curl --fail --silent --show-error "http://127.0.0.1:$port/" > /tmp/portfolio-index.html
+          grep -q 'id="root"' /tmp/portfolio-index.html
+          docker exec portfolio-smoke nginx -t
+      - name: Export the exact built static files
+        run: docker buildx build --target artifact --output type=local,dest=dist .
+      - name: Upload build artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: portfolio-${{ github.sha }}
+          path: dist/
+          retention-days: 14
+          if-no-files-found: error
+  deploy:
+    needs: build
+    if: github.event_name == 'push' || inputs.deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: https://brijeshkushwaha.com.np
+    steps:
+      - name: Check out the reviewed infrastructure scripts
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: bsingh6636/infra
+          ref: f5ee51da09f60777411d2a3d5c6d6db8cc680f07
+          path: infra
+          persist-credentials: false
+      - name: Download this run's build
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: portfolio-${{ github.sha }}
+          path: dist
+      - name: Install infra's locked parser dependency
+        working-directory: infra
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Transfer, activate, and verify the portfolio release
+        env:
+          COMMIT: ${{ github.sha }}
+          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: bash infra/scripts/ci/deploy-portfolio.sh "$COMMIT" "$GITHUB_WORKSPACE/dist"
