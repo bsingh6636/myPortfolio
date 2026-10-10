@@ -14,7 +14,12 @@ concurrency:
   group: portfolio-production
   cancel-in-progress: false
 jobs:
+  lint:
+    name: Lint before deployment
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/eslint.yml
   build:
+    needs: lint
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
@@ -54,8 +59,8 @@ jobs:
           retention-days: 14
           if-no-files-found: error
   deploy:
-    needs: build
-    if: github.event_name == 'push' || inputs.deploy
+    needs: [lint, build]
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.deploy)
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     environment:

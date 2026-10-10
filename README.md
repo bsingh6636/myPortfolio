@@ -40,7 +40,7 @@ Preview the production build:
 python3 -m http.server 4173 --bind 127.0.0.1 --directory build
 ```
 
-The Docker and Nginx setup serves `build/` and returns a real 404 for unknown paths. The Docker build uses Node.js 24 and the committed package lock. The deployment workflow builds and tests the container, exports the static files, and deploys them through the shared Nginx on EC2. See [DEPLOYMENT.md](DEPLOYMENT.md) for the required settings and deployment guide.
+The Docker and Nginx setup serves `build/` and returns a real 404 for unknown paths. The Docker build uses Node.js 24 and the committed package lock. On pushes and merges to `main`, the deployment workflow first requires ESLint to pass, then builds and tests the container, exports the static files, and deploys them through the shared Nginx on EC2. Lint failures block deployment, including manual deployment runs. See [DEPLOYMENT.md](DEPLOYMENT.md) for the required settings and deployment guide.
 
 ## Edit content
 
