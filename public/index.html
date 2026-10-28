@@ -67,8 +67,12 @@
     >
     <script>
       try {
-        document.documentElement.dataset.theme =
-          localStorage.getItem("theme") === "dark" ? "dark" : "light";
+        var stored = localStorage.getItem("theme");
+        var dark =
+          stored === "dark" ||
+          (stored !== "light" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
       } catch (_) {}
     </script>
     <script type="application/ld+json">

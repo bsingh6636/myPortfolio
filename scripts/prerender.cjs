@@ -37,7 +37,10 @@ try {
     throw new Error("The root element is missing from build/index.html.");
   fs.writeFileSync(
     file,
-    html.replace(marker, () => `<div id="root">${markup}</div>`),
+    html.replace(
+      marker,
+      () => `<div id="root" data-prerendered="true">${markup}</div>`,
+    ),
   );
   console.log(
     "Prerendered portfolio: complete profile available before JavaScript.",

@@ -2,6 +2,10 @@
 
 [![ESLint](https://github.com/bsingh6636/myPortfolio/actions/workflows/eslint.yml/badge.svg)](https://github.com/bsingh6636/myPortfolio/actions/workflows/eslint.yml)
 
+Live at **https://brijeshhq.com** — the personal site of Brijesh Kushwaha, full stack engineer (React, Node.js).
+
+![Portfolio preview](public/images/og-image.png)
+
 A personal developer portfolio built with React and plain CSS. The design uses warm paper tones, charcoal type, restrained rust and olive accents, and a real photograph. Experience, project write-ups, and a grouped skills inventory carry the page.
 
 ## Run locally

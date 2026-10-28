@@ -191,7 +191,7 @@ export default function Contact() {
           <a href="#home" className="wordmark" aria-label="Back to top">
             bk<span className="wordmark-dot">.</span>
           </a>
-          <p>
+          <p suppressHydrationWarning>
             © {new Date().getFullYear()} {profile.displayName}
           </p>
           <ExternalLink href="https://github.com/bsingh6636/myPortfolio">
