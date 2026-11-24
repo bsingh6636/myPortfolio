@@ -8,17 +8,20 @@ import SectionHeading from '../SectionHeading';
 function ProjectLinks({ project }) {
   return (
     <div className="project-links">
-      <ExternalLink href={project.github} aria-label={`Source code for ${project.name}`}>
-        Source code
-      </ExternalLink>
+      {project.github && (
+        <ExternalLink href={project.github} aria-label={`Source code for ${project.name}`}>
+          Source code
+        </ExternalLink>
+      )}
       {project.live && (
         <ExternalLink href={project.live} aria-label={`Live site for ${project.name}`}>
-          {project.id === 'web-hook-service' ? 'API endpoint' : 'Live site'}
+          Live site
         </ExternalLink>
       )}
     </div>
   );
 }
+
 function ProjectRow({ project }) {
   return (
     <article className="project-row">
@@ -34,45 +37,89 @@ function ProjectRow({ project }) {
 }
 
 function SystemSketch({ kind }) {
-  return kind === 'web-hook-service' ? (
-    <div
-      className="system-sketch relay-sketch"
-      role="img"
-      aria-label="Webhook relay: receive an event, forward it to its target, and store failed deliveries in MongoDB for replay"
-    >
-      <div className="sketch-label">EVENT DELIVERY / A SECOND CHANCE</div>
-      <div className="sketch-flow">
-        <span>Receive</span>
-        <ArrowRight size={19} aria-hidden="true" />
-        <span>Forward</span>
-        <ArrowRight size={19} aria-hidden="true" />
-        <span>Target</span>
+  if (kind === 'fastapi-webhook-service') {
+    return (
+      <div
+        className="system-sketch fastapi-sketch"
+        role="img"
+        aria-label="FastAPI webhook pipeline: receive webhook, acknowledge immediately with 202, process background transactions with SKIP LOCKED row locking"
+      >
+        <div className="sketch-label">FASTAPI / EXACTLY-ONCE PROCESSING</div>
+        <div className="sketch-flow">
+          <span>POST /webhooks</span>
+          <ArrowRight size={19} aria-hidden="true" />
+          <span>202 Accepted</span>
+          <ArrowRight size={19} aria-hidden="true" />
+          <span>Worker</span>
+        </div>
+        <div className="sketch-branch">
+          <span aria-hidden="true">↳</span> MySQL Unique Key · SKIP LOCKED Row Lock
+        </div>
+        <code>STATUS: ACCEPTED → PROCESSING → PROCESSED</code>
       </div>
-      <div className="sketch-branch">
-        <span aria-hidden="true">↳</span> Failed? Store it. Inspect it. Replay it.
+    );
+  }
+  if (kind === 'rag-service') {
+    return (
+      <div
+        className="system-sketch rag-sketch"
+        role="img"
+        aria-label="RAG service pipeline: query is embedded with Gemini, retrieved via pgvector cosine search, and answered with citations via Claude"
+      >
+        <div className="sketch-label">RAG SERVICE / PGVECTOR VECTOR SEARCH</div>
+        <div className="sketch-flow">
+          <span>Query</span>
+          <ArrowRight size={19} aria-hidden="true" />
+          <span>pgvector &lt;=&gt;</span>
+          <ArrowRight size={19} aria-hidden="true" />
+          <span>Cited Answer</span>
+        </div>
+        <div className="sketch-branch">
+          <span aria-hidden="true">↳</span> Gemini Embeddings · Claude LLM · Refusal Guard
+        </div>
+        <code>POST /ask-direct · SIMILARITY &gt;= 0.65</code>
       </div>
-      <code>GET /missed-requests</code>
-    </div>
-  ) : (
-    <div
-      className="system-sketch infra-sketch"
-      role="img"
-      aria-label="Infrastructure configuration: stack.yaml generates Docker Compose and Nginx configs, with validation, releases, and rollback"
-    >
-      <div className="sketch-label">PERSONAL INFRASTRUCTURE / OPERATED BY ME</div>
-      <div className="infra-file">
-        <span aria-hidden="true">▤</span> stack.yaml
+    );
+  }
+  if (kind === 'multi-workspace-rag-assistant') {
+    return (
+      <div
+        className="system-sketch agent-sketch"
+        role="img"
+        aria-label="Agent loop: a question is answered from pgvector chunks filtered to the active workspace, and Gemini may call zod-validated tools, at most three rounds, each call logged"
+      >
+        <div className="sketch-label">AGENT LOOP / WORKSPACE-SCOPED TOOLS</div>
+        <div className="sketch-flow">
+          <span>Question</span>
+          <ArrowRight size={19} aria-hidden="true" />
+          <span>pgvector · ws</span>
+          <ArrowRight size={19} aria-hidden="true" />
+          <span>Gemini + tools</span>
+        </div>
+        <div className="sketch-branch">
+          <span aria-hidden="true">↳</span> zod-validated · ≤ 3 rounds · confirm before delete
+        </div>
+        <code>tool_calls: status · args · error · latency</code>
       </div>
-      <div className="infra-outputs">
-        <span>Docker Compose</span>
-        <span>Nginx + TLS</span>
-      </div>
-      <p>
-        Validate <span>→</span> Preview <span>→</span> Deploy <span>↶</span> Rollback
-      </p>
-    </div>
-  );
+    );
+  }
+  return null;
 }
+
+function getSupportingEyebrow(id, index) {
+  const number = String(index + 2).padStart(2, '0');
+  switch (id) {
+    case 'multi-workspace-rag-assistant':
+      return `${number} / Agentic AI & tool calling`;
+    case 'rag-service':
+      return `${number} / Generative AI & pgvector`;
+    case 'fastapi-webhook-service':
+      return `${number} / Python & FastAPI`;
+    default:
+      return `${number} / Backend service`;
+  }
+}
+
 export default function Projects() {
   const [filter, setFilter] = useState('all');
   const featured = projects.filter((project) => project.featured);
@@ -152,9 +199,7 @@ export default function Projects() {
             <article className="supporting-project" key={project.id}>
               <SystemSketch kind={project.id} />
               <div className="supporting-project-body">
-                <span className="eyebrow">
-                  0{index + 2} / {project.id === 'infra' ? 'Cloud & operations' : 'Backend service'}
-                </span>
+                <span className="eyebrow">{getSupportingEyebrow(project.id, index)}</span>
                 <h3>{project.name}</h3>
                 <p>{project.description}</p>
                 <p className="project-contribution">{project.contribution}</p>
@@ -180,6 +225,7 @@ export default function Projects() {
           <div className="project-filters" role="group" aria-label="Filter more projects">
             {[
               ['all', 'All'],
+              ['backend', 'Backend & DevOps'],
               ['fullstack', 'Full stack'],
               ['data', 'Data & UI'],
             ].map(([value, label]) => (
@@ -229,13 +275,13 @@ export default function Projects() {
             </details>
             <details>
               <summary>
-                job-tracker-mcp <Plus size={16} aria-hidden="true" />
+                How I work with AI coding tools <Plus size={16} aria-hidden="true" />
               </summary>
               <p>
-                Built with Claude as a learning project and used daily. A TypeScript MCP v2 server
-                with tools to list applications, add an application, update its status, and check
-                due follow-ups. Uses Zod validation, serialized writes, atomic file saves, and
-                recoverable error responses.
+                I use Claude Code, OpenAI Codex, and GitHub Copilot with a written plan and design
+                spec, a change log kept before every change, and a review stop after each part. I
+                connect MCP servers (Datadog, Atlassian, Supabase) as a consumer for debugging and
+                data access. The rule I hold to: I must be able to explain every line that ships.
               </p>
             </details>
             <details>
@@ -243,9 +289,9 @@ export default function Projects() {
                 Authentication & service tooling <Plus size={16} aria-hidden="true" />
               </summary>
               <p>
-                Additional work includes authenticator-app two-factor login and a Node.js
-                service-to-service package for authentication, request logging, and masking
-                sensitive headers.
+                Additional work includes authenticator-app two-factor login (RFC 6238 TOTP) and an
+                internal Sequelize npm package consolidating models, migrations, and schema
+                contracts across backend services at Vedak.
               </p>
             </details>
           </div>

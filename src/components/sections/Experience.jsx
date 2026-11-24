@@ -13,8 +13,8 @@ export default function Experience() {
           </span>
         }
       >
-        Two years building Node.js services and React applications at Vedak. Here’s what I
-        contributed across the stack.
+        Two years building Node.js and Python services and React applications at Vedak. Here’s what
+        I contributed across the stack.
       </SectionHeading>
       <div className="experience-list">
         {experience.map((job) => (

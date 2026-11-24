@@ -1,6 +1,7 @@
 import { profile } from '../../data/profile';
 import ExternalLink from '../ExternalLink';
 import SectionHeading from '../SectionHeading';
+
 export default function About() {
   return (
     <section id="about" className="section container" aria-labelledby="about-title">
@@ -12,27 +13,31 @@ export default function About() {
             The person <em>behind the code.</em>
           </span>
         }
-        k
       />
       <div className="about-layout">
         <div className="about-intro">
           <p className="about-lead">
             I’m {profile.name}, a full stack engineer based in Bengaluru. I spent two years at Vedak
-            building Node.js backends and the React interfaces they power.
+            building Node.js and Python backends and the React interfaces they power.
           </p>
           <p>
-            At Vedak, I worked on the full path from a webhook arriving to a recording reaching the
-            right client. That meant handling repeated events, retrying individual failures,
-            controlling access, and making production problems visible.
+            At Vedak, I built customer-facing portals and owned the video conferencing
+            lifecycle—embedding Zoom meetings via SDK, streaming recordings to AWS S3 with
+            composite-key deduplication, and queued delivery to enterprise clients. I built an
+            internal Python retrieval chatbot (RAG) over company documents using PostgreSQL with
+            pgvector, an LLM classification service, and migrated our UI from Material UI to
+            Shadcn/ui while cutting bundle size by 35%.
           </p>
           <p>
-            On the frontend, I built real-time notifications, expert filtering, and CRM reporting,
-            and worked on reducing bundle size. Outside work, I build and operate personal services,
-            including EduCors and my self-hosted deployment stack.
+            Outside work, I build and operate personal services: the EduCors API proxy, a
+            multi-workspace RAG assistant with validated tool calling, a hand-written Python RAG
+            service with an evaluation harness, and a CI/CD pipeline that deploys Docker images to
+            an Azure VM.
           </p>
           <p>
-            I studied Computer Science at KNS Institute of Technology, affiliated with VTU. I’m now
-            available to join immediately and open to full stack and backend engineering roles.
+            I studied Computer Science at KNS Institute of Technology, affiliated with Visvesvaraya
+            Technological University (VTU). I’m available to join immediately and open to full
+            stack, backend, and AI-focused engineering roles.
           </p>
           <ExternalLink href={profile.linkedin}>More about my background</ExternalLink>
         </div>

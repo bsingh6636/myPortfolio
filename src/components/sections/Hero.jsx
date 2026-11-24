@@ -27,9 +27,9 @@ export default function Hero() {
             From API to production.
           </h2>
           <p className="hero-description">
-            I build Node.js backends and React interfaces. Two years of full stack work at Vedak,
-            from recording pipelines and client integrations to real-time notifications and internal
-            tools.
+            I build Node.js and Python services, React interfaces, and third-party integrations. Two
+            years of full stack work at Vedak, from internal RAG chatbots and Zoom conferencing
+            pipelines to event-driven architectures and high-performance frontend tools.
           </p>
           <div className="hero-actions">
             <a className="button button-solid" href="#projects">
@@ -79,11 +79,11 @@ export default function Hero() {
       <div className="hero-facts">
         <div>
           <span className="eyebrow">My focus</span>
-          <p>React interfaces, APIs & integrations</p>
+          <p>Full stack & AI integrations</p>
         </div>
         <div>
           <span className="eyebrow">My toolkit</span>
-          <p>Node.js · React · AWS · Docker</p>
+          <p>Node.js · React · Python · FastAPI · MySQL · Docker</p>
         </div>
         <a href="#experience" className="hero-scroll">
           <span>Keep reading</span>

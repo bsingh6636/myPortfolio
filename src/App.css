@@ -654,21 +654,29 @@ summary::-webkit-details-marker {
   font-family: var(--mono);
   font-size: 11px;
 }
-.relay-sketch {
+.agent-sketch {
   background: #dfdfcf;
   color: #3c4737;
 }
-.infra-sketch {
-  background: #deddd1;
-  color: #4e4b3d;
+.fastapi-sketch {
+  background: #d8e5df;
+  color: #264336;
 }
-:root[data-theme="dark"] .relay-sketch {
+.rag-sketch {
+  background: #ded9e8;
+  color: #3f3650;
+}
+:root[data-theme="dark"] .agent-sketch {
   background: #353e2f;
   color: #e2e5d6;
 }
-:root[data-theme="dark"] .infra-sketch {
-  background: #3e3e32;
-  color: #e1e1d2;
+:root[data-theme="dark"] .fastapi-sketch {
+  background: #233b30;
+  color: #cbe3d7;
+}
+:root[data-theme="dark"] .rag-sketch {
+  background: #332b43;
+  color: #ded6ee;
 }
 .sketch-label {
   font-size: 8px;
@@ -694,37 +702,13 @@ summary::-webkit-details-marker {
   font-size: 20px;
   margin-right: 7px;
 }
-.relay-sketch code {
+.agent-sketch code,
+.fastapi-sketch code,
+.rag-sketch code {
   display: block;
   margin-top: 10px;
   font-size: 9px;
   text-align: center;
-}
-.infra-file {
-  display: flex;
-  justify-content: center;
-  gap: 9px;
-  font-size: 16px;
-  margin-top: 20px;
-}
-.infra-outputs {
-  display: flex;
-  justify-content: center;
-  gap: 34px;
-  margin-top: 12px;
-  font-size: 11px;
-}
-.infra-outputs > span {
-  border-bottom: 1px solid currentColor;
-  padding: 4px;
-}
-.infra-sketch > p {
-  font-size: 9px;
-  margin-top: 18px;
-  text-align: center;
-}
-.infra-sketch > p > span {
-  margin-inline: 6px;
 }
 .supporting-project-body {
   padding-top: 25px;
@@ -766,6 +750,7 @@ summary::-webkit-details-marker {
 .project-filters {
   display: flex;
   gap: 18px;
+  flex-wrap: wrap;
 }
 .project-filters > button {
   font-size: 11px;
@@ -1400,12 +1385,6 @@ summary::-webkit-details-marker {
   .sketch-branch {
     font-size: 8px;
   }
-  .infra-sketch > p {
-    font-size: 8px;
-  }
-  .infra-outputs {
-    gap: 14px;
-  }
   .project-row {
     grid-template-columns: 1fr;
     gap: 15px;
@@ -1650,12 +1629,6 @@ summary::-webkit-details-marker {
     padding-inline: 10px;
   }
   .sketch-branch {
-    font-size: 9px;
-  }
-  .infra-outputs {
-    gap: 28px;
-  }
-  .infra-sketch > p {
     font-size: 9px;
   }
   .supporting-project-body h3 {
@@ -1960,4 +1933,126 @@ summary::-webkit-details-marker {
   .hero-note {
     margin-bottom: 14px;
   }
+}
+
+/* Role pages: /role/<slug> and /resume/<slug> */
+.button-outline {
+  border-color: var(--ink);
+}
+.button-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.role-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 16px 56px;
+}
+.role-home {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.role-home:hover {
+  color: var(--accent);
+}
+.role-eyebrow {
+  margin-top: 40px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.role-page h1 {
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(32px, 7vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.role-summary {
+  margin-top: 16px;
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.role-video {
+  display: grid;
+  place-items: center;
+  margin-top: 28px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #11120f;
+  border: 1px solid var(--line);
+}
+.role-video[data-state='ready'] {
+  aspect-ratio: auto;
+}
+.role-video video {
+  display: block;
+  width: 100%;
+  max-height: 80vh;
+  background: #11120f;
+}
+.role-video p {
+  padding: 16px;
+  color: #b7b9ac;
+  font-size: 14px;
+  text-align: center;
+}
+.role-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.role-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+.role-footer a:hover {
+  color: var(--accent);
+}
+.role-tabs {
+  display: inline-flex;
+  margin-top: 24px;
+  border: 1px solid var(--line);
+}
+.role-tabs > a {
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.role-tabs > a + a {
+  border-left: 1px solid var(--line);
+}
+.role-tabs > a:hover {
+  color: var(--accent);
+}
+.role-tabs > a[aria-current='page'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.resume-pages {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.resume-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
 }

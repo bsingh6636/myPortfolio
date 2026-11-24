@@ -57,18 +57,49 @@ The Docker and Nginx setup serves `build/` and returns a real 404 for unknown pa
 
 ## Content sources and reconciliation
 
-Professional content was merged from the existing portfolio, the supplied profile handoff, and the supplied resume. Embedded resume-writing and job-application instructions were treated as document context, not as requests to change resumes, apply to jobs, or contact anyone.
+Professional content was updated from the latest profile handoff (27 October 2026).
 
-- Brijesh confirmed that his entire Vedak tenure, November 2024 to September 2026, was as a Full Stack Engineer. This direct correction takes precedence over the role split in the supplied PDF. Backend and frontend contributions are shown together, with deployment support reduced to one short note. The earlier AQMENZ internship, its contributions, and its reported metrics remain.
-- EduCors uses the corrected 2,000+ monthly requests, rather than the obsolete 50,000+ number.
+- Vedak relieving letter confirms title as Full Stack Developer; headline and self-description read Full Stack Engineer (MERN). Backend and frontend contributions are shown together, with deployment support reduced to one short note. The earlier AQMENZ internship, its contributions, and its reported metrics remain.
+- Vedak experience includes the lead customer-facing applications (Client Portal and Expert Portal), the full video conferencing lifecycle (Zoom Meeting SDK and S3 recording ingestion with composite key deduplication), the SQS fan-out delivery pipeline, the database-driven job scheduler on MySQL and Redis, and the internal Python retrieval chatbot (RAG) with PostgreSQL/pgvector alongside the OpenAI classification service.
+- EduCors uses the verified 2,000+ monthly requests.
+- Added the FastAPI Webhook Processing Service built by Brijesh (exactly-once processing with `SKIP LOCKED`, immediate 202 response, no live URL by rule).
+- Added the RAG Service (Python, FastAPI, pgvector, Gemini embeddings, Claude, refusal handling, automated eval harness).
+- Removed Sahayog Crowdfunding Platform per the 26/27 October rule.
+- 23 November 2026 project review, checked against the 18 November handoff and the live repos: added the Multi-Workspace RAG Assistant (labelled as built with Claude Code under Brijesh's plan and review) and the CI/CD deployment pipeline (no repo link yet). Removed job-tracker-mcp (AI-built), the two-factor service (no public repo), and the tutorial clones (NetflixGPT, Swiggy clone, Artwork table). Dropped the dead web-hook-service live link.
 - Cashfree is described as the Verification Suite, rather than payment collection.
-- Infrastructure credits Claude Code for the build and Brijesh for deployment and operation. Azure details from the handoff and AWS/config-driven deployment details from the existing portfolio are retained.
-- Every original project, certification, contact channel, and skill is retained. Tools present only in the older skills inventory are grouped under additional cloud and database tools; skill rankings were removed. Firebase remains in the original project descriptions and project tools, where its use is documented.
-- Jenkins, Kubernetes, and Terraform are explicitly listed as currently learning, following the supplied PDF.
-- job-tracker-mcp is labeled as built with Claude as a learning project. Authentication and service tooling are included without inventing repository URLs or an unconfirmed 2FA stack.
-- The supplied resume is served consistently from `/resume.pdf`. The former remote resume lookup was removed to prevent an older API response from replacing this PDF with stale content.
+- Infrastructure credits Claude Code for the build and Brijesh for deployment and operation across AWS EC2 and Azure VMs.
+- Skills inventory follows the verified 27 October handoff, including Datadog MCP server, PostHog, Infisical, Shadcn/ui, and PostgreSQL with pgvector.
+- Jenkins, Kubernetes, and Terraform are explicitly listed as currently learning.
 
-The displayed Vedak title and dates follow Brijesh’s direct clarification. No new impact metrics have been invented.
+## Role pages: resumes and intro videos
+
+Everything lives under `/resume`. Roles are listed in `src/data/roles.js`; the page is `src/components/RolePage.jsx`, routed by URL path in `src/App.js`.
+
+| URL | Shows |
+| --- | --- |
+| `/resume/<role>` | Resume for the role's default tag |
+| `/resume/<role>/<name>` | Resume for the Cloudinary tag `<name>` |
+| `/resume/<role>/video`, `/resume/<role>/<name>/video` | Intro video for the same tag |
+
+Examples: `/resume/full-stack`, `/resume/full-stack/react-node`, `/resume/full-stack/react-node/video`.
+
+The resume shows on the page as images of its pages (rendered by Cloudinary), with Download PDF and Open PDF buttons. When the same tag also has a video, a Resume / Intro video switch appears, and it works the other way round too. Switching changes the URL without reloading. All these pages are hidden from search engines.
+
+Roles and default tags: `full-stack` (`react-node`), `ai-engineer` (`ai-engineer`), `backend` (`backend`). Names listed in a role's `variants` are prerendered by `scripts/prerender.cjs` with their own link preview. Any other name works too, with the homepage preview.
+
+Files live in Cloudinary (cloud `iaarfexv`). The Cloudinary console is the admin:
+
+1. Upload the resume PDF and/or the intro video under Assets.
+2. Tag both with the same name (the role's default tag, or a new name for a variant).
+3. Done. The newest upload with that tag is used (the lookup is cached for about a minute). To replace a file, upload a new one with the same tag. To take one down, remove the tag or delete the file.
+
+Videos: export as MP4, 720p, under about 40 MB, so Cloudinary's free plan can compress them on the fly. Larger files still play, but as the original file.
+
+One-time Cloudinary settings (Settings → Security): enable **Allow delivery of PDF and ZIP files**, and untick **Resource list** under restricted media types. If the site's Content Security Policy is later enforced, allow `https://res.cloudinary.com` in `connect-src`, `img-src` and `media-src`.
+
+To add a role, add an entry to `roles.js` and deploy.
+
+Test locally: `npm start`, then open http://localhost:3000/resume/full-stack/react-node.
 
 ## Contact behavior
 
