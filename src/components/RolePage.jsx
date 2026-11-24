@@ -44,6 +44,14 @@ function IntroVideo({ video }) {
   );
 }
 
+// Size the player from the width and height Cloudinary reports, so the box is
+// final before anything loads and pressing play doesn't resize it (phone
+// recordings are often portrait).
+function videoBox(video) {
+  if (!isReady(video) || !video.width || !video.height) return undefined;
+  return { '--video-ratio': video.width / video.height };
+}
+
 export default function RolePage({ role, name, tag, view: initialView }) {
   const [view, setView] = useState(initialView);
   const [resume, setResume] = useState(LOADING);
@@ -117,6 +125,7 @@ export default function RolePage({ role, name, tag, view: initialView }) {
         <div
           className="role-video"
           data-state={video === LOADING ? 'loading' : video ? 'ready' : 'empty'}
+          style={videoBox(video)}
         >
           <IntroVideo video={video} />
         </div>

@@ -1980,21 +1980,23 @@ summary::-webkit-details-marker {
   line-height: 1.6;
 }
 .role-video {
+  /* Portrait until the real size is known: intro videos are phone recordings. */
+  --video-ratio: 0.5625;
   display: grid;
   place-items: center;
-  margin-top: 28px;
-  aspect-ratio: 16 / 9;
+  /* Fixed box from the video's own shape, capped at 80% of the screen height. */
+  width: min(100%, calc(80vh * var(--video-ratio)));
+  margin: 28px auto 0;
+  aspect-ratio: var(--video-ratio);
   overflow: hidden;
   background: #11120f;
   border: 1px solid var(--line);
 }
-.role-video[data-state='ready'] {
-  aspect-ratio: auto;
-}
 .role-video video {
   display: block;
   width: 100%;
-  max-height: 80vh;
+  height: 100%;
+  object-fit: contain;
   background: #11120f;
 }
 .role-video p {

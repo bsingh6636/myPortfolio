@@ -10,7 +10,7 @@ export const roles = [
   {
     slug: 'full-stack',
     tag: 'react-node',
-    variants: ['react-node'],
+    variants: ['react-node', 'python-node-react'],
     title: 'Full Stack Engineer',
     summary:
       'Two years at Vedak building React portals and the Node.js, MySQL and AWS services behind them: Zoom recording pipelines, SQS event processing, and third-party integrations.',
