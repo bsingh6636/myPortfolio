@@ -40,7 +40,8 @@ export function pdfPageUrl(item, page) {
 export function videoUrls(item) {
   const path = assetPath(item);
   return {
-    poster: `${base}/video/upload/so_1,q_auto,w_1280,c_limit/${path}.jpg`,
+    // First frame: the moment before speaking, so the mouth is closed.
+    poster: `${base}/video/upload/so_0,q_auto,w_1280,c_limit/${path}.jpg`,
     // Compressed 720p MP4 first. The original is the fallback when Cloudinary
     // cannot transform on the fly (free plan: files over about 40 MB).
     sources: [
