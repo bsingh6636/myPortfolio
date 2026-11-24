@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { profile } from '../data/profile';
 import { matchRoleRoute, pageTitle, resumePath } from '../data/roles';
-import { findResume, findVideo, pdfPageUrl, pdfUrl, videoUrls } from '../lib/cloudinary';
+import { findImages, findVideo, pdfPageUrl, pdfUrl, videoUrls } from '../lib/cloudinary';
 
 const LOADING = 'loading';
 const MAX_PAGES = 4;
@@ -31,10 +31,11 @@ function ResumePages({ resume }) {
   );
 }
 
-function IntroVideo({ video }) {
-  if (video === LOADING) return <p>Loading video…</p>;
+function IntroVideo({ video, photo }) {
+  // Wait for the photo lookup too, so the thumbnail doesn't swap after showing.
+  if (video === LOADING || (video && photo === LOADING)) return <p>Loading video…</p>;
   if (!video) return <p>Intro video coming soon.</p>;
-  const { poster, sources } = videoUrls(video);
+  const { poster, sources } = videoUrls(video, photo);
   return (
     <video controls preload="none" playsInline poster={poster}>
       {sources.map((src) => (
@@ -56,6 +57,7 @@ export default function RolePage({ role, name, tag, view: initialView }) {
   const [view, setView] = useState(initialView);
   const [resume, setResume] = useState(LOADING);
   const [video, setVideo] = useState(LOADING);
+  const [photo, setPhoto] = useState(LOADING);
   const downloadName = `Brijesh_Kushwaha_${[role.slug, name]
     .filter(Boolean)
     .join('_')
@@ -63,7 +65,11 @@ export default function RolePage({ role, name, tag, view: initialView }) {
 
   useEffect(() => {
     let active = true;
-    findResume(tag).then((item) => active && setResume(item));
+    findImages(tag).then((images) => {
+      if (!active) return;
+      setResume(images.resume);
+      setPhoto(images.photo);
+    });
     findVideo(tag).then((item) => active && setVideo(item));
     return () => {
       active = false;
@@ -127,7 +133,7 @@ export default function RolePage({ role, name, tag, view: initialView }) {
           data-state={video === LOADING ? 'loading' : video ? 'ready' : 'empty'}
           style={videoBox(video)}
         >
-          <IntroVideo video={video} />
+          <IntroVideo video={video} photo={photo} />
         </div>
       )}
 

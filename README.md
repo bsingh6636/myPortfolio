@@ -91,7 +91,8 @@ Files live in Cloudinary (cloud `iaarfexv`). The Cloudinary console is the admin
 
 1. Upload the resume PDF and/or the intro video under Assets.
 2. Tag both with the same name (the role's default tag, or a new name for a variant).
-3. Done. The newest upload with that tag is used (the lookup is cached for about a minute). To replace a file, upload a new one with the same tag. To take one down, remove the tag or delete the file.
+3. Optional: upload a photo (JPG or PNG) with the same tag to use as the video thumbnail. It's cropped to the video's shape around your face. Without one, the video's first frame is used.
+4. Done. The newest upload with that tag is used (the lookup is cached for about a minute). To replace a file, upload a new one with the same tag. To take one down, remove the tag or delete the file.
 
 Videos: export as MP4, 720p, under about 40 MB, so Cloudinary's free plan can compress them on the fly. Larger files still play, but as the original file.
 

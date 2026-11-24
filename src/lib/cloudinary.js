@@ -4,23 +4,32 @@ import { cloudinaryCloud } from '../data/roles';
 // restricted, and "Allow delivery of PDF and ZIP files" on.
 const base = `https://res.cloudinary.com/${cloudinaryCloud}`;
 
-// Newest asset of a type carrying the tag, or null. Cloudinary caches the
-// list for about a minute, so new uploads appear shortly after.
-export async function findNewest(type, tag, keep = () => true) {
+// Every asset of a type carrying the tag, newest first ([] when none).
+// Cloudinary caches the list for about a minute, so new uploads appear shortly
+// after.
+async function listTag(type, tag) {
   try {
     const res = await fetch(`${base}/${type}/list/${encodeURIComponent(tag)}.json`, {
       cache: 'no-store',
     });
-    if (!res.ok) return null;
+    if (!res.ok) return [];
     const { resources = [] } = await res.json();
-    return resources.filter(keep).sort((a, b) => b.version - a.version)[0] || null;
+    return resources.sort((a, b) => b.version - a.version);
   } catch {
-    return null;
+    return [];
   }
 }
 
-export const findResume = (tag) => findNewest('image', tag, (item) => item.format === 'pdf');
-export const findVideo = (tag) => findNewest('video', tag);
+// One tag, one lookup per type: the newest PDF is the resume, the newest other
+// image is the video thumbnail, and the newest video is the intro video.
+export async function findImages(tag) {
+  const images = await listTag('image', tag);
+  return {
+    resume: images.find((item) => item.format === 'pdf') || null,
+    photo: images.find((item) => item.format !== 'pdf') || null,
+  };
+}
+export const findVideo = async (tag) => (await listTag('video', tag))[0] || null;
 
 function assetPath(item) {
   return `v${item.version}/${item.public_id.split('/').map(encodeURIComponent).join('/')}`;
@@ -37,11 +46,15 @@ export function pdfPageUrl(item, page) {
   return `${base}/image/upload/pg_${page},w_1400,c_limit,f_auto,q_auto/${assetPath(item)}.jpg`;
 }
 
-export function videoUrls(item) {
+// Poster: the uploaded photo, cropped to the video's shape around the face,
+// or else the video's first frame (the moment before speaking).
+export function videoUrls(item, photo) {
   const path = assetPath(item);
+  const shape = item.width && item.height ? `ar_${item.width}:${item.height},` : '';
   return {
-    // First frame: the moment before speaking, so the mouth is closed.
-    poster: `${base}/video/upload/so_0,q_auto,w_1280,c_limit/${path}.jpg`,
+    poster: photo
+      ? `${base}/image/upload/c_fill,g_auto,${shape}w_1280,f_auto,q_auto/${assetPath(photo)}.jpg`
+      : `${base}/video/upload/so_0,q_auto,w_1280,c_limit/${path}.jpg`,
     // Compressed 720p MP4 first. The original is the fallback when Cloudinary
     // cannot transform on the fly (free plan: files over about 40 MB).
     sources: [
