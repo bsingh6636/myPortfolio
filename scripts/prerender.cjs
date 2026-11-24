@@ -52,7 +52,7 @@ function withHead(html, { title, description, url, robots }) {
 
 try {
   const App = require('../src/App').default;
-  const { roles, resumePath, pageTitle } = require('../src/data/roles');
+  const { roles, resumePath, pageTitle, matchRoleRoute } = require('../src/data/roles');
   const buildDir = path.resolve(__dirname, '../build');
   const template = fs.readFileSync(path.join(buildDir, 'index.html'), 'utf8');
   const marker = /<div id="root">[\s\S]*<\/div>(?=\s*<\/body>)/;
@@ -70,15 +70,15 @@ try {
   // Role pages are for sharing, not search: noindex, with their own previews.
   let count = 0;
   for (const role of roles) {
-    for (const [name, view] of [null, ...(role.variants || [])].flatMap((n) => [
+    for (const [name, view] of [null, ...Object.keys(role.variants || {})].flatMap((n) => [
       [n, 'resume'],
       [n, 'video'],
     ])) {
       const urlPath = resumePath(role, name, view);
-      const title = pageTitle(role, view);
+      const page = matchRoleRoute(urlPath).role; // with the name's own title and summary
       const html = withHead(render(urlPath), {
-        title,
-        description: role.summary,
+        title: pageTitle(page, view),
+        description: page.summary,
         url: `https://brijeshhq.com${urlPath}`,
         robots: 'noindex, nofollow',
       });

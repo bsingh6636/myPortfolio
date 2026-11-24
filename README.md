@@ -85,7 +85,7 @@ Examples: `/resume/full-stack`, `/resume/full-stack/react-node`, `/resume/full-s
 
 The resume shows on the page as images of its pages (rendered by Cloudinary), with Download PDF and Open PDF buttons. When the same tag also has a video, a Resume / Intro video switch appears, and it works the other way round too. Switching changes the URL without reloading. All these pages are hidden from search engines.
 
-Roles and default tags: `full-stack` (`react-node`), `ai-engineer` (`ai-engineer`), `backend` (`backend`). Names listed in a role's `variants` are prerendered by `scripts/prerender.cjs` with their own link preview. Any other name works too, with the homepage preview.
+Roles and default tags: `full-stack` (`react-node`), `ai-engineer` (`ai-engineer`), `backend` (`backend`). Names listed in a role's `variants` are prerendered by `scripts/prerender.cjs` with their own link preview, and can set their own `title` and `summary` (for example `python-node-react`). Any other name works too, with the homepage preview.
 
 Files live in Cloudinary (cloud `iaarfexv`). The Cloudinary console is the admin:
 

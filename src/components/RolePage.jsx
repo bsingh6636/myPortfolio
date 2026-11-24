@@ -37,7 +37,8 @@ function IntroVideo({ video, photo }) {
   if (!video) return <p>Intro video coming soon.</p>;
   const { poster, sources } = videoUrls(video, photo);
   return (
-    <video controls preload="none" playsInline poster={poster}>
+    // Start downloading on page load so playback starts at once on click.
+    <video controls preload="auto" playsInline poster={poster}>
       {sources.map((src) => (
         <source key={src} src={src} />
       ))}
@@ -65,16 +66,20 @@ export default function RolePage({ role, name, tag, view: initialView }) {
 
   useEffect(() => {
     let active = true;
-    findImages(tag).then((images) => {
+    findImages(tag).then(async (images) => {
+      // A name without its own resume uses the role's default one, so the
+      // video page can still offer the resume.
+      const resume =
+        images.resume || (tag === role.tag ? null : (await findImages(role.tag)).resume);
       if (!active) return;
-      setResume(images.resume);
+      setResume(resume);
       setPhoto(images.photo);
     });
     findVideo(tag).then((item) => active && setVideo(item));
     return () => {
       active = false;
     };
-  }, [tag]);
+  }, [tag, role.tag]);
 
   // Switching between resume and video updates the URL without a reload; the
   // browser back button switches back.

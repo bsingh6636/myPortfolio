@@ -1,7 +1,7 @@
 // Role links: resume and intro video per role, matched to Cloudinary files by
-// tag; see README "Role pages". `tag` is the role's default; `variants` are
-// extra names prerendered with their own link previews (unlisted names still
-// work, with the homepage preview).
+// tag; see README "Role pages". `tag` is the role's default. `variants` are
+// extra names, prerendered with their own link previews, that can override the
+// title and summary (unlisted names still work, with the homepage preview).
 import { profile } from './profile';
 
 export const cloudinaryCloud = 'iaarfexv';
@@ -10,7 +10,14 @@ export const roles = [
   {
     slug: 'full-stack',
     tag: 'react-node',
-    variants: ['react-node', 'python-node-react'],
+    variants: {
+      'react-node': {},
+      'python-node-react': {
+        title: 'Full Stack Engineer · Python, Node.js, React',
+        summary:
+          'Two years at Vedak building React interfaces and REST backends in Python and Node.js. I shipped a Python RAG chatbot and an LLM classification service to production. Outside work, I built FastAPI services for retrieval with evaluation and for exactly-once webhook processing.',
+      },
+    },
     title: 'Full Stack Engineer',
     summary:
       'Two years at Vedak building React portals and the Node.js, MySQL and AWS services behind them: Zoom recording pipelines, SQS event processing, and third-party integrations.',
@@ -47,7 +54,8 @@ export function matchRoleRoute(pathname) {
   if (view === 'video') rest.pop();
   if (rest.length > 1 || (rest[0] && !SEGMENT.test(rest[0]))) return null;
   const name = rest[0] || null;
-  return { role, name, tag: name || role.tag, view };
+  const merged = { ...role, ...(name && role.variants?.[name]) };
+  return { role: merged, name, tag: name || role.tag, view };
 }
 
 export const resumePath = (role, name, view) =>
